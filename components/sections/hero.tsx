@@ -35,10 +35,10 @@ export function Hero({ onCheckout, onOpenLeadModal, isLoading }: HeroProps) {
 
   return (
     <section className="relative overflow-hidden min-h-[90vh] flex items-center text-white">
-      {/* Background Image */}
+      {/* Background Image - close up riparazione senza testo */}
       <div className="absolute inset-0">
         <Image
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PHOTO-2026-02-12-17-50-28-UdDLGQmFl3lhzClSkg9AZYmQ1VH9P9.jpg"
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/412cd0b4-fb59-41e1-9442-1510241fd76d%202.JPG-LmwPxwIzhbz9wDb6bSFhW3wLNjwWD4.jpeg"
           alt="Riparazione smartphone professionale"
           fill
           className="object-cover"
@@ -46,7 +46,7 @@ export function Hero({ onCheckout, onOpenLeadModal, isLoading }: HeroProps) {
           sizes="100vw"
         />
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[var(--navy)]/95 via-[var(--navy)]/80 to-[var(--navy)]/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--navy)]/95 via-[var(--navy)]/85 to-[var(--navy)]/70" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
@@ -102,9 +102,8 @@ export function Hero({ onCheckout, onOpenLeadModal, isLoading }: HeroProps) {
             </Button>
             <Button
               size="lg"
-              variant="outline"
               onClick={onOpenLeadModal}
-              className="w-full sm:w-auto border-white/30 text-white hover:bg-white/10 text-lg px-8 py-6 h-auto"
+              className="w-full sm:w-auto bg-[var(--whatsapp-green)] hover:bg-[var(--whatsapp-green-hover)] text-white text-lg px-8 py-6 h-auto"
             >
               <MessageCircle className="w-5 h-5 mr-2" />
               {hero.secondaryCta}

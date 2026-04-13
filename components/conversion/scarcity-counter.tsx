@@ -12,8 +12,10 @@ const defaultTime = { days: 0, hours: 0, minutes: 0, seconds: 0 }
 export function ScarcityCounter() {
   const [mounted, setMounted] = useState(false)
   const [timeRemaining, setTimeRemaining] = useState(defaultTime)
-  const spotsRemaining = getSpotsRemaining()
-  const urgent = isUrgent()
+  
+  // Static values that don't change - safe for SSR
+  const spotsRemaining = scarcity.spotsRemaining
+  const urgent = spotsRemaining <= scarcity.urgentThreshold
 
   useEffect(() => {
     setMounted(true)

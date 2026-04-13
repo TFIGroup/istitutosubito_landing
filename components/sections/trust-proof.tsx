@@ -104,8 +104,7 @@ export function TrustProof() {
               </div>
             </div>
             <Button 
-              variant="outline" 
-              className="border-white/30 text-white hover:bg-white/10 gap-2"
+              className="bg-white text-[var(--navy)] hover:bg-white/90 gap-2"
               asChild
             >
               <a 

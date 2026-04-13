@@ -93,9 +93,8 @@ export function FinalCTA({ onCheckout, onOpenLeadModal, isLoading }: FinalCTAPro
           </Button>
           <Button
             size="lg"
-            variant="outline"
             onClick={onOpenLeadModal}
-            className="w-full sm:w-auto border-white/30 text-white hover:bg-white/10 text-lg px-8 py-6 h-auto"
+            className="w-full sm:w-auto bg-[var(--whatsapp-green)] hover:bg-[var(--whatsapp-green-hover)] text-white text-lg px-8 py-6 h-auto"
           >
             <MessageCircle className="w-5 h-5 mr-2" />
             {finalCta.secondaryCta}

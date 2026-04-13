@@ -36,7 +36,8 @@ export const content = {
     installmentTeaser: 'o 3 rate da €497 con Klarna',
     primaryCta: 'Iscriviti Ora',
     secondaryCta: 'Parla con un Capotecnico',
-    trustBar: '⭐ 4,9/5 su Google · Dal 2009 · 2 laboratori in Campania · 130.000+ dispositivi riparati',
+    trustBar: '⭐ 4,9/5 su Google (2.512 recensioni) · Dal 2009 · 2 laboratori in Campania · 130.000+ dispositivi riparati',
+    googleMapsUrl: 'https://maps.app.goo.gl/subitoriparato',
     trustBadges: [
       { icon: 'shield', label: 'Pagamento Sicuro Stripe' },
       { icon: 'creditCard', label: 'Klarna · 3 rate senza interessi' },

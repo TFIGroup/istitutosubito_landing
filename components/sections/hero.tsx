@@ -103,6 +103,16 @@ export function Hero({ onCheckout, onOpenLeadModal, isLoading }: HeroProps) {
             </Button>
           </div>
 
+          {/* Trust Bar */}
+          <a
+            href={hero.googleMapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block text-sm text-white/70 hover:text-white/90 transition-colors mb-6 underline decoration-white/30 underline-offset-4"
+          >
+            {hero.trustBar}
+          </a>
+
           {/* Trust Badges */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {hero.trustBadges.map((badge) => {

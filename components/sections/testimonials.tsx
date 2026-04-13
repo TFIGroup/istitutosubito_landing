@@ -1,8 +1,18 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { Star, Quote } from 'lucide-react'
 import { content } from '@/lib/content'
+
+// Map testimonial names to their generated photos
+const testimonialPhotos: Record<string, string> = {
+  'Marco T.': '/images/testimonials/marco.jpg',
+  'Sara M.': '/images/testimonials/sara.jpg',
+  'Luca B.': '/images/testimonials/luca.jpg',
+  'Giuseppe R.': '/images/testimonials/alessandro.jpg',
+  'Chiara L.': '/images/testimonials/francesca.jpg',
+}
 
 export function Testimonials() {
   const { testimonials } = content
@@ -65,9 +75,21 @@ export function Testimonials() {
 
               {/* Author */}
               <div className="flex items-center gap-3 pt-4 border-t border-white/10">
-                <div className="w-10 h-10 rounded-full bg-[var(--electric-blue)] flex items-center justify-center text-sm font-semibold">
-                  {review.avatar}
-                </div>
+                {testimonialPhotos[review.name] ? (
+                  <div className="w-10 h-10 rounded-full overflow-hidden relative">
+                    <Image
+                      src={testimonialPhotos[review.name]}
+                      alt={review.name}
+                      fill
+                      className="object-cover"
+                      sizes="40px"
+                    />
+                  </div>
+                ) : (
+                  <div className="w-10 h-10 rounded-full bg-[var(--electric-blue)] flex items-center justify-center text-sm font-semibold">
+                    {review.avatar}
+                  </div>
+                )}
                 <div>
                   <div className="font-medium">{review.name}</div>
                   <div className="text-sm text-white/60">

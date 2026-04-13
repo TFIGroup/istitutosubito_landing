@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { MessageCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { content } from '@/lib/content'
@@ -19,8 +20,19 @@ export function FinalCTA({ onCheckout, onOpenLeadModal, isLoading }: FinalCTAPro
   const urgent = isUrgent()
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-[var(--electric-blue)] to-[var(--navy)]">
-      <div className="max-w-3xl mx-auto px-4 md:px-6 lg:px-8 text-center">
+    <section className="relative py-16 md:py-24 overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_1542.PNG-GnLvqWcmeTW0kGhmIfrLzw3DytVZ5A.png"
+          alt="Corso riparazione smartphone con assunzione"
+          fill
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--navy)]/95 via-[var(--navy)]/85 to-[var(--electric-blue)]/70" />
+      </div>
+      <div className="relative max-w-3xl mx-auto px-4 md:px-6 lg:px-8 text-center">
         {/* Scarcity */}
         {scarcity.enabled && (
           <motion.div

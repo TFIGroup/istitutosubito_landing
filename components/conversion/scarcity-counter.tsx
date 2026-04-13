@@ -6,12 +6,19 @@ import { Clock, Users } from 'lucide-react'
 import { scarcity, getTimeRemaining, getSpotsRemaining, isUrgent } from '@/lib/scarcity'
 import { cn } from '@/lib/utils'
 
+// Default values to avoid hydration mismatch
+const defaultTime = { days: 0, hours: 0, minutes: 0, seconds: 0 }
+
 export function ScarcityCounter() {
-  const [timeRemaining, setTimeRemaining] = useState(getTimeRemaining())
+  const [mounted, setMounted] = useState(false)
+  const [timeRemaining, setTimeRemaining] = useState(defaultTime)
   const spotsRemaining = getSpotsRemaining()
   const urgent = isUrgent()
 
   useEffect(() => {
+    setMounted(true)
+    setTimeRemaining(getTimeRemaining())
+    
     const interval = setInterval(() => {
       setTimeRemaining(getTimeRemaining())
     }, 1000)
@@ -20,6 +27,9 @@ export function ScarcityCounter() {
   }, [])
 
   if (!scarcity.enabled) return null
+
+  // Don't render countdown values until mounted to avoid hydration mismatch
+  const displayTime = mounted ? timeRemaining : defaultTime
 
   return (
     <section className="py-12 md:py-16 bg-muted/50">
@@ -67,10 +77,10 @@ export function ScarcityCounter() {
                 </span>
               </div>
               <div className="flex justify-center md:justify-start gap-3">
-                <CountdownUnit value={timeRemaining.days} label="Giorni" />
-                <CountdownUnit value={timeRemaining.hours} label="Ore" />
-                <CountdownUnit value={timeRemaining.minutes} label="Min" />
-                <CountdownUnit value={timeRemaining.seconds} label="Sec" />
+                <CountdownUnit value={displayTime.days} label="Giorni" />
+                <CountdownUnit value={displayTime.hours} label="Ore" />
+                <CountdownUnit value={displayTime.minutes} label="Min" />
+                <CountdownUnit value={displayTime.seconds} label="Sec" />
               </div>
             </div>
           </div>

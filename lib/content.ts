@@ -268,9 +268,9 @@ export const content = {
     tagline: 'Formazione pratica per tecnici riparatori smartphone.',
     links: {
       corso: [
-        { label: 'Livello 1', href: '#prezzi' },
-        { label: 'Livello 2', href: '#prezzi' },
-        { label: 'Livello 3', href: '#prezzi' },
+        { label: 'Livello 1', href: '#prezzi-lv1' },
+        { label: 'Livello 2', href: '#prezzi-lv2' },
+        { label: 'Livello 3', href: '#prezzi-lv3' },
       ],
       supporto: [
         { label: 'FAQ', href: '#faq' },

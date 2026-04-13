@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { Shield, CreditCard, Undo2, Flag, MessageCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { content } from '@/lib/content'
@@ -33,13 +34,19 @@ export function Hero({ onCheckout, onOpenLeadModal, isLoading }: HeroProps) {
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Ciao, vorrei informazioni sul corso')}`
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[var(--navy)] to-[var(--navy-light)] text-white">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
-          backgroundSize: '40px 40px'
-        }} />
+    <section className="relative overflow-hidden min-h-[90vh] flex items-center text-white">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/PHOTO-2026-02-12-17-50-28-UdDLGQmFl3lhzClSkg9AZYmQ1VH9P9.jpg"
+          alt="Riparazione smartphone professionale"
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+        />
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--navy)]/95 via-[var(--navy)]/80 to-[var(--navy)]/60" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-16 md:py-24 lg:py-32">

@@ -17,6 +17,8 @@ import { Testimonials } from '@/components/sections/testimonials'
 import { FAQ } from '@/components/sections/faq'
 import { FinalCTA } from '@/components/sections/final-cta'
 import { Footer } from '@/components/sections/footer'
+import { LabGallery } from '@/components/sections/lab-gallery'
+import { StudentsInAction } from '@/components/sections/students-in-action'
 
 // Conversion Components
 import { StickyMobileBar } from '@/components/conversion/sticky-mobile-bar'
@@ -98,7 +100,11 @@ function LandingPageContent() {
         
         <Manifesto />
         
+        <StudentsInAction />
+        
         <FirstClient />
+        
+        <LabGallery />
         
         <Pricing
           onSelectTier={handleCheckout}

@@ -36,8 +36,8 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Il Corso</h4>
             <ul className="space-y-2">
-              {footer.links.corso.map((link) => (
-                <li key={link.href}>
+              {footer.links.corso.map((link, index) => (
+                <li key={`corso-${index}`}>
                   <Link
                     href={link.href}
                     className="text-white/60 hover:text-white text-sm transition-colors"
@@ -53,8 +53,8 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Supporto</h4>
             <ul className="space-y-2">
-              {footer.links.supporto.map((link) => (
-                <li key={link.href}>
+              {footer.links.supporto.map((link, index) => (
+                <li key={`supporto-${index}`}>
                   {link.label === 'WhatsApp' ? (
                     <a
                       href={whatsappLink}
@@ -81,8 +81,8 @@ export function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Legale</h4>
             <ul className="space-y-2">
-              {footer.links.legale.map((link) => (
-                <li key={link.href}>
+              {footer.links.legale.map((link, index) => (
+                <li key={`legale-${index}`}>
                   <Link
                     href={link.href}
                     className="text-white/60 hover:text-white text-sm transition-colors"

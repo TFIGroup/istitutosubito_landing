@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { content } from '@/lib/content'
 
 export function Manifesto() {
@@ -9,7 +10,25 @@ export function Manifesto() {
   return (
     <section className="py-16 md:py-24 bg-background">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center mb-12">
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
+          {/* Image Side */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative aspect-square rounded-2xl overflow-hidden shadow-xl order-2 lg:order-1"
+          >
+            <Image
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/557b4e6e-decb-489d-b2f4-8c2f355d3e61%202.JPG-dMqtzVQKh7Ta3Er9xJDBEE8XBCky9A.jpeg"
+              alt="Banner corso di formazione tecnico riparatore"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </motion.div>
+
+          {/* Text Side */}
+          <div className="order-1 lg:order-2">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -53,7 +72,7 @@ export function Manifesto() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
           {manifesto.stats.map((stat, index) => (
             <div
@@ -67,6 +86,7 @@ export function Manifesto() {
             </div>
           ))}
         </motion.div>
+        </div>
       </div>
     </section>
   )

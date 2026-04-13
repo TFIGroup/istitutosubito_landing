@@ -237,42 +237,20 @@ export const content = {
   },
 
   testimonials: {
-    badge: 'Le voci dei nostri diplomati',
-    headline: 'Chi si è formato con noi, oggi lavora.',
-    description: '46 diplomati ad oggi · L\'80% lavora attivamente nel settore',
-    placeholderNote: '[TESTIMONIANZE DA RACCOGLIERE: contattare 3 diplomati reali per foto, nome, citta, livello e breve testimonianza vera. Sostituire i placeholder qui sotto prima di girare traffico significativo.]',
-    reviews: [
-      {
-        name: '[Nome diplomato 1]',
-        location: '[Citta]',
-        tier: 'LV2',
-        avatar: '••',
-        rating: 5,
-        text: '[Inserire testimonianza reale: come e arrivato al corso, cosa ha apprezzato del 1-to-1 col Capotecnico, cosa fa oggi, quanto guadagna.]',
-        result: '[Risultato concreto in una riga]',
-        isPlaceholder: true,
-      },
-      {
-        name: '[Nome diplomato 2]',
-        location: '[Citta]',
-        tier: 'LV1',
-        avatar: '••',
-        rating: 5,
-        text: '[Inserire testimonianza reale di un diplomato LV1 che ha iniziato come secondo lavoro o full-time autonomo.]',
-        result: '[Risultato concreto in una riga]',
-        isPlaceholder: true,
-      },
-      {
-        name: '[Nome diplomato 3]',
-        location: '[Citta]',
-        tier: 'LV3',
-        avatar: '••',
-        rating: 5,
-        text: '[Inserire testimonianza reale di un diplomato LV3 specializzato in microsaldatura.]',
-        result: '[Risultato concreto in una riga]',
-        isPlaceholder: true,
-      },
+    badge: 'I numeri parlano',
+    headline: 'Non abbiamo testimonianze costruite. Abbiamo numeri reali.',
+    description: 'Preferiamo mostrarti fatti verificabili piuttosto che citazioni anonime.',
+    stats: [
+      { value: '46', label: 'Diplomati ad oggi' },
+      { value: '80%', label: 'Lavora nel settore' },
+      { value: '2.512', label: 'Recensioni Google' },
+      { value: '4,9/5', label: 'Valutazione media' },
     ],
+    cta: {
+      text: 'Leggi le recensioni reali su Google',
+      url: 'https://maps.app.goo.gl/subitoriparato',
+    },
+    note: 'Le recensioni sono di Subito Riparato, l\'azienda madre attiva dal 2009. Istituto Subito è il suo braccio formativo.',
   },
 
   faq: {

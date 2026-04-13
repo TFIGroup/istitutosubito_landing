@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Star, Quote } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import { content } from '@/lib/content'
 
 export function Testimonials() {
@@ -9,7 +9,7 @@ export function Testimonials() {
 
   return (
     <section id="testimonianze" className="py-16 md:py-24 bg-[var(--navy)] text-white">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-12">
           <motion.div
@@ -30,54 +30,60 @@ export function Testimonials() {
           >
             {testimonials.headline}
           </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-lg text-white/70"
+          >
+            {testimonials.description}
+          </motion.p>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.reviews.map((review, index) => (
+        {/* Stats Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+          {testimonials.stats.map((stat, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 + index * 0.05 }}
-              className="p-6 bg-white/5 rounded-xl border border-white/10"
+              className="text-center p-6 bg-white/5 rounded-xl border border-white/10"
             >
-              {/* Quote Icon */}
-              <Quote className="w-8 h-8 text-[var(--electric-blue)] mb-4 opacity-50" />
-
-              {/* Rating */}
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: review.rating }).map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-[var(--premium-gold)] text-[var(--premium-gold)]" />
-                ))}
+              <div className="text-3xl md:text-4xl font-bold text-white mb-1">
+                {stat.value}
               </div>
-
-              {/* Text */}
-              <p className="text-white/90 mb-4 leading-relaxed">
-                {review.text}
-              </p>
-
-              {/* Result Badge */}
-              <div className="inline-flex items-center px-3 py-1 bg-[var(--whatsapp-green)]/20 text-[var(--whatsapp-green)] text-sm font-medium rounded-full mb-4">
-                {review.result}
-              </div>
-
-              {/* Author */}
-              <div className="flex items-center gap-3 pt-4 border-t border-white/10">
-                <div className="w-10 h-10 rounded-full bg-[var(--electric-blue)] flex items-center justify-center text-sm font-semibold">
-                  {review.avatar}
-                </div>
-                <div>
-                  <div className="font-medium">{review.name}</div>
-                  <div className="text-sm text-white/60">
-                    {review.location} · {review.tier}
-                  </div>
-                </div>
+              <div className="text-sm text-white/60">
+                {stat.label}
               </div>
             </motion.div>
           ))}
         </div>
+
+        {/* CTA + Note */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="text-center"
+        >
+          <a
+            href={testimonials.cta.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-colors text-sm font-medium"
+          >
+            {testimonials.cta.text}
+            <ExternalLink className="w-4 h-4" />
+          </a>
+          <p className="text-xs text-white/40 mt-4 max-w-md mx-auto">
+            {testimonials.note}
+          </p>
+        </motion.div>
       </div>
     </section>
   )

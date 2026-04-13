@@ -16,17 +16,22 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center gap-2">
             <span className="text-xl font-bold text-[var(--navy)]">
               {header.logo}
             </span>
+            {header.tagline && (
+              <span className="hidden lg:inline-block text-xs text-muted-foreground border-l border-border pl-2">
+                {header.tagline}
+              </span>
+            )}
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-6">
-            {header.nav.map((item) => (
+            {header.nav.map((item, index) => (
               <Link
-                key={item.href}
+                key={`nav-${index}`}
                 href={item.href}
                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
@@ -64,9 +69,9 @@ export function Header() {
           )}
         >
           <nav className="flex flex-col gap-2 pt-2">
-            {header.nav.map((item) => (
+            {header.nav.map((item, index) => (
               <Link
-                key={item.href}
+                key={`mobile-nav-${index}`}
                 href={item.href}
                 className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted rounded-md transition-colors"
                 onClick={() => setIsMenuOpen(false)}

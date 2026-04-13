@@ -3,345 +3,450 @@
 
 export const content = {
   meta: {
-    title: 'Istituto Subito | Diventa Tecnico Riparatore Smartphone Certificato',
-    description: 'Impara a riparare smartphone e tablet con il corso professionale Istituto Subito. Certificazione riconosciuta, kit incluso, assistenza WhatsApp. Inizia da €1.490.',
-    keywords: 'corso riparazione smartphone, tecnico cellulari, microsoldering, riparazione iPhone, formazione tecnico smartphone',
+    title: 'Istituto Subito | La scuola dei tecnici riparatori. Dal 2009.',
+    description: 'Il primo istituto in Italia che non ti insegna a riparare smartphone. Ti insegna a guadagnare riparando. 1-to-1 col Capotecnico, licenza professionale verificabile. Powered by Subito Riparato, dal 2009.',
+    keywords: 'corso riparazione smartphone, tecnico cellulari, microsaldatura, scuola tecnici riparatori, licenza tecnico smartphone, formazione professionale riparazione',
   },
-  
+
   header: {
     logo: 'Istituto Subito',
+    tagline: 'Powered by Subito Riparato',
     nav: [
-      { label: 'Il Corso', href: '#corso' },
-      { label: 'Prezzi', href: '#prezzi' },
-      { label: 'Testimonianze', href: '#testimonianze' },
+      { label: 'Il Metodo', href: '#manifesto' },
+      { label: 'Percorsi', href: '#prezzi' },
+      { label: 'La Licenza', href: '#licenza' },
       { label: 'FAQ', href: '#faq' },
     ],
     cta: 'Iscriviti Ora',
   },
-  
+
   hero: {
     variants: {
       A: {
-        headline: 'Diventa Tecnico Riparatore Smartphone in 8 Settimane',
-        subheadline: 'Anche se parti da zero',
+        headline: 'Diventa Tecnico Riparatore. E inizia a guadagnare subito.',
+        subheadline: 'Il primo istituto in Italia che non ti insegna a riparare. Ti insegna a guadagnare riparando.',
       },
       B: {
-        headline: 'Impara a Riparare iPhone e Samsung con le Mani',
-        subheadline: 'E inizia a guadagnare in 8 settimane',
+        headline: 'Cerchiamo nuovi tecnici da formare in tutta Italia.',
+        subheadline: 'Percorso 1-to-1 col Capotecnico, licenza professionale verificabile, sbocco lavorativo concreto.',
       },
     },
-    description: 'Il corso pratico che ti trasforma in un tecnico certificato. Kit professionale incluso, assistenza WhatsApp dedicata, e il supporto del Capotecnico fino al tuo primo cliente.',
+    description: 'Da 16 anni ripariamo 900 dispositivi al mese nei nostri due laboratori. Ora insegniamo a fare lo stesso a te. 1-to-1 con un Capotecnico vero, calendario costruito sui tuoi tempi, licenza professionale che il mercato riconosce.',
     priceTeaser: 'Da €1.490',
-    installmentTeaser: 'o 3 rate da €497',
+    installmentTeaser: 'o 3 rate da €497 con Klarna',
     primaryCta: 'Iscriviti Ora',
     secondaryCta: 'Parla con un Capotecnico',
+    trustBar: '4,9/5 su Google - Dal 2009 - 2 laboratori in Campania - 130.000+ dispositivi riparati',
     trustBadges: [
-      { icon: 'shield', label: 'Pagamento Sicuro' },
-      { icon: 'creditCard', label: 'Klarna 3 Rate' },
-      { icon: 'undo', label: 'Garanzia 14 Giorni' },
-      { icon: 'flag', label: 'Made in Italy' },
+      { icon: 'shield', label: 'Pagamento Sicuro Stripe' },
+      { icon: 'creditCard', label: 'Klarna - 3 rate senza interessi' },
+      { icon: 'undo', label: 'Garanzia 14 giorni' },
+      { icon: 'flag', label: 'Made in Italy - dal 2009' },
     ],
+    licenseCaption: 'Clicca la licenza per verificarne una reale',
   },
-  
+
   manifesto: {
-    badge: 'La Nostra Missione',
-    headline: 'Non Formiamo Studenti. Formiamo Tecnici che Guadagnano.',
+    badge: 'Il Nostro Metodo',
+    headline: 'Non ti insegniamo a riparare. Ti insegniamo a guadagnare.',
     paragraphs: [
-      'Istituto Subito nasce da una frustrazione: troppi corsi ti riempiono la testa di teoria e ti lasciano solo quando devi iniziare a lavorare.',
-      'Noi facciamo il contrario. Ti mettiamo le mani su dispositivi veri dal primo giorno. Ti diamo gli attrezzi giusti. Ti guidiamo fino al tuo primo cliente pagante.',
-      'Il nostro obiettivo non è venderti un corso. È farti diventare un tecnico che lavora.',
+      'Ci sono corsi che ti riempiono la testa di cose che non userai mai. Ti spiegano per ore come si legge un multimetro che nella realta di un laboratorio aprirai forse una volta ogni cento riparazioni. Ti elencano 200 tecniche e poi ti lasciano da solo davanti al primo cliente.',
+      'Noi insegniamo solo quello che si rompe davvero. Quello che entra in laboratorio ogni giorno, quello per cui i clienti pagano, quello che ti fa chiudere il mese.',
+      'Lo sappiamo perche lo facciamo da 16 anni. Oltre 130.000 dispositivi riparati nei nostri due laboratori in Campania, 900 al mese. Conosciamo le 10 riparazioni che generano l\'80% del fatturato di un negozio. Ti insegniamo quelle. Tutto il resto e chiacchiera che paghi e dimentichi.',
     ],
+    closingLine: 'Da 16 anni sul campo. Ora insegniamo a fare lo stesso a te.',
     stats: [
-      { value: '2.847', label: 'Studenti formati' },
-      { value: '94%', label: 'Trova lavoro entro 90 giorni' },
-      { value: '€2.200', label: 'Guadagno medio primo mese' },
+      { value: '16', label: 'Anni di attivita dal 2009' },
+      { value: '130.000+', label: 'Dispositivi riparati davvero' },
+      { value: '900', label: 'Riparazioni al mese, ogni mese' },
     ],
   },
-  
+
   firstClient: {
-    badge: 'Il Nostro Impegno',
-    headline: 'Il Tuo Primo Cliente? Ti Aiutiamo Noi.',
-    description: 'Non ti lasciamo solo dopo il corso. Il Capotecnico ti segue personalmente fino a quando non chiudi la tua prima riparazione pagata.',
-    steps: [
-      {
-        number: '1',
-        title: 'Completi il Corso',
-        description: 'Segui le lezioni, pratica sulle schede di test, ottieni il certificato.',
-      },
-      {
-        number: '2',
-        title: 'Prepariamo Insieme',
-        description: 'Il Capotecnico ti aiuta a creare il tuo profilo professionale e trovare i primi clienti.',
-      },
-      {
-        number: '3',
-        title: 'Prima Riparazione',
-        description: 'Assistenza WhatsApp in tempo reale mentre completi il tuo primo lavoro pagato.',
-      },
+    badge: 'L\'esercizio dei 20 telefoni',
+    headline: 'Il tuo primo cliente ce l\'hai gia. Non lo sai ancora.',
+    bigNumber: '2',
+    paragraphs: [
+      'Fai un esercizio. Oggi, guardati intorno. Tra i 20 amici, parenti e colleghi piu vicini a te, almeno 2 hanno un telefono con un problema. Schermo rotto, batteria che non tiene, microfono che gracchia. Minimo 2. Probabilmente di piu.',
+      'Quando finisci il corso, hai gia recuperato mezzo investimento solo sistemando i loro telefoni. Da li in poi, e solo questione di quanto vuoi crescere.',
     ],
   },
-  
+
   pricing: {
-    badge: 'Scegli il Tuo Percorso',
-    headline: 'Tre Livelli. Un Solo Obiettivo: Farti Lavorare.',
-    description: 'Ogni livello include kit professionale, certificazione e accesso alla community esclusiva.',
-  },
-  
-  scarcity: {
-    headline: 'I Posti Sono Limitati',
-    description: 'Per garantire assistenza personalizzata, accettiamo massimo 15 studenti al mese.',
-    urgency: 'Le iscrizioni chiudono tra:',
-  },
-  
-  license: {
-    badge: 'Certificazione Riconosciuta',
-    headline: 'Un Certificato che Vale',
-    description: 'Il certificato Istituto Subito è riconosciuto dai principali centri di riparazione e laboratori in Italia. Molti dei nostri ex-studenti ora gestiscono i loro laboratori.',
-    features: [
-      'Certificato digitale e cartaceo',
-      'Verificabile online',
-      'Riconosciuto dai datori di lavoro',
-      'Badge LinkedIn incluso',
+    badge: 'Tre percorsi - Tre licenze - Tre mercati',
+    headline: 'Scegli fino a dove vuoi arrivare.',
+    description: 'Tre livelli professionali con licenza fisica verificabile. Quanto guadagni dipende da quanto sai fare. Il Capotecnico ti accompagna 1-to-1 in ognuno dei percorsi.',
+    tiers: [
+      {
+        id: 'lv1',
+        code: 'LV1',
+        name: 'Tecnico Riparatore',
+        tagline: 'Il tecnico che chiude la maggior parte dei lavori che entrano in laboratorio.',
+        priceFull: 2200,
+        priceLaunch: 1490,
+        installmentLabel: 'o 3 rate da €497 con Klarna',
+        earningsRange: '€40 - €120 per riparazione',
+        marketCoverage: 'La maggior parte delle riparazioni quotidiane',
+        features: [
+          '30 ore 1-to-1 col Capotecnico',
+          'Calendario flessibile, costruito su di te',
+          'Kit hardware professionale in comodato d\'uso',
+          'Licenza professionale LV1 verificabile via QR',
+          'Supporto post-diploma per 1 mese',
+          'Esame finale e consegna licenza',
+        ],
+        ctaPrimary: { label: 'Iscriviti Ora', type: 'checkout' as const },
+        ctaSecondary: { label: 'Parla con un Capotecnico', type: 'lead' as const },
+        guarantee: 'Garanzia 14 giorni - Prima lezione di prova gratuita',
+        spotsRemaining: 5,
+        highlighted: false,
+      },
+      {
+        id: 'lv2',
+        code: 'LV2',
+        name: 'Tecnico Microsaldatore',
+        tagline: 'Il tecnico che gli altri negozi chiamano quando non sanno dove sbattere la testa.',
+        priceFull: 3500,
+        priceLaunch: 2490,
+        installmentLabel: 'o 3 rate da €830 con Klarna',
+        earningsRange: '€80 - €200 per riparazione',
+        marketCoverage: 'Quasi tutto il mercato, incluso quello che gli altri rifiutano',
+        features: [
+          '50 ore 1-to-1 col Capotecnico',
+          'Calendario flessibile + priorita di prenotazione',
+          'Kit hardware professionale in proprieta (te lo tieni)',
+          'Licenza professionale LV2 verificabile via QR',
+          'Ti mandiamo i primi clienti per 3 mesi',
+          'Supporto post-diploma per 3 mesi',
+        ],
+        ctaPrimary: { label: 'Iscriviti Ora', type: 'checkout' as const },
+        ctaSecondary: { label: 'Parla con un Capotecnico', type: 'lead' as const },
+        guarantee: 'Garanzia 14 giorni - Prima lezione di prova gratuita',
+        spotsRemaining: 2,
+        highlighted: true,
+        badge: 'PIU SCELTO',
+      },
+      {
+        id: 'lv3',
+        code: 'LV3',
+        name: 'Tecnico Master',
+        tagline: 'Il tecnico che risolve quello che nessun altro tocca. La riparazione da €300 che tutti rifiutano, la fai tu.',
+        priceFull: 5500,
+        priceLaunch: 3990,
+        installmentLabel: 'o 3 rate da €1.330 con Klarna',
+        earningsRange: '€150 - €400+ per riparazione',
+        marketCoverage: '100% del mercato, incluse riparazioni che oggi vengono mandate a noi',
+        features: [
+          '80 ore 1-to-1 col Capotecnico',
+          'Massima priorita sul calendario',
+          'Kit completo + stazione microsaldatura inclusa, in proprieta',
+          'Licenza professionale LV3 verificabile via QR',
+          'Ti mandiamo i primi clienti per 6 mesi',
+          'Priorita assoluta sui lavori complessi che giriamo dal nostro laboratorio',
+        ],
+        ctaPrimary: { label: 'Iscriviti Ora', type: 'checkout' as const },
+        ctaSecondary: { label: 'Parla con un Capotecnico', type: 'lead' as const },
+        guarantee: 'Garanzia 14 giorni - Prima lezione di prova gratuita',
+        spotsRemaining: 1,
+        highlighted: false,
+      },
     ],
   },
-  
+
+  scarcity: {
+    badge: 'Posti contati per area di mercato',
+    headline: 'Perche formiamo solo 11 tecnici a trimestre.',
+    paragraphs: [
+      'Il mercato della riparazione e grande, ma non e infinito. In ogni area c\'e un numero limitato di dispositivi e di clienti disposti a pagare un tecnico che non conoscono.',
+      'Per questo non formiamo masse di persone all\'anno. Formiamo pochi tecnici, li formiamo bene, e li accompagniamo a lavorare davvero — connessi con noi, con i nostri clienti, con il nostro metodo. Chi si forma con noi non resta mai da solo davanti al primo cliente.',
+    ],
+    counterLabel: 'Posti disponibili per il prossimo trimestre',
+    counterValue: 8,
+    counterTotal: 11,
+    breakdown: '5 posti LV1 - 2 posti LV2 - 1 posto LV3',
+  },
+
+  license: {
+    badge: 'Sistema di certificazione unico in Italia',
+    headline: 'Una licenza vera. Verificabile da chiunque, in tempo reale.',
+    paragraphs: [
+      'Quando ti diplomi non ti diamo un certificato che vale quanto la carta su cui e stampato. Ti diamo una licenza professionale fisica, con il tuo numero univoco, foto, livello tecnico e un QR code che chiunque — un cliente, un datore di lavoro, un altro tecnico — puo scansionare per verificare in tempo reale che sei un tecnico certificato Istituto Subito.',
+      'E l\'unica licenza del settore in Italia con un sistema di verifica pubblica online. E sta diventando lo standard di mercato.',
+    ],
+    features: [
+      'Licenza fisica formato tessera con foto, livello e voto di competenza',
+      'QR code di verifica pubblica, in tempo reale',
+      'Numero seriale univoco e tracciabile',
+      'Validita triennale, rinnovabile',
+    ],
+    demoLink: {
+      label: 'Prova: scansiona o clicca per vedere una licenza vera',
+      url: 'https://www.subitoriparato.com/12345678-00/',
+    },
+  },
+
   whyUs: {
-    badge: 'Perché Sceglierci',
-    headline: 'Non Siamo una Scuola. Siamo Tecnici.',
-    description: 'I nostri istruttori lavorano ancora ogni giorno sui dispositivi. Ti insegnano quello che funziona nel mondo reale.',
+    badge: 'Il differenziale',
+    headline: 'Perche Istituto Subito non e come gli altri corsi.',
+    description: 'Quattro cose che nessun altro in Italia mette insieme.',
     points: [
       {
-        icon: 'wrench',
-        title: 'Pratica dal Giorno 1',
-        description: 'Niente teoria infinita. Metti le mani su dispositivi veri fin dalla prima lezione.',
-      },
-      {
-        icon: 'package',
-        title: 'Kit Professionale Incluso',
-        description: 'Attrezzi di qualità professionale spediti a casa tua prima dell\'inizio del corso.',
-      },
-      {
-        icon: 'messageCircle',
-        title: 'Assistenza WhatsApp',
-        description: 'Problemi con una riparazione? Scrivi al Capotecnico e ricevi risposta in ore, non giorni.',
-      },
-      {
         icon: 'users',
-        title: 'Community Esclusiva',
-        description: 'Accesso al gruppo Telegram con 2.000+ tecnici che si aiutano a vicenda.',
+        title: '1-to-1 col Capotecnico, sempre.',
+        description: 'Niente videocorsi preregistrati, niente classi da 30 persone. Solo tu e un Capotecnico esperto, in diretta, su misura sui tuoi tempi e sui tuoi obiettivi.',
+      },
+      {
+        icon: 'wrench',
+        title: '16 anni di esperienza vera.',
+        description: 'Non insegniamo dai libri. Insegniamo da 130.000 dispositivi riparati davvero, in due laboratori attivi tutti i giorni in Campania.',
       },
       {
         icon: 'briefcase',
-        title: 'Supporto Lavorativo',
-        description: 'Ti aiutiamo a trovare i primi clienti o a candidarti nei centri assistenza.',
+        title: 'Sbocco professionale concreto.',
+        description: 'L\'80% dei nostri 46 diplomati ad oggi lavora nel settore: con noi, in altri negozi, o con la propria attivita.',
       },
       {
         icon: 'award',
-        title: 'Garanzia Soddisfatto',
-        description: '14 giorni per provare il corso. Se non fa per te, rimborso completo.',
+        title: 'Una licenza che vale.',
+        description: 'L\'unica licenza professionale del settore con sistema di verifica pubblica via QR. Chi ti assume sa subito chi sei.',
       },
     ],
   },
-  
+
   paths: {
-    badge: 'Cosa Puoi Fare Dopo',
-    headline: '3 Strade Dopo il Corso',
+    badge: 'Cosa succede dopo che ti diplomi',
+    headline: 'Tre strade. Le scegli tu, in base a dove vuoi arrivare.',
     options: [
       {
-        icon: 'home',
-        title: 'Lavora da Casa',
-        description: 'Ripara smartphone come secondo lavoro. Molti studenti guadagnano €500-1.000/mese extra lavorando solo nei weekend.',
+        icon: 'store',
+        title: 'Apri la tua attivita.',
+        description: 'Diventi titolare di un laboratorio di riparazione, con il know-how e la licenza che ti danno credibilita immediata sul mercato.',
       },
       {
         icon: 'building',
-        title: 'Lavora in un Centro',
-        description: 'Candidati come tecnico nei centri assistenza. Con il nostro certificato, hai un vantaggio competitivo.',
+        title: 'Lavora con noi.',
+        description: 'I migliori diplomati possono entrare a lavorare nei nostri laboratori o ricevere riparazioni che noi giriamo loro come tecnici di fiducia.',
       },
       {
-        icon: 'store',
-        title: 'Apri il Tuo Lab',
-        description: 'Con il LV3 impari anche il business. Diversi ex-studenti hanno aperto laboratori che fatturano €5.000+/mese.',
+        icon: 'home',
+        title: 'Lavora come autonomo.',
+        description: 'Inizi da casa, dai 2 telefoni rotti dei tuoi amici, e cresci. Molti dei nostri ex studenti hanno iniziato esattamente cosi.',
       },
     ],
   },
-  
+
   testimonials: {
-    badge: 'Le Voci dei Nostri Studenti',
-    headline: 'Chi Ha Fatto il Corso Parla',
+    badge: 'Le voci dei nostri diplomati',
+    headline: 'Chi si e formato con noi, oggi lavora.',
+    description: '46 diplomati ad oggi - L\'80% lavora attivamente nel settore',
+    placeholderNote: '[TESTIMONIANZE DA RACCOGLIERE: contattare 3 diplomati reali per foto, nome, citta, livello e breve testimonianza vera. Sostituire i placeholder qui sotto prima di girare traffico significativo.]',
     reviews: [
       {
-        name: 'Marco T.',
-        location: 'Napoli',
+        name: '[Nome diplomato 1]',
+        location: '[Citta]',
         tier: 'LV2',
-        avatar: 'MT',
+        avatar: '--',
         rating: 5,
-        text: 'Dopo 3 anni in fabbrica volevo cambiare vita. In 2 mesi ho completato il LV2, nel terzo mese ho iniziato a riparare per amici e conoscenti. Oggi ho il mio piccolo lab e guadagno il doppio di prima.',
-        result: 'Lab proprio in 6 mesi',
+        text: '[Inserire testimonianza reale: come e arrivato al corso, cosa ha apprezzato del 1-to-1 col Capotecnico, cosa fa oggi, quanto guadagna.]',
+        result: '[Risultato concreto in una riga]',
+        isPlaceholder: true,
       },
       {
-        name: 'Sara M.',
-        location: 'Milano',
+        name: '[Nome diplomato 2]',
+        location: '[Citta]',
         tier: 'LV1',
-        avatar: 'SM',
+        avatar: '--',
         rating: 5,
-        text: 'Ero scettica, mai toccato un cacciavite in vita mia. Ma le video-lezioni sono chiarissime e il Capotecnico risponde sempre. Ho iniziato con le batterie, ora faccio anche display. Guadagno €600/mese extra.',
-        result: '€600/mese extra',
+        text: '[Inserire testimonianza reale di un diplomato LV1 che ha iniziato come secondo lavoro o full-time autonomo.]',
+        result: '[Risultato concreto in una riga]',
+        isPlaceholder: true,
       },
       {
-        name: 'Luca B.',
-        location: 'Roma',
+        name: '[Nome diplomato 3]',
+        location: '[Citta]',
         tier: 'LV3',
-        avatar: 'LB',
+        avatar: '--',
         rating: 5,
-        text: 'Il microsoldering mi sembrava impossibile. Con il LV3 ho imparato a saldare chip microscopici. Oggi sono l\'unico nella mia zona che fa recupero dati da iPhone. I clienti vengono da me.',
-        result: 'Unico specialista in zona',
-      },
-      {
-        name: 'Giuseppe R.',
-        location: 'Torino',
-        tier: 'LV2',
-        avatar: 'GR',
-        rating: 5,
-        text: 'A 52 anni pensavo di essere troppo vecchio per imparare. Mi sbagliavo. Il corso è progettato per tutti. In 4 mesi ho cambiato carriera completamente.',
-        result: 'Nuova carriera a 52 anni',
-      },
-      {
-        name: 'Chiara L.',
-        location: 'Bologna',
-        tier: 'LV1',
-        avatar: 'CL',
-        rating: 5,
-        text: 'Cercavo un\'entrata extra mentre studio all\'università. Perfetto. Riparo telefoni di compagni di corso e coinquilini. Mi pago l\'affitto con le riparazioni.',
-        result: 'Affitto pagato',
+        text: '[Inserire testimonianza reale di un diplomato LV3 specializzato in microsaldatura.]',
+        result: '[Risultato concreto in una riga]',
+        isPlaceholder: true,
       },
     ],
   },
-  
+
   faq: {
-    badge: 'Domande Frequenti',
-    headline: 'Hai Dubbi? Ecco le Risposte.',
+    badge: 'Domande frequenti',
+    headline: 'Hai dubbi? Ecco le risposte.',
     questions: [
       {
-        question: 'Non ho mai riparato niente. Posso farcela?',
-        answer: 'Assolutamente sì. Il 70% dei nostri studenti parte da zero. Le lezioni sono progettate per principianti assoluti, con video passo-passo e la possibilità di chiedere aiuto in qualsiasi momento.',
+        question: 'Devo avere gia esperienza tecnica per iscrivermi?',
+        answer: 'No. Partiamo dalle basi e ti accompagniamo passo passo. Quello che serve e la voglia di imparare un mestiere vero e di lavorare con le mani. Il resto te lo insegniamo noi, 1-to-1 col Capotecnico.',
       },
       {
-        question: 'Quanto tempo ci vuole per completare il corso?',
-        answer: 'Dipende dal livello: LV1 richiede circa 4-6 settimane, LV2 circa 8-10 settimane, LV3 circa 12-14 settimane. Puoi studiare ai tuoi ritmi, le lezioni sono sempre disponibili.',
+        question: 'Perche non vendete il programma dettagliato del corso?',
+        answer: 'Perche non esiste un programma uguale per tutti. Il Capotecnico costruisce il percorso con te, sulla base del tuo livello di partenza e di dove vuoi arrivare. Insegniamo solo quello che ti serve per lavorare e guadagnare — non un elenco di argomenti che paghi e dimentichi. Ci sono corsi che ti spiegano per ore come si usa un multimetro che nella realta aprirai una volta ogni cento riparazioni. Noi no.',
       },
       {
-        question: 'Il kit è davvero incluso nel prezzo?',
-        answer: 'Sì, 100%. Ogni livello include un kit professionale spedito a casa tua prima dell\'inizio del corso. Non devi comprare nient\'altro per iniziare.',
+        question: 'Quanto tempo ci metto a finire il corso?',
+        answer: 'Dipende da te. Le ore sono garantite (30 per LV1, 50 per LV2, 80 per LV3), ma il calendario lo concordi 1-to-1 col Capotecnico in base ai tuoi impegni. C\'e chi finisce in 6 settimane, chi in 4 mesi. Decidi tu.',
+      },
+      {
+        question: 'Il corso e online o in presenza?',
+        answer: 'Le lezioni sono live online 1-to-1 col Capotecnico, con calendario flessibile costruito sui tuoi tempi. NON sono videocorsi preregistrati. Il kit hardware te lo spediamo a casa. L\'esame finale e la consegna della licenza fisica avvengono nei nostri laboratori in Campania, oppure online con sessione registrata se non puoi spostarti.',
+      },
+      {
+        question: 'Cosa vuol dire "kit in comodato d\'uso" o "in proprieta"?',
+        answer: 'Per LV1 il kit professionale di lavoro te lo spediamo a casa in comodato d\'uso per tutta la durata del corso, e a fine percorso lo restituisci o lo acquisti a prezzo agevolato. Per LV2 e LV3 il kit e incluso nel prezzo e diventa di tua proprieta — te lo tieni e lo usi per lavorare anche dopo il diploma.',
       },
       {
         question: 'Posso pagare a rate?',
-        answer: 'Certo. Offriamo pagamento in 3 rate senza interessi tramite Klarna. Selezioni l\'opzione al checkout.',
+        answer: 'Si, fino a 3 rate senza interessi con Klarna o Scalapay, direttamente in fase di iscrizione su Stripe. Per importi piu alti possiamo valutare piani di pagamento personalizzati: parlane col Capotecnico in fase di iscrizione.',
       },
       {
-        question: 'E se non mi piace il corso?',
-        answer: 'Hai 14 giorni di garanzia soddisfatti o rimborsati. Se entro 14 giorni dall\'iscrizione decidi che non fa per te, ti rimborsiamo tutto. Nessuna domanda.',
+        question: 'E se mi accorgo che non fa per me?',
+        answer: 'Hai 14 giorni di garanzia soddisfatti o rimborsati. Inoltre, la prima lezione live col Capotecnico e di prova: se non ti convince, rimborso pieno entro 48 ore. Vogliamo solo studenti motivati, non clienti pentiti.',
       },
       {
-        question: 'Il certificato è riconosciuto?',
-        answer: 'Il certificato Istituto Subito è riconosciuto dai principali centri assistenza italiani. Inoltre, è verificabile online, quindi i datori di lavoro possono confermare le tue competenze.',
+        question: 'Posso davvero trovare lavoro dopo?',
+        answer: 'L\'80% dei nostri 46 diplomati ad oggi lavora nel settore: con noi nei nostri laboratori, in altri negozi di riparazione, o con la propria attivita autonoma. Non garantiamo posti di lavoro a tutti — non sarebbe onesto — ma proprio per questo selezioniamo pochi corsisti per trimestre, cosi possiamo accompagnarli realmente nei primi mesi di attivita.',
       },
       {
-        question: 'Quanto posso guadagnare dopo il corso?',
-        answer: 'Varia molto. I nostri studenti LV1 guadagnano in media €500-800/mese come secondo lavoro. Gli studenti LV2 e LV3 che lavorano full-time guadagnano €1.500-3.000/mese. Alcuni con il proprio lab superano i €5.000/mese.',
+        question: 'Cosa rende la vostra licenza diversa da altri certificati?',
+        answer: 'E l\'unica del settore in Italia con un sistema di verifica pubblica online. Ogni licenza ha un numero univoco e un QR code che chiunque puo scansionare per vedere in tempo reale che il tecnico e certificato, il livello, la validita. Un cliente o un datore di lavoro verifica in 2 secondi. Per provare, scansiona il QR di una licenza reale: lo trovi qui in pagina.',
       },
       {
-        question: 'Come funziona l\'assistenza WhatsApp?',
-        answer: 'Hai accesso diretto al Capotecnico via WhatsApp. Puoi mandare foto, video, fare domande. Rispondiamo entro poche ore durante l\'orario lavorativo. È come avere un mentore sempre disponibile.',
+        question: 'Chi e "Subito Riparato"?',
+        answer: 'Subito Riparato e la nostra azienda madre: due laboratori di riparazione attivi in Campania (Nocera Inferiore e Cava de\' Tirreni) dal 2009. Oltre 130.000 dispositivi riparati, 900 al mese. Istituto Subito e la scuola che nasce da quell\'esperienza concreta — non dai libri, dal lavoro vero di tutti i giorni.',
       },
     ],
   },
-  
+
   finalCta: {
-    headline: 'Pronto a Cambiare la Tua Carriera?',
-    description: 'Inizia oggi il tuo percorso per diventare tecnico riparatore certificato. I posti sono limitati.',
+    headline: 'Pronto a imparare un mestiere vero?',
+    description: 'Posti limitati per il prossimo trimestre. Chi parte ora, lavora nei prossimi mesi.',
     primaryCta: 'Iscriviti Ora',
     secondaryCta: 'Parla con un Capotecnico',
+    reassurance: 'Garanzia 14 giorni - Prima lezione di prova gratuita - Pagamento sicuro Stripe - Klarna 3 rate',
   },
-  
+
   footer: {
     logo: 'Istituto Subito',
-    tagline: 'Formazione pratica per tecnici riparatori smartphone.',
+    tagline: 'La scuola dei tecnici riparatori. Powered by Subito Riparato, dal 2009.',
+    addresses: [
+      {
+        label: 'Laboratorio Nocera Inferiore',
+        address: '[Indirizzo completo Nocera Inferiore]',
+      },
+      {
+        label: 'Laboratorio Cava de\' Tirreni',
+        address: '[Indirizzo completo Cava de\' Tirreni]',
+      },
+    ],
+    contacts: {
+      phone: '[Numero di telefono]',
+      email: 'info@istitutosubito.com',
+      whatsapp: '[Numero WhatsApp]',
+    },
     links: {
       corso: [
-        { label: 'Livello 1', href: '#prezzi-lv1' },
-        { label: 'Livello 2', href: '#prezzi-lv2' },
-        { label: 'Livello 3', href: '#prezzi-lv3' },
+        { label: 'LV1 - Tecnico Riparatore', href: '#prezzi' },
+        { label: 'LV2 - Tecnico Microsaldatore', href: '#prezzi' },
+        { label: 'LV3 - Tecnico Master', href: '#prezzi' },
       ],
       supporto: [
         { label: 'FAQ', href: '#faq' },
-        { label: 'Contattaci', href: '#contatti' },
-        { label: 'WhatsApp', href: '#' },
+        { label: 'Verifica una licenza', href: 'https://www.subitoriparato.com/12345678-00/' },
+        { label: 'Parla con un Capotecnico', href: '#lead' },
       ],
       legale: [
         { label: 'Privacy Policy', href: '/privacy' },
+        { label: 'Cookie Policy', href: '/cookie' },
         { label: 'Termini e Condizioni', href: '/termini' },
-        { label: 'Rimborsi', href: '/rimborsi' },
+        { label: 'Diritto di recesso', href: '/recesso' },
       ],
     },
-    copyright: '© 2024 Istituto Subito. Tutti i diritti riservati.',
-    vatInfo: 'P.IVA: IT12345678901',
+    copyright: '© 2026 Istituto Subito - Subito Riparato S.r.l. - Tutti i diritti riservati',
+    vatInfo: 'P.IVA: [INSERIRE P.IVA]',
   },
-  
+
   grazie: {
-    headline: 'Grazie per la Tua Iscrizione!',
+    headline: 'Benvenuto in Istituto Subito.',
     subheadline: 'Il tuo percorso per diventare tecnico riparatore inizia ora.',
     steps: [
       {
         number: '1',
-        title: 'Email di Benvenuto',
-        description: 'Controlla la tua casella email (anche spam). Troverai le credenziali per accedere alla piattaforma.',
+        title: 'Email di benvenuto in arrivo',
+        description: 'Controlla la tua casella email (anche la cartella spam). Trovi tutto: ricevuta di pagamento, dettagli del percorso, prossimi passi.',
       },
       {
         number: '2',
-        title: 'Il Capotecnico Ti Contatta',
-        description: 'Entro 24 ore riceverai un messaggio WhatsApp dal Capotecnico per darti il benvenuto e rispondere alle tue domande.',
+        title: 'Il Capotecnico ti contatta entro 24 ore',
+        description: 'Riceverai un messaggio WhatsApp dal Capotecnico per concordare insieme il calendario delle prime lezioni 1-to-1 e rispondere a ogni tua domanda.',
       },
       {
         number: '3',
-        title: 'Spedizione Kit',
-        description: 'Il tuo kit professionale verrà spedito entro 48 ore. Tracciamento via email.',
+        title: 'Spedizione kit hardware',
+        description: 'Il kit professionale ti arriva a casa entro pochi giorni, con tracking via email. Da quel momento sei pronto a iniziare a lavorare sui dispositivi veri.',
       },
     ],
-    whatsappCta: 'Scrivi al Capotecnico',
-    backHome: 'Torna alla Home',
+    whatsappCta: 'Scrivi subito al Capotecnico',
+    backHome: 'Torna alla home',
   },
-  
+
   leadModal: {
-    headline: 'Aspetta! Non Andare Via.',
-    subheadline: 'Parla gratis con un Capotecnico e scopri se questo corso fa per te.',
+    headline: 'Aspetta. Parliamone prima.',
+    subheadline: 'Lascia il tuo numero e un Capotecnico ti richiama entro 24 ore. Senza impegno, senza spam, senza vendite forzate. Solo per capire se questo percorso fa per te.',
     fields: {
-      name: 'Il Tuo Nome',
+      name: 'Il tuo nome',
       phone: 'Numero WhatsApp',
-      interest: 'Livello di Interesse',
-      motivation: 'Cosa ti interessa di più?',
+      city: 'Citta',
+      interest: 'Quale livello ti interessa?',
+      motivation: 'Cosa ti interessa di piu?',
     },
-    motivationOptions: [
-      'Secondo lavoro/guadagno extra',
-      'Cambio carriera completo',
-      'Aprire un\'attività',
-      'Curiosità/hobby',
+    interestOptions: [
+      { value: 'lv1', label: 'LV1 — Tecnico Riparatore (€1.490)' },
+      { value: 'lv2', label: 'LV2 — Tecnico Microsaldatore (€2.490)' },
+      { value: 'lv3', label: 'LV3 — Tecnico Master (€3.990)' },
+      { value: 'unsure', label: 'Non lo so ancora, voglio capire' },
     ],
-    cta: 'Voglio Essere Ricontattato',
-    privacy: 'Ti contatteremo solo via WhatsApp. Niente spam.',
-    successTitle: 'Perfetto!',
-    successMessage: 'Un Capotecnico ti contatterà entro 24 ore su WhatsApp.',
-    whatsappCta: 'Oppure scrivici subito',
+    motivationOptions: [
+      'Cambio lavoro completo',
+      'Secondo reddito / lavoro extra',
+      'Aprire una mia attivita',
+      'Hobby con possibile sviluppo professionale',
+    ],
+    cta: 'Richiamatemi',
+    privacy: 'Ti contattiamo solo via WhatsApp o telefono. Niente spam, mai. I tuoi dati restano nostri.',
+    successTitle: 'Perfetto, ci sentiamo presto.',
+    successMessage: 'Un Capotecnico ti contatta entro 24 ore su WhatsApp. Se vuoi anticipare, scrivici tu intanto.',
+    whatsappCta: 'Scrivi su WhatsApp adesso',
   },
-  
+
   stickyBar: {
-    price: '€1.490',
+    price: 'Da €1.490',
     cta: 'Iscriviti',
     whatsapp: 'WhatsApp',
   },
-  
+
   abandonmentBanner: {
-    message: 'Continua dove avevi lasciato',
-    cta: 'Completa Iscrizione',
+    message: 'Hai lasciato un\'iscrizione a meta. Riprendi da dove avevi interrotto.',
+    cta: 'Completa iscrizione',
+  },
+
+  socialProof: {
+    enabled: true,
+    intervalSeconds: 30,
+    placeholderNote: '[I nomi sono placeholder — sostituire con iscrizioni reali appena disponibili. Tenere realistici geograficamente: target ads attualmente Campania + nazionale.]',
+    items: [
+      { name: 'Marco', city: 'Salerno', tier: 'LV2', timeAgo: '2 ore fa' },
+      { name: 'Giulia', city: 'Napoli', tier: 'LV1', timeAgo: '4 ore fa' },
+      { name: 'Antonio', city: 'Caserta', tier: 'LV1', timeAgo: '6 ore fa' },
+      { name: 'Francesca', city: 'Roma', tier: 'LV2', timeAgo: '8 ore fa' },
+      { name: 'Davide', city: 'Milano', tier: 'LV3', timeAgo: '12 ore fa' },
+      { name: 'Simone', city: 'Bari', tier: 'LV1', timeAgo: '14 ore fa' },
+      { name: 'Alessia', city: 'Torino', tier: 'LV2', timeAgo: '18 ore fa' },
+      { name: 'Luca', city: 'Palermo', tier: 'LV1', timeAgo: '22 ore fa' },
+    ],
   },
 }
 

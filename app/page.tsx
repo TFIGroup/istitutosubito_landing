@@ -19,6 +19,7 @@ import { FinalCTA } from '@/components/sections/final-cta'
 import { Footer } from '@/components/sections/footer'
 import { LabGallery } from '@/components/sections/lab-gallery'
 import { StudentsInAction } from '@/components/sections/students-in-action'
+import { License } from '@/components/sections/license'
 
 // Conversion Components
 import { StickyMobileBar } from '@/components/conversion/sticky-mobile-bar'
@@ -112,6 +113,8 @@ function LandingPageContent() {
         />
         
         <ScarcityCounter />
+        
+        <License />
         
         <WhyUs />
         

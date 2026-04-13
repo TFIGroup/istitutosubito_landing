@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { MessageCircle } from 'lucide-react'
+import { MessageCircle, MapPin, Phone, Mail } from 'lucide-react'
 import { content } from '@/lib/content'
 
 export function Footer() {
@@ -21,6 +21,17 @@ export function Footer() {
             <p className="text-white/60 text-sm mb-4">
               {footer.tagline}
             </p>
+            {/* Contacts */}
+            {footer.contacts && (
+              <div className="space-y-2 text-sm text-white/60 mb-4">
+                {footer.contacts.email && (
+                  <a href={`mailto:${footer.contacts.email}`} className="flex items-center gap-2 hover:text-white transition-colors">
+                    <Mail className="w-4 h-4" />
+                    {footer.contacts.email}
+                  </a>
+                )}
+              </div>
+            )}
             <a
               href={whatsappLink}
               target="_blank"
@@ -30,6 +41,18 @@ export function Footer() {
               <MessageCircle className="w-5 h-5" />
               <span>WhatsApp</span>
             </a>
+            
+            {/* Addresses */}
+            {footer.addresses && (
+              <div className="mt-4 space-y-3">
+                {footer.addresses.map((addr, index) => (
+                  <div key={index} className="text-sm">
+                    <p className="text-white/80 font-medium">{addr.label}</p>
+                    <p className="text-white/50">{addr.address}</p>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Corso */}

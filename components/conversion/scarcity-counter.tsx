@@ -77,10 +77,10 @@ export function ScarcityCounter() {
                 </span>
               </div>
               <div className="flex justify-center md:justify-start gap-3">
-                <CountdownUnit value={displayTime.days} label="Giorni" />
-                <CountdownUnit value={displayTime.hours} label="Ore" />
-                <CountdownUnit value={displayTime.minutes} label="Min" />
-                <CountdownUnit value={displayTime.seconds} label="Sec" />
+                <CountdownUnit value={displayTime.days} label="Giorni" mounted={mounted} />
+                <CountdownUnit value={displayTime.hours} label="Ore" mounted={mounted} />
+                <CountdownUnit value={displayTime.minutes} label="Min" mounted={mounted} />
+                <CountdownUnit value={displayTime.seconds} label="Sec" mounted={mounted} />
               </div>
             </div>
           </div>
@@ -104,11 +104,11 @@ export function ScarcityCounter() {
   )
 }
 
-function CountdownUnit({ value, label }: { value: number; label: string }) {
+function CountdownUnit({ value, label, mounted }: { value: number; label: string; mounted: boolean }) {
   return (
     <div className="flex flex-col items-center">
       <div className="w-14 h-14 md:w-16 md:h-16 bg-[var(--navy)] text-white rounded-lg flex items-center justify-center text-xl md:text-2xl font-bold">
-        {String(value).padStart(2, '0')}
+        {mounted ? String(value).padStart(2, '0') : '--'}
       </div>
       <span className="text-xs text-muted-foreground mt-1">{label}</span>
     </div>

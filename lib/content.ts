@@ -36,15 +36,14 @@ export const content = {
     installmentTeaser: 'o 3 rate da €497 con Klarna',
     primaryCta: 'Iscriviti Ora',
     secondaryCta: 'Parla con un Capotecnico',
-    trustBar: '⭐ 4,9/5 su Google (2.512 recensioni) · Dal 2009 · 2 laboratori in Campania · 130.000+ dispositivi riparati',
-    googleMapsUrl: 'https://maps.app.goo.gl/subitoriparato',
+    trustBar: '4,9/5 su Google - Dal 2009 - 2 laboratori in Campania - 130.000+ dispositivi riparati',
     trustBadges: [
       { icon: 'shield', label: 'Pagamento Sicuro Stripe' },
-      { icon: 'creditCard', label: 'Klarna · 3 rate senza interessi' },
+      { icon: 'creditCard', label: 'Klarna - 3 rate senza interessi' },
       { icon: 'undo', label: 'Garanzia 14 giorni' },
-      { icon: 'flag', label: 'Made in Italy · dal 2009' },
+      { icon: 'flag', label: 'Made in Italy - dal 2009' },
     ],
-    licenseCaption: '👆 Clicca la licenza per verificarne una reale',
+    licenseCaption: 'Clicca la licenza per verificarne una reale',
   },
 
   manifesto: {
@@ -74,7 +73,7 @@ export const content = {
   },
 
   pricing: {
-    badge: 'Tre percorsi · Tre licenze · Tre mercati',
+    badge: 'Tre percorsi - Tre licenze - Tre mercati',
     headline: 'Scegli fino a dove vuoi arrivare.',
     description: 'Tre livelli professionali con licenza fisica verificabile. Quanto guadagni dipende da quanto sai fare. Il Capotecnico ti accompagna 1-to-1 in ognuno dei percorsi.',
     tiers: [
@@ -86,7 +85,7 @@ export const content = {
         priceFull: 2200,
         priceLaunch: 1490,
         installmentLabel: 'o 3 rate da €497 con Klarna',
-        earningsRange: '€40 – €120 per riparazione',
+        earningsRange: '€40 - €120 per riparazione',
         marketCoverage: 'La maggior parte delle riparazioni quotidiane',
         features: [
           '30 ore 1-to-1 col Capotecnico',
@@ -98,7 +97,7 @@ export const content = {
         ],
         ctaPrimary: { label: 'Iscriviti Ora', type: 'checkout' as const },
         ctaSecondary: { label: 'Parla con un Capotecnico', type: 'lead' as const },
-        guarantee: 'Garanzia 14 giorni · Prima lezione di prova gratuita',
+        guarantee: 'Garanzia 14 giorni - Prima lezione di prova gratuita',
         spotsRemaining: 5,
         highlighted: false,
       },
@@ -110,7 +109,7 @@ export const content = {
         priceFull: 3500,
         priceLaunch: 2490,
         installmentLabel: 'o 3 rate da €830 con Klarna',
-        earningsRange: '€80 – €200 per riparazione',
+        earningsRange: '€80 - €200 per riparazione',
         marketCoverage: 'Quasi tutto il mercato, incluso quello che gli altri rifiutano',
         features: [
           '50 ore 1-to-1 col Capotecnico',
@@ -122,7 +121,7 @@ export const content = {
         ],
         ctaPrimary: { label: 'Iscriviti Ora', type: 'checkout' as const },
         ctaSecondary: { label: 'Parla con un Capotecnico', type: 'lead' as const },
-        guarantee: 'Garanzia 14 giorni · Prima lezione di prova gratuita',
+        guarantee: 'Garanzia 14 giorni - Prima lezione di prova gratuita',
         spotsRemaining: 2,
         highlighted: true,
         badge: 'PIÙ SCELTO',
@@ -135,7 +134,7 @@ export const content = {
         priceFull: 5500,
         priceLaunch: 3990,
         installmentLabel: 'o 3 rate da €1.330 con Klarna',
-        earningsRange: '€150 – €400+ per riparazione',
+        earningsRange: '€150 - €400+ per riparazione',
         marketCoverage: '100% del mercato, incluse riparazioni che oggi vengono mandate a noi',
         features: [
           '80 ore 1-to-1 col Capotecnico',
@@ -143,11 +142,11 @@ export const content = {
           'Kit completo + stazione microsaldatura inclusa, in proprietà',
           'Licenza professionale LV3 verificabile via QR',
           'Ti mandiamo i primi clienti per 6 mesi',
-          'Priorità assoluta sui lavori complessi che giriamo dal nostro laboratorio',
+          'Priorita assoluta sui lavori complessi che giriamo dal nostro laboratorio',
         ],
         ctaPrimary: { label: 'Iscriviti Ora', type: 'checkout' as const },
         ctaSecondary: { label: 'Parla con un Capotecnico', type: 'lead' as const },
-        guarantee: 'Garanzia 14 giorni · Prima lezione di prova gratuita',
+        guarantee: 'Garanzia 14 giorni - Prima lezione di prova gratuita',
         spotsRemaining: 1,
         highlighted: false,
       },
@@ -164,7 +163,7 @@ export const content = {
     counterLabel: 'Posti disponibili per il prossimo trimestre',
     counterValue: 8,
     counterTotal: 11,
-    breakdown: '5 posti LV1 · 2 posti LV2 · 1 posto LV3',
+    breakdown: '5 posti LV1 - 2 posti LV2 - 1 posto LV3',
   },
 
   license: {
@@ -178,10 +177,10 @@ export const content = {
       'Licenza fisica formato tessera con foto, livello e voto di competenza',
       'QR code di verifica pubblica, in tempo reale',
       'Numero seriale univoco e tracciabile',
-      'Validità triennale, rinnovabile',
+      'Validita triennale, rinnovabile',
     ],
     demoLink: {
-      label: '👉 Prova: scansiona o clicca per vedere una licenza vera',
+      label: 'Prova: scansiona o clicca per vedere una licenza vera',
       url: 'https://www.subitoriparato.com/12345678-00/',
     },
   },
@@ -237,20 +236,9 @@ export const content = {
   },
 
   testimonials: {
-    badge: 'I numeri parlano',
-    headline: 'Non abbiamo testimonianze costruite. Abbiamo numeri reali.',
-    description: 'Preferiamo mostrarti fatti verificabili piuttosto che citazioni anonime.',
-    stats: [
-      { value: '46', label: 'Diplomati ad oggi' },
-      { value: '80%', label: 'Lavora nel settore' },
-      { value: '2.512', label: 'Recensioni Google' },
-      { value: '4,9/5', label: 'Valutazione media' },
-    ],
-    cta: {
-      text: 'Leggi le recensioni reali su Google',
-      url: 'https://maps.app.goo.gl/subitoriparato',
-    },
-    note: 'Le recensioni sono di Subito Riparato, l\'azienda madre attiva dal 2009. Istituto Subito è il suo braccio formativo.',
+    badge: 'Le voci dei nostri diplomati',
+    headline: '46 diplomati. L\'80% lavora attivamente nel settore.',
+    description: 'Stiamo raccogliendo le loro storie per condividerle qui. Vuoi sentirle direttamente dalla loro voce prima di decidere?',
   },
 
   faq: {
@@ -262,12 +250,12 @@ export const content = {
         answer: 'No. Partiamo dalle basi e ti accompagniamo passo passo. Quello che serve è la voglia di imparare un mestiere vero e di lavorare con le mani. Il resto te lo insegniamo noi, 1-to-1 col Capotecnico.',
       },
       {
-        question: 'Perché non vedete il programma dettagliato del corso?',
+        question: 'Perché non vendete il programma dettagliato del corso?',
         answer: 'Perché non esiste un programma uguale per tutti. Il Capotecnico costruisce il percorso con te, sulla base del tuo livello di partenza e di dove vuoi arrivare. Insegniamo solo quello che ti serve per lavorare e guadagnare — non un elenco di argomenti che paghi e dimentichi. Ci sono corsi che ti spiegano per ore come si usa un multimetro che nella realtà aprirai una volta ogni cento riparazioni. Noi no.',
       },
       {
         question: 'Quanto tempo ci metto a finire il corso?',
-        answer: 'Dipende da te. Le ore sono garantite (30 per LV1, 50 per LV2, 80 per LV3), ma il calendario lo concordi 1-to-1 col Capotecnico in base ai tuoi impegni. C\'è chi finisce in 6 settimane, chi in 4 mesi. Decidi tu.',
+        answer: 'Dipende da te. Le ore sono garantite (30 per LV1, 50 per LV2, 80 per LV3), ma il calendario lo concordi 1-to-1 col Capotecnico in base ai tuoi impegni. C\'e chi finisce in 6 settimane, chi in 4 mesi. Decidi tu.',
       },
       {
         question: 'Il corso è online o in presenza?',
@@ -294,7 +282,7 @@ export const content = {
         answer: 'È l\'unica del settore in Italia con un sistema di verifica pubblica online. Ogni licenza ha un numero univoco e un QR code che chiunque può scansionare per vedere in tempo reale che il tecnico è certificato, il livello, la validità. Un cliente o un datore di lavoro verifica in 2 secondi. Per provare, scansiona il QR di una licenza reale: lo trovi qui in pagina.',
       },
       {
-        question: 'Chi è "Subito Riparato"?',
+        question: 'Chi e "Subito Riparato"?',
         answer: 'Subito Riparato è la nostra azienda madre: due laboratori di riparazione attivi in Campania (Nocera Inferiore e Cava de\' Tirreni) dal 2009. Oltre 130.000 dispositivi riparati, 900 al mese. Istituto Subito è la scuola che nasce da quell\'esperienza concreta — non dai libri, dal lavoro vero di tutti i giorni.',
       },
     ],
@@ -305,7 +293,7 @@ export const content = {
     description: 'Posti limitati per il prossimo trimestre. Chi parte ora, lavora nei prossimi mesi.',
     primaryCta: 'Iscriviti Ora',
     secondaryCta: 'Parla con un Capotecnico',
-    reassurance: 'Garanzia 14 giorni · Prima lezione di prova gratuita · Pagamento sicuro Stripe · Klarna 3 rate',
+    reassurance: 'Garanzia 14 giorni - Prima lezione di prova gratuita - Pagamento sicuro Stripe - Klarna 3 rate',
   },
 
   footer: {
@@ -313,12 +301,12 @@ export const content = {
     tagline: 'La scuola dei tecnici riparatori. Powered by Subito Riparato, dal 2009.',
     addresses: [
       {
-        label: 'Laboratorio Nocera Inferiore',
-        address: '[Indirizzo completo Nocera Inferiore]',
+        label: 'Sede Nocera Inferiore',
+        address: 'Via S. D\'Alessandro, 61 - 84014 Nocera Inferiore (SA)',
       },
       {
-        label: 'Laboratorio Cava de\' Tirreni',
-        address: '[Indirizzo completo Cava de\' Tirreni]',
+        label: 'Sede Cava de\' Tirreni',
+        address: 'Via A. Sorrentino, 35 - 84013 Cava de\' Tirreni (SA)',
       },
     ],
     contacts: {
@@ -328,9 +316,9 @@ export const content = {
     },
     links: {
       corso: [
-        { label: 'LV1 · Tecnico Riparatore', href: '#prezzi' },
-        { label: 'LV2 · Tecnico Microsaldatore', href: '#prezzi' },
-        { label: 'LV3 · Tecnico Master', href: '#prezzi' },
+        { label: 'LV1 - Tecnico Riparatore', href: '#prezzi' },
+        { label: 'LV2 - Tecnico Microsaldatore', href: '#prezzi' },
+        { label: 'LV3 - Tecnico Master', href: '#prezzi' },
       ],
       supporto: [
         { label: 'FAQ', href: '#faq' },
@@ -344,7 +332,7 @@ export const content = {
         { label: 'Diritto di recesso', href: '/recesso' },
       ],
     },
-    copyright: '© 2026 Istituto Subito · Subito Riparato S.r.l. · Tutti i diritti riservati',
+    copyright: '© 2026 Istituto Subito - Subito Riparato S.r.l. - Tutti i diritti riservati',
     vatInfo: 'P.IVA: [INSERIRE P.IVA]',
   },
 
@@ -378,9 +366,9 @@ export const content = {
     fields: {
       name: 'Il tuo nome',
       phone: 'Numero WhatsApp',
-      city: 'Citta',
+      city: 'Città',
       interest: 'Quale livello ti interessa?',
-      motivation: 'Cosa ti interessa di piu?',
+      motivation: 'Cosa ti interessa di più?',
     },
     interestOptions: [
       { value: 'lv1', label: 'LV1 — Tecnico Riparatore (€1.490)' },
@@ -391,7 +379,7 @@ export const content = {
     motivationOptions: [
       'Cambio lavoro completo',
       'Secondo reddito / lavoro extra',
-      'Aprire una mia attivita',
+      'Aprire una mia attività',
       'Hobby con possibile sviluppo professionale',
     ],
     cta: 'Richiamatemi',

@@ -58,8 +58,8 @@ export function Pricing({ onSelectTier, onOpenLeadModal, loadingTier }: PricingP
               key={tier.id}
               tier={tier}
               index={index}
-              onCheckout={() => onSelectTier(tier.id)}
-              onLead={onOpenLeadModal}
+              onSelectCheckout={() => onSelectTier(tier.id)}
+              onSelectLead={onOpenLeadModal}
               isLoading={loadingTier === tier.id}
             />
           ))}
@@ -72,15 +72,12 @@ export function Pricing({ onSelectTier, onOpenLeadModal, loadingTier }: PricingP
 interface PricingCardProps {
   tier: Tier
   index: number
-  onCheckout: () => void
-  onLead: () => void
+  onSelectCheckout: () => void
+  onSelectLead: () => void
   isLoading?: boolean
 }
 
-function PricingCard({ tier, index, onCheckout, onLead, isLoading }: PricingCardProps) {
-  const handlePrimary = tier.ctaPrimary.type === 'checkout' ? onCheckout : onLead
-  const handleSecondary = tier.ctaSecondary?.type === 'checkout' ? onCheckout : onLead
-
+function PricingCard({ tier, index, onSelectCheckout, onSelectLead, isLoading }: PricingCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -94,33 +91,37 @@ function PricingCard({ tier, index, onCheckout, onLead, isLoading }: PricingCard
           : 'border-border bg-card'
       )}
     >
-      {/* Badge */}
-      {tier.badge && (
+      {/* Popular Badge */}
+      {tier.popular && (
         <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-[var(--premium-gold)] text-[var(--navy)] text-sm font-semibold rounded-full">
-          {tier.badge}
+          Piu Popolare
         </div>
       )}
 
       {/* Header */}
       <div className="text-center mb-6">
-        <p className="text-sm font-medium text-[var(--electric-blue)] mb-1">{tier.code}</p>
-        <h3 className="text-2xl font-bold text-foreground mb-1">
+        <h3 className="text-2xl font-bold text-foreground mb-2">
           {tier.name}
         </h3>
-        <p className="text-muted-foreground text-sm">{tier.tagline}</p>
+        <p className="text-sm text-muted-foreground leading-relaxed">{tier.tagline}</p>
       </div>
 
       {/* Price */}
       <div className="text-center mb-6">
         <div className="flex items-baseline justify-center gap-1">
           <span className="text-4xl md:text-5xl font-bold text-foreground">
-            &euro;{tier.priceFormatted}
+            €{tier.priceFormatted}
           </span>
         </div>
         <p className="text-sm text-muted-foreground mt-2">
-          o 3 rate da &euro;{tier.installmentFormatted}
+          o 3 rate da €{tier.installmentFormatted}
         </p>
       </div>
+
+      {/* Description */}
+      <p className="text-sm text-muted-foreground text-center mb-6">
+        {tier.description}
+      </p>
 
       {/* Features */}
       <div className="flex-1 space-y-3 mb-8">
@@ -132,37 +133,36 @@ function PricingCard({ tier, index, onCheckout, onLead, isLoading }: PricingCard
         ))}
       </div>
 
-      {/* CTA */}
-      <Button
-        size="lg"
-        onClick={handlePrimary}
-        disabled={isLoading}
-        aria-label={`${tier.ctaPrimary.label} - ${tier.name}`}
-        className={cn(
-          'w-full text-lg py-6 h-auto',
-          tier.popular
-            ? 'bg-[var(--navy)] hover:bg-[var(--navy-light)] text-white'
-            : 'bg-[var(--electric-blue)] hover:bg-[var(--electric-blue-hover)] text-white'
-        )}
-      >
-        {isLoading ? 'Caricamento...' : tier.ctaPrimary.label}
-      </Button>
-
-      {/* Secondary — link testuale */}
-      {tier.ctaSecondary && (
-        <button
-          onClick={handleSecondary}
-          aria-label={`${tier.ctaSecondary.label} - ${tier.name}`}
-          className="w-full mt-3 text-sm text-muted-foreground hover:text-foreground transition-colors text-center cursor-pointer"
+      {/* CTAs */}
+      <div className="space-y-3">
+        {/* Primary CTA */}
+        <Button
+          size="lg"
+          onClick={onSelectCheckout}
+          disabled={isLoading}
+          className={cn(
+            'w-full text-lg py-6 h-auto',
+            tier.popular
+              ? 'bg-[var(--navy)] hover:bg-[var(--navy-light)] text-white'
+              : 'bg-[var(--electric-blue)] hover:bg-[var(--electric-blue-hover)] text-white'
+          )}
         >
-          oppure {tier.ctaSecondary.label.toLowerCase()} &rarr;
-        </button>
-      )}
-
-      {/* Guarantee */}
-      <p className="text-xs text-muted-foreground text-center mt-4">
-        {tier.guarantee}
-      </p>
+          {isLoading ? 'Caricamento...' : tier.ctaPrimary.label}
+        </Button>
+        
+        {/* Secondary CTA (only for LV2 and LV3) */}
+        {tier.ctaSecondary && (
+          <Button
+            size="lg"
+            variant="outline"
+            onClick={onSelectLead}
+            className="w-full text-base py-5 h-auto border-[var(--whatsapp-green)] text-[var(--whatsapp-green)] hover:bg-[var(--whatsapp-green)] hover:text-white"
+          >
+            <MessageCircle className="w-5 h-5 mr-2" />
+            {tier.ctaSecondary.label}
+          </Button>
+        )}
+      </div>
     </motion.div>
   )
 }

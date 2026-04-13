@@ -1,6 +1,7 @@
 'use client'
 
-import { Shield, CreditCard, Undo2, Flag, MessageCircle } from 'lucide-react'
+import Image from 'next/image'
+import { Shield, CreditCard, Undo2, Flag, MessageCircle, Star } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { content } from '@/lib/content'
 import { scarcity, isUrgent, getSpotsRemaining } from '@/lib/scarcity'
@@ -33,13 +34,19 @@ export function Hero({ onCheckout, onOpenLeadModal, isLoading }: HeroProps) {
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Ciao, vorrei informazioni sul corso')}`
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[var(--navy)] to-[var(--navy-light)] text-white">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
-          backgroundSize: '40px 40px'
-        }} />
+    <section className="relative overflow-hidden min-h-[90vh] flex items-center text-white">
+      {/* Background Image - close up riparazione senza testo */}
+      <div className="absolute inset-0">
+        <Image
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/412cd0b4-fb59-41e1-9442-1510241fd76d%202.JPG-LmwPxwIzhbz9wDb6bSFhW3wLNjwWD4.jpeg"
+          alt="Riparazione smartphone professionale"
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+        />
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--navy)]/95 via-[var(--navy)]/85 to-[var(--navy)]/70" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
@@ -96,22 +103,39 @@ export function Hero({ onCheckout, onOpenLeadModal, isLoading }: HeroProps) {
             <Button
               size="lg"
               onClick={onOpenLeadModal}
-              className="w-full sm:w-auto border border-white/30 bg-transparent text-white hover:bg-white/10 text-lg px-8 py-6 h-auto"
+              className="w-full sm:w-auto bg-[var(--whatsapp-green)] hover:bg-[var(--whatsapp-green-hover)] text-white text-lg px-8 py-6 h-auto"
             >
               <MessageCircle className="w-5 h-5 mr-2" />
               {hero.secondaryCta}
             </Button>
           </div>
 
-          {/* Trust Bar */}
-          <a
-            href={hero.googleMapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block text-sm text-white/70 hover:text-white/90 transition-colors mb-6 underline decoration-white/30 underline-offset-4"
-          >
-            {hero.trustBar}
-          </a>
+          {/* Google Reviews Badge - Social Proof */}
+          <div className="flex items-center justify-center gap-3 mb-8 p-4 bg-white/10 backdrop-blur rounded-xl border border-white/20">
+            <div className="flex items-center gap-2">
+              <svg viewBox="0 0 24 24" className="w-6 h-6">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+              </svg>
+              <span className="text-white font-bold text-lg">4.9</span>
+              <div className="flex">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+            </div>
+            <div className="h-6 w-px bg-white/30" />
+            <a 
+              href="https://share.google/jctGdFe0ugTXK4qvw"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/90 text-sm font-medium hover:text-white transition-colors"
+            >
+              2.512 recensioni Google →
+            </a>
+          </div>
 
           {/* Trust Badges */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -132,8 +156,8 @@ export function Hero({ onCheckout, onOpenLeadModal, isLoading }: HeroProps) {
       </div>
 
       {/* Bottom Wave */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 48" fill="none" className="w-full h-12">
+      <div className="absolute bottom-0 left-0 right-0 -mb-px">
+        <svg viewBox="0 0 1440 48" fill="none" className="block w-full h-12">
           <path
             d="M0 48h1440V0C1200 32 960 48 720 48S240 32 0 0v48z"
             fill="var(--background)"

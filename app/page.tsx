@@ -17,6 +17,11 @@ import { Testimonials } from '@/components/sections/testimonials'
 import { FAQ } from '@/components/sections/faq'
 import { FinalCTA } from '@/components/sections/final-cta'
 import { Footer } from '@/components/sections/footer'
+import { LabGallery } from '@/components/sections/lab-gallery'
+import { StudentsInAction } from '@/components/sections/students-in-action'
+import { License } from '@/components/sections/license'
+import { TrustProof } from '@/components/sections/trust-proof'
+import { Guarantee } from '@/components/sections/guarantee'
 
 // Conversion Components
 import { StickyMobileBar } from '@/components/conversion/sticky-mobile-bar'
@@ -68,9 +73,15 @@ function LandingPageContent() {
           onOpenLeadModal={handleOpenLeadModal}
         />
 
+        <TrustProof />
+
         <Manifesto />
 
+        <StudentsInAction />
+
         <FirstClient />
+
+        <LabGallery />
 
         <Pricing
           onSelectTier={handleCheckout}
@@ -80,11 +91,15 @@ function LandingPageContent() {
 
         <ScarcityCounter />
 
+        <License />
+
         <WhyUs />
 
         <Paths />
 
-        <Testimonials />
+        <Testimonials onOpenLeadModal={handleOpenLeadModal} />
+
+        <Guarantee />
 
         <FAQ />
 

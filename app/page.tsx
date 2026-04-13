@@ -20,6 +20,8 @@ import { Footer } from '@/components/sections/footer'
 import { LabGallery } from '@/components/sections/lab-gallery'
 import { StudentsInAction } from '@/components/sections/students-in-action'
 import { License } from '@/components/sections/license'
+import { TrustProof } from '@/components/sections/trust-proof'
+import { Guarantee } from '@/components/sections/guarantee'
 
 // Conversion Components
 import { StickyMobileBar } from '@/components/conversion/sticky-mobile-bar'
@@ -99,6 +101,8 @@ function LandingPageContent() {
           isLoading={isCheckoutLoading}
         />
         
+        <TrustProof />
+        
         <Manifesto />
         
         <StudentsInAction />
@@ -121,6 +125,8 @@ function LandingPageContent() {
         <Paths />
         
         <Testimonials />
+        
+        <Guarantee />
         
         <FAQ />
         

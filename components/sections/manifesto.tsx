@@ -29,40 +29,41 @@ export function Manifesto() {
 
           {/* Text Side */}
           <div className="order-1 lg:order-2">
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--electric-blue)]/10 text-[var(--electric-blue)] text-sm font-medium mb-6"
-          >
-            {manifesto.badge}
-          </motion.div>
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--electric-blue)]/10 text-[var(--electric-blue)] text-sm font-medium mb-6"
+            >
+              {manifesto.badge}
+            </motion.div>
 
-          {/* Headline */}
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl font-bold text-foreground mb-8 text-balance"
-          >
-            {manifesto.headline}
-          </motion.h2>
+            {/* Headline */}
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-3xl md:text-4xl font-bold text-foreground mb-8 text-balance"
+            >
+              {manifesto.headline}
+            </motion.h2>
 
-          {/* Paragraphs */}
-          <div className="space-y-4 text-lg text-muted-foreground">
-            {manifesto.paragraphs.map((paragraph, index) => (
-              <motion.p
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 + index * 0.1 }}
-              >
-                {paragraph}
-              </motion.p>
-            ))}
+            {/* Paragraphs */}
+            <div className="space-y-4 text-lg text-muted-foreground">
+              {manifesto.paragraphs.map((paragraph, index) => (
+                <motion.p
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 + index * 0.1 }}
+                >
+                  {paragraph}
+                </motion.p>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -86,7 +87,6 @@ export function Manifesto() {
             </div>
           ))}
         </motion.div>
-        </div>
       </div>
     </section>
   )

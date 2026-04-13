@@ -155,15 +155,6 @@ export function Hero({ onCheckout, onOpenLeadModal, isLoading }: HeroProps) {
         </div>
       </div>
 
-      {/* Bottom Wave */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 48" fill="none" className="w-full h-12">
-          <path
-            d="M0 48h1440V0C1200 32 960 48 720 48S240 32 0 0v48z"
-            fill="var(--background)"
-          />
-        </svg>
-      </div>
-    </section>
+      </section>
   )
 }

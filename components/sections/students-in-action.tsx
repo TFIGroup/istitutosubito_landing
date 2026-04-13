@@ -2,9 +2,12 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { CheckCircle2 } from 'lucide-react'
+import { CheckCircle2, Users } from 'lucide-react'
+import { content } from '@/lib/content'
 
 export function StudentsInAction() {
+  const { manifesto } = content
+  
   return (
     <section className="py-16 md:py-24 bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
@@ -19,14 +22,14 @@ export function StudentsInAction() {
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/F0FBD725-466D-4925-BA70-0E66B55F2871.PNG-zYivbqK3g0jbDhAZFExnmxd6Jovwuc.png"
-                alt="Studenti del corso con felpa Subito Riparato durante la formazione pratica"
+                alt="Studenti del corso durante la formazione pratica"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
             
-            {/* Floating Badge */}
+            {/* Floating Badge - uses stats from content */}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -36,11 +39,11 @@ export function StudentsInAction() {
             >
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 rounded-full bg-[var(--whatsapp-green)] flex items-center justify-center">
-                  <CheckCircle2 className="w-6 h-6 text-white" />
+                  <Users className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-foreground">94%</div>
-                  <div className="text-sm text-muted-foreground">Tasso di occupazione</div>
+                  <div className="text-2xl font-bold text-foreground">{manifesto.stats[2]?.value || '80%'}</div>
+                  <div className="text-sm text-muted-foreground">{manifesto.stats[2]?.label || 'Tasso occupazione'}</div>
                 </div>
               </div>
             </motion.div>
@@ -54,24 +57,26 @@ export function StudentsInAction() {
             className="lg:pl-8"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--premium-gold-light)] text-[var(--navy)] text-sm font-medium mb-6">
-              Formazione Pratica
+              Formazione 1-to-1
             </div>
 
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 text-balance">
-              Impara Facendo, Non Solo Guardando
+              Impari Solo Quello Che Si Rompe Davvero
             </h2>
 
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              {"Dal primo giorno metterai le mani su dispositivi reali. Niente teoria noiosa: ogni lezione e' pratica al 100%. Smonterai, diagnosticherai e riparerai smartphone proprio come in un centro assistenza professionale."}
+              Dal primo giorno lavori su dispositivi reali, fianco a fianco col Capotecnico. 
+              Niente classi affollate, niente teoria inutile. Solo pratica mirata sulle riparazioni 
+              che il mercato richiede ogni giorno.
             </p>
 
             <ul className="space-y-4">
               {[
-                'Pratica su dispositivi reali fin dal primo giorno',
-                'Rapporto 1:1 con il docente per massimo apprendimento',
-                'Kit professionale incluso nel corso',
-                'Accesso al laboratorio anche fuori orario',
-                'Supporto continuo anche dopo il corso',
+                'Formazione individuale 1-to-1 col Capotecnico',
+                '16 anni di esperienza su 130.000+ dispositivi',
+                'Kit professionale incluso in ogni corso',
+                'Supporto WhatsApp anche dopo il diploma',
+                '80% dei diplomati trova lavoro entro 6 mesi',
               ].map((item, index) => (
                 <motion.li
                   key={index}

@@ -19,8 +19,8 @@ export function Manifesto() {
             className="relative aspect-square rounded-2xl overflow-hidden shadow-xl order-2 lg:order-1"
           >
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/557b4e6e-decb-489d-b2f4-8c2f355d3e61%202.JPG-dMqtzVQKh7Ta3Er9xJDBEE8XBCky9A.jpeg"
-              alt="Banner corso di formazione tecnico riparatore"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/microscopio-SVTdrxIWIimvIYPulFj25062r1CPg3.jpg"
+              alt="Microscopio professionale per riparazioni di precisione"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"

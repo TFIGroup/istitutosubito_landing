@@ -24,8 +24,8 @@ export function FinalCTA({ onCheckout, onOpenLeadModal, isLoading }: FinalCTAPro
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_1542.PNG-GnLvqWcmeTW0kGhmIfrLzw3DytVZ5A.png"
-          alt="Corso riparazione smartphone con assunzione"
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/6e8e15a0-08fd-4880-ae7d-b7567ff80be4.JPG-HevLxkwyZNOtJ1nRQPEsR7DWHqnvqn.jpeg"
+          alt="Aula di formazione professionale con postazioni attrezzate"
           fill
           className="object-cover"
           sizes="100vw"

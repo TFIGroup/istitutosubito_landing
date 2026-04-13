@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { CheckCircle2, Clock, Euro, Briefcase } from 'lucide-react'
+import { CheckCircle2, Euro, Briefcase } from 'lucide-react'
 
 export function FirstClient() {
   return (
@@ -16,36 +16,34 @@ export function FirstClient() {
             viewport={{ once: true }}
           >
             <span className="inline-block px-4 py-1.5 rounded-full bg-[var(--premium-gold)] text-[var(--navy)] text-sm font-semibold mb-6">
-              La Promessa
+              La Realta
             </span>
             
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-              Il Tuo Primo Cliente<br />
-              <span className="text-[var(--premium-gold)]">Entro 2 Settimane</span>
+              Il tuo primo cliente<br />
+              <span className="text-[var(--premium-gold)]">ce l&apos;hai gia.</span><br />
+              <span className="text-white/80 text-2xl md:text-3xl">Non lo sai ancora.</span>
             </h2>
             
             <p className="text-lg text-white/80 mb-8 leading-relaxed">
-              Non ti insegniamo teoria. Ti insegniamo a riparare i guasti che i clienti 
-              portano ogni giorno. Dopo sole 2 settimane di corso, sarai pronto a 
-              gestire la tua prima riparazione pagata.
+              Fai un esercizio. Oggi, guardati intorno. Tra i 20 amici, parenti e 
+              colleghi piu vicini a te, almeno 2 hanno un telefono con un problema. 
+              Schermo rotto, batteria che non tiene, microfono che gracchia. Minimo 2. 
+              Probabilmente di piu. Quando finisci il corso, hai gia recuperato mezzo 
+              investimento solo sistemando i loro telefoni.
             </p>
             
-            {/* Results Grid */}
-            <div className="grid grid-cols-3 gap-4 mb-8">
-              <div className="text-center p-4 bg-white/5 rounded-xl border border-white/10">
-                <Clock className="w-6 h-6 text-[var(--premium-gold)] mx-auto mb-2" />
-                <div className="text-2xl font-bold">2</div>
-                <div className="text-xs text-white/60">Settimane</div>
-              </div>
+            {/* Results Grid - only 2 boxes */}
+            <div className="grid grid-cols-2 gap-4 mb-8">
               <div className="text-center p-4 bg-white/5 rounded-xl border border-white/10">
                 <Euro className="w-6 h-6 text-[var(--premium-gold)] mx-auto mb-2" />
-                <div className="text-2xl font-bold">50-80</div>
+                <div className="text-2xl font-bold">40-120</div>
                 <div className="text-xs text-white/60">Euro/riparazione</div>
               </div>
               <div className="text-center p-4 bg-white/5 rounded-xl border border-white/10">
                 <Briefcase className="w-6 h-6 text-[var(--premium-gold)] mx-auto mb-2" />
                 <div className="text-2xl font-bold">80%</div>
-                <div className="text-xs text-white/60">Trova lavoro</div>
+                <div className="text-xs text-white/60">dei 46 diplomati oggi lavora nel settore</div>
               </div>
             </div>
             
@@ -80,22 +78,6 @@ export function FirstClient() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
-            
-            {/* Floating testimonial */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="absolute -bottom-6 -left-6 md:left-6 bg-white text-foreground rounded-xl p-4 shadow-xl max-w-xs"
-            >
-              <p className="text-sm italic mb-2">
-                {'"Dopo 10 giorni ho riparato il mio primo schermo. Il cliente mi ha pagato 70 euro."'}
-              </p>
-              <p className="text-xs font-semibold text-[var(--electric-blue)]">
-                Marco T. - Diplomato LV1
-              </p>
-            </motion.div>
           </motion.div>
         </div>
       </div>

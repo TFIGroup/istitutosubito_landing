@@ -127,9 +127,14 @@ export function Hero({ onCheckout, onOpenLeadModal, isLoading }: HeroProps) {
               </div>
             </div>
             <div className="h-6 w-px bg-white/30" />
-            <span className="text-white/90 text-sm font-medium">
-              2.402 recensioni Google
-            </span>
+            <a 
+              href="https://share.google/jctGdFe0ugTXK4qvw"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/90 text-sm font-medium hover:text-white transition-colors"
+            >
+              2.512 recensioni Google →
+            </a>
           </div>
 
           {/* Trust Badges */}

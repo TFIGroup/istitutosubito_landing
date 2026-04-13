@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Check, X } from 'lucide-react'
+import { Check, MessageCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { content } from '@/lib/content'
 import { TIERS, type Tier } from '@/lib/tiers'
@@ -9,10 +9,11 @@ import { cn } from '@/lib/utils'
 
 interface PricingProps {
   onSelectTier: (tierId: string) => void
+  onOpenLeadModal: () => void
   loadingTier?: string | null
 }
 
-export function Pricing({ onSelectTier, loadingTier }: PricingProps) {
+export function Pricing({ onSelectTier, onOpenLeadModal, loadingTier }: PricingProps) {
   const { pricing } = content
 
   return (
@@ -57,7 +58,8 @@ export function Pricing({ onSelectTier, loadingTier }: PricingProps) {
               key={tier.id}
               tier={tier}
               index={index}
-              onSelect={() => onSelectTier(tier.id)}
+              onSelectCheckout={() => onSelectTier(tier.id)}
+              onSelectLead={onOpenLeadModal}
               isLoading={loadingTier === tier.id}
             />
           ))}
@@ -70,11 +72,12 @@ export function Pricing({ onSelectTier, loadingTier }: PricingProps) {
 interface PricingCardProps {
   tier: Tier
   index: number
-  onSelect: () => void
+  onSelectCheckout: () => void
+  onSelectLead: () => void
   isLoading?: boolean
 }
 
-function PricingCard({ tier, index, onSelect, isLoading }: PricingCardProps) {
+function PricingCard({ tier, index, onSelectCheckout, onSelectLead, isLoading }: PricingCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -97,10 +100,10 @@ function PricingCard({ tier, index, onSelect, isLoading }: PricingCardProps) {
 
       {/* Header */}
       <div className="text-center mb-6">
-        <h3 className="text-2xl font-bold text-foreground mb-1">
+        <h3 className="text-2xl font-bold text-foreground mb-2">
           {tier.name}
         </h3>
-        <p className="text-muted-foreground">{tier.tagline}</p>
+        <p className="text-sm text-muted-foreground leading-relaxed">{tier.tagline}</p>
       </div>
 
       {/* Price */}
@@ -128,28 +131,38 @@ function PricingCard({ tier, index, onSelect, isLoading }: PricingCardProps) {
             <span className="text-sm text-foreground">{feature}</span>
           </div>
         ))}
-        {tier.notIncluded?.map((feature, i) => (
-          <div key={i} className="flex items-start gap-3 opacity-50">
-            <X className="w-5 h-5 text-muted-foreground flex-shrink-0 mt-0.5" />
-            <span className="text-sm text-muted-foreground line-through">{feature}</span>
-          </div>
-        ))}
       </div>
 
-      {/* CTA */}
-      <Button
-        size="lg"
-        onClick={onSelect}
-        disabled={isLoading}
-        className={cn(
-          'w-full text-lg py-6 h-auto',
-          tier.popular
-            ? 'bg-[var(--navy)] hover:bg-[var(--navy-light)] text-white'
-            : 'bg-[var(--electric-blue)] hover:bg-[var(--electric-blue-hover)] text-white'
+      {/* CTAs */}
+      <div className="space-y-3">
+        {/* Primary CTA */}
+        <Button
+          size="lg"
+          onClick={onSelectCheckout}
+          disabled={isLoading}
+          className={cn(
+            'w-full text-lg py-6 h-auto',
+            tier.popular
+              ? 'bg-[var(--navy)] hover:bg-[var(--navy-light)] text-white'
+              : 'bg-[var(--electric-blue)] hover:bg-[var(--electric-blue-hover)] text-white'
+          )}
+        >
+          {isLoading ? 'Caricamento...' : tier.ctaPrimary.label}
+        </Button>
+        
+        {/* Secondary CTA (only for LV2 and LV3) */}
+        {tier.ctaSecondary && (
+          <Button
+            size="lg"
+            variant="outline"
+            onClick={onSelectLead}
+            className="w-full text-base py-5 h-auto border-[var(--whatsapp-green)] text-[var(--whatsapp-green)] hover:bg-[var(--whatsapp-green)] hover:text-white"
+          >
+            <MessageCircle className="w-5 h-5 mr-2" />
+            {tier.ctaSecondary.label}
+          </Button>
         )}
-      >
-        {isLoading ? 'Caricamento...' : tier.cta}
-      </Button>
+      </div>
     </motion.div>
   )
 }

@@ -113,6 +113,7 @@ function LandingPageContent() {
         
         <Pricing
           onSelectTier={handleCheckout}
+          onOpenLeadModal={handleOpenLeadModal}
           loadingTier={loadingTier}
         />
         
@@ -124,7 +125,7 @@ function LandingPageContent() {
         
         <Paths />
         
-        <Testimonials />
+        <Testimonials onOpenLeadModal={handleOpenLeadModal} />
         
         <Guarantee />
         

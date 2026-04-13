@@ -53,7 +53,7 @@ export function TrustProof() {
         {/* Big Numbers Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
           {[
-            { value: '2.402', label: 'Recensioni Google', icon: Star, color: 'text-yellow-500' },
+            { value: '2.512', label: 'Recensioni Google', icon: Star, color: 'text-yellow-500' },
             { value: '16', label: 'Anni di Esperienza', icon: Clock, color: 'text-[var(--electric-blue)]' },
             { value: '130K+', label: 'Dispositivi Riparati', icon: Shield, color: 'text-[var(--whatsapp-green)]' },
             { value: '2', label: 'Sedi in Campania', icon: MapPin, color: 'text-[var(--premium-gold)]' },
@@ -100,7 +100,7 @@ export function TrustProof() {
                     ))}
                   </div>
                 </div>
-                <p className="text-white/70 text-sm">2.402 recensioni verificate su Google</p>
+                <p className="text-white/70 text-sm">2.512 recensioni verificate su Google</p>
               </div>
             </div>
             <Button 
@@ -108,11 +108,11 @@ export function TrustProof() {
               asChild
             >
               <a 
-                href="https://www.google.com/search?q=subito+riparato+nocera+inferiore+recensioni" 
+                href="https://share.google/jctGdFe0ugTXK4qvw" 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
-                Vedi tutte le recensioni
+                Leggi tutte le recensioni →
                 <ExternalLink className="w-4 h-4" />
               </a>
             </Button>

@@ -1,104 +1,79 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
-import { Star, Quote } from 'lucide-react'
-import { content } from '@/lib/content'
+import { MessageCircle } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
-// Map testimonial names to their generated photos
-const testimonialPhotos: Record<string, string> = {
-  'Marco T.': '/images/testimonials/marco.jpg',
-  'Sara M.': '/images/testimonials/sara.jpg',
-  'Luca B.': '/images/testimonials/luca.jpg',
-  'Giuseppe R.': '/images/testimonials/alessandro.jpg',
-  'Chiara L.': '/images/testimonials/francesca.jpg',
+interface TestimonialsProps {
+  onOpenLeadModal: () => void
 }
 
-export function Testimonials() {
-  const { testimonials } = content
-
+export function Testimonials({ onOpenLeadModal }: TestimonialsProps) {
   return (
     <section id="testimonianze" className="py-16 md:py-24 bg-[var(--navy)] text-white">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        {/* Header */}
-        <div className="max-w-3xl mx-auto text-center mb-12">
+      <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8">
+        <div className="text-center">
+          {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white text-sm font-medium mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white text-sm font-medium mb-8"
           >
-            {testimonials.badge}
+            Le voci dei nostri diplomati
           </motion.div>
 
+          {/* Headline */}
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl font-bold mb-4 text-balance"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-balance"
           >
-            {testimonials.headline}
+            46 diplomati.<br />
+            <span className="text-[var(--premium-gold)]">L&apos;80% lavora attivamente nel settore.</span>
           </motion.h2>
-        </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.reviews.map((review, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 + index * 0.05 }}
-              className="p-6 bg-white/5 rounded-xl border border-white/10"
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-lg text-white/80 mb-10 max-w-2xl mx-auto"
+          >
+            Stiamo raccogliendo le loro storie per condividerle qui. 
+            Vuoi sentirle direttamente dalla loro voce prima di decidere?
+          </motion.p>
+
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+          >
+            <Button
+              size="lg"
+              onClick={onOpenLeadModal}
+              className="bg-[var(--whatsapp-green)] hover:bg-[var(--whatsapp-green-hover)] text-white text-lg px-8 py-6 h-auto"
             >
-              {/* Quote Icon */}
-              <Quote className="w-8 h-8 text-[var(--electric-blue)] mb-4 opacity-50" />
+              <MessageCircle className="w-5 h-5 mr-2" />
+              Parla con un Capotecnico
+            </Button>
+          </motion.div>
 
-              {/* Rating */}
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: review.rating }).map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-[var(--premium-gold)] text-[var(--premium-gold)]" />
-                ))}
-              </div>
-
-              {/* Text */}
-              <p className="text-white/90 mb-4 leading-relaxed">
-                {review.text}
-              </p>
-
-              {/* Result Badge */}
-              <div className="inline-flex items-center px-3 py-1 bg-[var(--whatsapp-green)]/20 text-[var(--whatsapp-green)] text-sm font-medium rounded-full mb-4">
-                {review.result}
-              </div>
-
-              {/* Author */}
-              <div className="flex items-center gap-3 pt-4 border-t border-white/10">
-                {testimonialPhotos[review.name] ? (
-                  <div className="w-10 h-10 rounded-full overflow-hidden relative">
-                    <Image
-                      src={testimonialPhotos[review.name]}
-                      alt={review.name}
-                      fill
-                      className="object-cover"
-                      sizes="40px"
-                    />
-                  </div>
-                ) : (
-                  <div className="w-10 h-10 rounded-full bg-[var(--electric-blue)] flex items-center justify-center text-sm font-semibold">
-                    {review.avatar}
-                  </div>
-                )}
-                <div>
-                  <div className="font-medium">{review.name}</div>
-                  <div className="text-sm text-white/60">
-                    {review.location} · {review.tier}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+          {/* Small text */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="text-sm text-white/60 mt-6"
+          >
+            Ti mettiamo in contatto diretto con un nostro ex studente.
+          </motion.p>
         </div>
       </div>
     </section>

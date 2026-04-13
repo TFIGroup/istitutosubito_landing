@@ -7,17 +7,17 @@ const guarantees = [
   {
     icon: RefreshCw,
     title: 'Soddisfatto o Rimborsato',
-    description: 'Se entro la prima settimana di corso non sei convinto, ti rimborsiamo il 100% senza domande.',
+    description: 'Hai 14 giorni di garanzia soddisfatti o rimborsati. Inoltre, la prima lezione live col Capotecnico e di prova: se non ti convince, rimborso pieno entro 48 ore.',
   },
   {
     icon: HeadphonesIcon,
     title: 'Supporto Post-Diploma',
-    description: 'Accesso al gruppo WhatsApp dei diplomati e supporto tecnico anche dopo aver finito il corso.',
+    description: 'Accesso al supporto WhatsApp dei diplomati e assistenza tecnica anche dopo aver finito il corso.',
   },
   {
     icon: Award,
-    title: 'Diploma Verificabile',
-    description: 'Attestato con QR code verificabile online. Mostralo ai tuoi futuri clienti o datori di lavoro.',
+    title: 'Licenza Verificabile',
+    description: 'Licenza professionale con QR code verificabile online. Mostrala ai tuoi futuri clienti o datori di lavoro.',
   },
   {
     icon: Shield,

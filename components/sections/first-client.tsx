@@ -9,70 +9,59 @@ export function FirstClient() {
   return (
     <section id="corso" className="py-16 md:py-24 bg-muted/50">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          {/* Badge */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Big Number Side */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--premium-gold-light)] text-[var(--navy)] text-sm font-medium mb-6"
+            className="flex justify-center lg:justify-end"
           >
-            {firstClient.badge}
+            <div className="relative">
+              <div className="text-[200px] md:text-[280px] font-bold text-[var(--electric-blue)] leading-none select-none">
+                {firstClient.bigNumber}
+              </div>
+              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 text-center">
+                <span className="text-lg md:text-xl font-medium text-muted-foreground">
+                  su 20 hanno il telefono rotto
+                </span>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Headline */}
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+          {/* Content Side */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance"
+            className="lg:pl-8"
           >
-            {firstClient.headline}
-          </motion.h2>
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--premium-gold-light)] text-[var(--navy)] text-sm font-medium mb-6">
+              {firstClient.badge}
+            </div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-lg text-muted-foreground"
-          >
-            {firstClient.description}
-          </motion.p>
-        </div>
+            {/* Headline */}
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 text-balance">
+              {firstClient.headline}
+            </h2>
 
-        {/* Steps */}
-        <div className="grid md:grid-cols-3 gap-8 mt-12">
-          {firstClient.steps.map((step, index) => (
-            <motion.div
-              key={step.number}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 + index * 0.1 }}
-              className="relative"
-            >
-              {/* Connector Line */}
-              {index < firstClient.steps.length - 1 && (
-                <div className="hidden md:block absolute top-8 left-[calc(50%+40px)] w-[calc(100%-80px)] h-0.5 bg-border" />
-              )}
-
-              <div className="flex flex-col items-center text-center">
-                {/* Number Circle */}
-                <div className="w-16 h-16 rounded-full bg-[var(--electric-blue)] text-white flex items-center justify-center text-2xl font-bold mb-4 relative z-10">
-                  {step.number}
-                </div>
-
-                <h3 className="text-xl font-semibold text-foreground mb-2">
-                  {step.title}
-                </h3>
-                <p className="text-muted-foreground">
-                  {step.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
+            {/* Paragraphs */}
+            <div className="space-y-4">
+              {firstClient.paragraphs.map((paragraph, index) => (
+                <motion.p
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 + index * 0.1 }}
+                  className="text-lg text-muted-foreground leading-relaxed"
+                >
+                  {paragraph}
+                </motion.p>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

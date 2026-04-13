@@ -1,0 +1,146 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Istituto Subito Brand Colors */
+  --navy: #0A2540;
+  --navy-light: #0D2E4D;
+  --electric-blue: #1E88E5;
+  --electric-blue-hover: #1976D2;
+  --whatsapp-green: #25D366;
+  --whatsapp-green-hover: #20BD5A;
+  --premium-gold: #F4B942;
+  --premium-gold-light: #FFF8E7;
+  
+  /* Semantic tokens mapped to brand */
+  --background: #FFFFFF;
+  --foreground: #0A2540;
+  --card: #FFFFFF;
+  --card-foreground: #0A2540;
+  --popover: #FFFFFF;
+  --popover-foreground: #0A2540;
+  --primary: #1E88E5;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F3F4F6;
+  --secondary-foreground: #0A2540;
+  --muted: #F3F4F6;
+  --muted-foreground: #6B7280;
+  --accent: #FFF8E7;
+  --accent-foreground: #0A2540;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: #E5E7EB;
+  --input: #E5E7EB;
+  --ring: #1E88E5;
+  --chart-1: #1E88E5;
+  --chart-2: #25D366;
+  --chart-3: #F4B942;
+  --chart-4: #0A2540;
+  --chart-5: #6B7280;
+  --radius: 0.5rem;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #0A2540;
+  --sidebar-primary: #1E88E5;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F3F4F6;
+  --sidebar-accent-foreground: #0A2540;
+  --sidebar-border: #E5E7EB;
+  --sidebar-ring: #1E88E5;
+}
+
+.dark {
+  --background: #0A2540;
+  --foreground: #FFFFFF;
+  --card: #0D2E4D;
+  --card-foreground: #FFFFFF;
+  --popover: #0D2E4D;
+  --popover-foreground: #FFFFFF;
+  --primary: #1E88E5;
+  --primary-foreground: #FFFFFF;
+  --secondary: #1F2937;
+  --secondary-foreground: #FFFFFF;
+  --muted: #1F2937;
+  --muted-foreground: #9CA3AF;
+  --accent: #1F2937;
+  --accent-foreground: #FFFFFF;
+  --destructive: #EF4444;
+  --destructive-foreground: #FFFFFF;
+  --border: #374151;
+  --input: #374151;
+  --ring: #1E88E5;
+  --chart-1: #1E88E5;
+  --chart-2: #25D366;
+  --chart-3: #F4B942;
+  --chart-4: #FFFFFF;
+  --chart-5: #9CA3AF;
+  --sidebar: #0D2E4D;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-primary: #1E88E5;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #1F2937;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #374151;
+  --sidebar-ring: #1E88E5;
+}
+
+@theme inline {
+  --font-sans: 'Inter', 'Geist', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
+  
+  /* Brand color utilities */
+  --color-navy: var(--navy);
+  --color-navy-light: var(--navy-light);
+  --color-electric-blue: var(--electric-blue);
+  --color-electric-blue-hover: var(--electric-blue-hover);
+  --color-whatsapp-green: var(--whatsapp-green);
+  --color-whatsapp-green-hover: var(--whatsapp-green-hover);
+  --color-premium-gold: var(--premium-gold);
+  --color-premium-gold-light: var(--premium-gold-light);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

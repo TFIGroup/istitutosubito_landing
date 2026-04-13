@@ -258,44 +258,44 @@ export const content = {
     headline: 'Hai dubbi? Ecco le risposte.',
     questions: [
       {
-        question: 'Devo avere gia esperienza tecnica per iscrivermi?',
-        answer: 'No. Partiamo dalle basi e ti accompagniamo passo passo. Quello che serve e la voglia di imparare un mestiere vero e di lavorare con le mani. Il resto te lo insegniamo noi, 1-to-1 col Capotecnico.',
+        question: 'Devo avere già esperienza tecnica per iscrivermi?',
+        answer: 'No. Partiamo dalle basi e ti accompagniamo passo passo. Quello che serve è la voglia di imparare un mestiere vero e di lavorare con le mani. Il resto te lo insegniamo noi, 1-to-1 col Capotecnico.',
       },
       {
-        question: 'Perche non vedete il programma dettagliato del corso?',
-        answer: 'Perche non esiste un programma uguale per tutti. Il Capotecnico costruisce il percorso con te, sulla base del tuo livello di partenza e di dove vuoi arrivare. Insegniamo solo quello che ti serve per lavorare e guadagnare — non un elenco di argomenti che paghi e dimentichi. Ci sono corsi che ti spiegano per ore come si usa un multimetro che nella realta aprirai una volta ogni cento riparazioni. Noi no.',
+        question: 'Perché non vedete il programma dettagliato del corso?',
+        answer: 'Perché non esiste un programma uguale per tutti. Il Capotecnico costruisce il percorso con te, sulla base del tuo livello di partenza e di dove vuoi arrivare. Insegniamo solo quello che ti serve per lavorare e guadagnare — non un elenco di argomenti che paghi e dimentichi. Ci sono corsi che ti spiegano per ore come si usa un multimetro che nella realtà aprirai una volta ogni cento riparazioni. Noi no.',
       },
       {
         question: 'Quanto tempo ci metto a finire il corso?',
-        answer: 'Dipende da te. Le ore sono garantite (30 per LV1, 50 per LV2, 80 per LV3), ma il calendario lo concordi 1-to-1 col Capotecnico in base ai tuoi impegni. C\'e chi finisce in 6 settimane, chi in 4 mesi. Decidi tu.',
+        answer: 'Dipende da te. Le ore sono garantite (30 per LV1, 50 per LV2, 80 per LV3), ma il calendario lo concordi 1-to-1 col Capotecnico in base ai tuoi impegni. C\'è chi finisce in 6 settimane, chi in 4 mesi. Decidi tu.',
       },
       {
-        question: 'Il corso e online o in presenza?',
+        question: 'Il corso è online o in presenza?',
         answer: 'Le lezioni sono live online 1-to-1 col Capotecnico, con calendario flessibile costruito sui tuoi tempi. NON sono videocorsi preregistrati. Il kit hardware te lo spediamo a casa. L\'esame finale e la consegna della licenza fisica avvengono nei nostri laboratori in Campania, oppure online con sessione registrata se non puoi spostarti.',
       },
       {
-        question: 'Cosa vuol dire "kit in comodato d\'uso" o "in proprieta"?',
-        answer: 'Per LV1 il kit professionale di lavoro te lo spediamo a casa in comodato d\'uso per tutta la durata del corso, e a fine percorso lo restituisci o lo acquisti a prezzo agevolato. Per LV2 e LV3 il kit e incluso nel prezzo e diventa di tua proprieta — te lo tieni e lo usi per lavorare anche dopo il diploma.',
+        question: 'Cosa vuol dire "kit in comodato d\'uso" o "in proprietà"?',
+        answer: 'Per LV1 il kit professionale di lavoro te lo spediamo a casa in comodato d\'uso per tutta la durata del corso, e a fine percorso lo restituisci o lo acquisti a prezzo agevolato. Per LV2 e LV3 il kit è incluso nel prezzo e diventa di tua proprietà — te lo tieni e lo usi per lavorare anche dopo il diploma.',
       },
       {
         question: 'Posso pagare a rate?',
-        answer: 'Si, fino a 3 rate senza interessi con Klarna o Scalapay, direttamente in fase di iscrizione su Stripe. Per importi piu alti possiamo valutare piani di pagamento personalizzati: parlane col Capotecnico in fase di iscrizione.',
+        answer: 'Sì, fino a 3 rate senza interessi con Klarna o Scalapay, direttamente in fase di iscrizione su Stripe. Per importi più alti possiamo valutare piani di pagamento personalizzati: parlane col Capotecnico in fase di iscrizione.',
       },
       {
         question: 'E se mi accorgo che non fa per me?',
-        answer: 'Hai 14 giorni di garanzia soddisfatti o rimborsati. Inoltre, la prima lezione live col Capotecnico e di prova: se non ti convince, rimborso pieno entro 48 ore. Vogliamo solo studenti motivati, non clienti pentiti.',
+        answer: 'Hai 14 giorni di garanzia soddisfatti o rimborsati. Inoltre, la prima lezione live col Capotecnico è di prova: se non ti convince, rimborso pieno entro 48 ore. Vogliamo solo studenti motivati, non clienti pentiti.',
       },
       {
         question: 'Posso davvero trovare lavoro dopo?',
-        answer: 'L\'80% dei nostri 46 diplomati ad oggi lavora nel settore: con noi nei nostri laboratori, in altri negozi di riparazione, o con la propria attivita autonoma. Non garantiamo posti di lavoro a tutti — non sarebbe onesto — ma proprio per questo selezioniamo pochi corsisti per trimestre, cosi possiamo accompagnarli realmente nei primi mesi di attivita.',
+        answer: 'L\'80% dei nostri 46 diplomati ad oggi lavora nel settore: con noi nei nostri laboratori, in altri negozi di riparazione, o con la propria attività autonoma. Non garantiamo posti di lavoro a tutti — non sarebbe onesto — ma proprio per questo selezioniamo pochi corsisti per trimestre, così possiamo accompagnarli realmente nei primi mesi di attività.',
       },
       {
         question: 'Cosa rende la vostra licenza diversa da altri certificati?',
-        answer: 'E l\'unica del settore in Italia con un sistema di verifica pubblica online. Ogni licenza ha un numero univoco e un QR code che chiunque puo scansionare per vedere in tempo reale che il tecnico e certificato, il livello, la validita. Un cliente o un datore di lavoro verifica in 2 secondi. Per provare, scansiona il QR di una licenza reale: lo trovi qui in pagina.',
+        answer: 'È l\'unica del settore in Italia con un sistema di verifica pubblica online. Ogni licenza ha un numero univoco e un QR code che chiunque può scansionare per vedere in tempo reale che il tecnico è certificato, il livello, la validità. Un cliente o un datore di lavoro verifica in 2 secondi. Per provare, scansiona il QR di una licenza reale: lo trovi qui in pagina.',
       },
       {
-        question: 'Chi e "Subito Riparato"?',
-        answer: 'Subito Riparato e la nostra azienda madre: due laboratori di riparazione attivi in Campania (Nocera Inferiore e Cava de\' Tirreni) dal 2009. Oltre 130.000 dispositivi riparati, 900 al mese. Istituto Subito e la scuola che nasce da quell\'esperienza concreta — non dai libri, dal lavoro vero di tutti i giorni.',
+        question: 'Chi è "Subito Riparato"?',
+        answer: 'Subito Riparato è la nostra azienda madre: due laboratori di riparazione attivi in Campania (Nocera Inferiore e Cava de\' Tirreni) dal 2009. Oltre 130.000 dispositivi riparati, 900 al mese. Istituto Subito è la scuola che nasce da quell\'esperienza concreta — non dai libri, dal lavoro vero di tutti i giorni.',
       },
     ],
   },

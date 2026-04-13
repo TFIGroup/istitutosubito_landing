@@ -3,7 +3,9 @@
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, UserCheck } from 'lucide-react'
-import { socialProofEntries, socialProofConfig } from '@/lib/social-proof'
+import { content } from '@/lib/content'
+
+const { socialProof } = content
 
 export function SocialProofToast() {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -12,22 +14,22 @@ export function SocialProofToast() {
 
   const showNextNotification = useCallback(() => {
     if (isDismissed) return
-    
+
     setIsVisible(true)
-    
-    // Hide after display duration
+
+    // Hide after 5 seconds
     setTimeout(() => {
       setIsVisible(false)
-      
+
       // Move to next entry
       setTimeout(() => {
-        setCurrentIndex((prev) => (prev + 1) % socialProofEntries.length)
+        setCurrentIndex((prev) => (prev + 1) % socialProof.items.length)
       }, 500)
-    }, socialProofConfig.displayDurationMs)
+    }, 5000)
   }, [isDismissed])
 
   useEffect(() => {
-    if (!socialProofConfig.enabled || isDismissed) return
+    if (!socialProof.enabled || isDismissed) return
 
     // Show first notification after a delay
     const initialTimeout = setTimeout(() => {
@@ -37,7 +39,7 @@ export function SocialProofToast() {
     // Set up interval for subsequent notifications
     const interval = setInterval(() => {
       showNextNotification()
-    }, socialProofConfig.intervalMs)
+    }, socialProof.intervalSeconds * 1000)
 
     return () => {
       clearTimeout(initialTimeout)
@@ -50,9 +52,9 @@ export function SocialProofToast() {
     setIsDismissed(true)
   }
 
-  const currentEntry = socialProofEntries[currentIndex]
+  const currentEntry = socialProof.items[currentIndex]
 
-  if (!socialProofConfig.enabled) return null
+  if (!socialProof.enabled) return null
 
   return (
     <AnimatePresence>
@@ -76,7 +78,7 @@ export function SocialProofToast() {
                 <span className="font-semibold">{currentEntry.name}</span>
                 {' da '}
                 <span className="font-medium">{currentEntry.city}</span>
-                {' si e iscritto al '}
+                {' si è iscritto al '}
                 <span className="font-semibold text-[var(--electric-blue)]">{currentEntry.tier}</span>
               </p>
               <p className="text-xs text-muted-foreground mt-1">
@@ -87,7 +89,7 @@ export function SocialProofToast() {
             {/* Dismiss Button */}
             <button
               onClick={handleDismiss}
-              className="p-1 text-muted-foreground hover:text-foreground transition-colors"
+              className="p-1 text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
               aria-label="Chiudi notifica"
             >
               <X className="w-4 h-4" />

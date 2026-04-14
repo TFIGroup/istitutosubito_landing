@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
     // Create embedded checkout session
     const sessionConfig: Stripe.Checkout.SessionCreateParams = {
       mode: 'payment',
-      ui_mode: 'embedded',
+      ui_mode: 'embedded_page',
       return_url: `${baseUrl}/grazie?session_id={CHECKOUT_SESSION_ID}`,
       locale: 'it',
       metadata: stripeMetadata,
@@ -147,7 +147,7 @@ export async function POST(request: NextRequest) {
       console.error('Email notifica interna fallita (non bloccante):', emailErr)
     }
 
-    return NextResponse.json({ clientSecret: session.client_secret })
+    return NextResponse.json({ url: session.url })
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : 'Unknown error'
     console.error('Checkout session error:', message, error)

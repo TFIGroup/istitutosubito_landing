@@ -1,23 +1,14 @@
 'use client'
 
-import { useCallback, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, Lock, ChevronRight, ChevronLeft, Check, Phone, Mail, MapPin, CreditCard } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { loadStripe } from '@stripe/stripe-js'
-import {
-  EmbeddedCheckoutProvider,
-  EmbeddedCheckout,
-} from '@stripe/react-stripe-js'
 import { checkoutFormSchema, type CheckoutFormData } from '@/lib/checkout-schema'
 import { TERMS_VERSION } from '@/lib/terms-version'
 import { PROVINCE_ITALIANE } from '@/lib/province'
 import { getTierById } from '@/lib/tiers'
-
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
-)
 
 type Step = 1 | 2 | 3 | 4
 
@@ -47,7 +38,6 @@ export function CheckoutModal({ isOpen, onClose, tierId }: CheckoutModalProps) {
   const [step, setStep] = useState<Step>(1)
   const [error, setError] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [formData, setFormData] = useState<CheckoutFormData | null>(null)
 
   const tierData = tierId ? getTierById(tierId) : null
 
@@ -92,7 +82,7 @@ export function CheckoutModal({ isOpen, onClose, tierId }: CheckoutModalProps) {
     setStep(3)
   }
 
-  // Step 3 → 4: submit completo, crea sessione Stripe
+  // Step 3 → Stripe: submit completo, redirect a Stripe hosted checkout
   const onFormSubmit = async (data: CheckoutFormData) => {
     setIsSubmitting(true)
     setError(null)
@@ -105,28 +95,21 @@ export function CheckoutModal({ isOpen, onClose, tierId }: CheckoutModalProps) {
       const result = await response.json()
       if (!response.ok) {
         setError(result.error || 'Errore durante la creazione del checkout')
+        setIsSubmitting(false)
         return
       }
-      setFormData(data)
-      setStep(4)
+      // Redirect a Stripe hosted checkout page
+      if (result.url) {
+        window.location.href = result.url
+      } else {
+        setError('URL di pagamento non ricevuto')
+        setIsSubmitting(false)
+      }
     } catch {
       setError('Errore di connessione. Riprova.')
-    } finally {
       setIsSubmitting(false)
     }
   }
-
-  const fetchClientSecret = useCallback(async () => {
-    if (!tierId || !formData) throw new Error('Dati mancanti')
-    const response = await fetch('/api/checkout', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ ...formData, tier: tierId, termsVersion: TERMS_VERSION }),
-    })
-    const data = await response.json()
-    if (!response.ok) throw new Error(data.error)
-    return data.clientSecret
-  }, [tierId, formData])
 
   const handleClose = () => {
     setStep(1)
@@ -438,33 +421,16 @@ export function CheckoutModal({ isOpen, onClose, tierId }: CheckoutModalProps) {
                   </motion.div>
                 )}
 
-                {/* ===== STEP 4 — Stripe Embedded Checkout ===== */}
+                {/* Step 4 = redirect a Stripe, il modal resta con spinner */}
                 {step === 4 && (
                   <motion.div
                     key="step4"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    className="p-6"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="p-6 flex flex-col items-center justify-center py-16"
                   >
-                    {error ? (
-                      <div className="text-center py-12">
-                        <p className="text-destructive mb-4">{error}</p>
-                        <button
-                          onClick={() => { setError(null); setStep(3) }}
-                          className="text-sm text-muted-foreground hover:text-foreground underline cursor-pointer"
-                        >
-                          Torna indietro
-                        </button>
-                      </div>
-                    ) : (
-                      <EmbeddedCheckoutProvider
-                        stripe={stripePromise}
-                        options={{ fetchClientSecret }}
-                      >
-                        <EmbeddedCheckout />
-                      </EmbeddedCheckoutProvider>
-                    )}
+                    <div className="w-10 h-10 border-4 border-[var(--electric-blue)] border-t-transparent rounded-full animate-spin mb-4" />
+                    <p className="text-muted-foreground">Redirect al pagamento sicuro...</p>
                   </motion.div>
                 )}
               </AnimatePresence>

@@ -302,44 +302,45 @@ export const content = {
   footer: {
     logo: 'Istituto Subito',
     tagline: 'La scuola dei tecnici riparatori. Powered by Subito Riparato, dal 2009.',
-    addresses: [
-      {
-        label: 'Sede Corsi',
-        address: 'Nocera Inferiore (SA) - Laboratorio attrezzato 100 mq dedicato alla formazione',
-      },
-      {
-        label: 'Laboratorio Nocera Inferiore',
-        address: 'Via S. D\'Alessandro, 61 - 84014 Nocera Inferiore (SA)',
-      },
-      {
-        label: 'Laboratorio Cava de\' Tirreni',
-        address: 'Via A. Sorrentino, 35 - 84013 Cava de\' Tirreni (SA)',
-      },
-    ],
+    sedeOperativa: {
+      label: 'SEDE OPERATIVA',
+      line1: 'Via S. D\'Alessandro, 61',
+      line2: '84014 Nocera Inferiore (SA)',
+    },
     contacts: {
       phone: '+39 389 967 7650',
-      whatsapp: '+39 389 967 7650',
+      phoneHref: 'tel:+39389967650',
+      whatsapp: 'WhatsApp',
+      whatsappHref: 'https://wa.me/393899677650?text=Ciao,%20vorrei%20informazioni%20sui%20corsi',
+      email: 'info@istitutosubito.com',
+      emailHref: 'mailto:info@istitutosubito.com',
     },
     links: {
       corso: [
         { label: 'LV1 - Tecnico Riparatore', href: '#prezzi' },
         { label: 'LV2 - Tecnico Microsaldatore', href: '#prezzi' },
         { label: 'LV3 - Tecnico Master', href: '#prezzi' },
+        { label: 'Verifica una licenza', href: 'https://www.subitoriparato.com/19284725-11' },
       ],
       supporto: [
         { label: 'FAQ', href: '#faq' },
-        { label: 'Verifica una licenza', href: 'https://www.subitoriparato.com/19284725-11' },
         { label: 'Parla con un Capotecnico', href: '#lead' },
+        { label: 'Contatto WhatsApp', href: 'https://wa.me/393899677650?text=Ciao,%20vorrei%20informazioni%20sui%20corsi' },
+        { label: 'Contatto email', href: 'mailto:info@istitutosubito.com' },
       ],
       legale: [
         { label: 'Privacy Policy', href: '/privacy' },
         { label: 'Cookie Policy', href: '/cookie' },
         { label: 'Termini e Condizioni', href: '/termini' },
-        { label: 'Diritto di recesso', href: '/recesso' },
+        { label: 'Diritto di Recesso', href: '/recesso' },
       ],
     },
-    copyright: '© 2026 Istituto Subito - Subito Riparato S.r.l. - Tutti i diritti riservati',
-    vatInfo: 'CR STORE SRL - P.IVA IT08955511210 - Capitale sociale versato € 10.000',
+    legal: {
+      line1: 'CR Store S.r.l. — P.IVA IT08955511210 — REA NA-997450',
+      line2: 'Sede legale: Via R. Vastola, 5 — 80040 Poggiomarino (NA)',
+      line3: '\u00A9 2026 CR Store S.r.l. — Tutti i diritti riservati',
+      line4: 'Marchi \'Istituto Subito\' e \'Subito Riparato\' di proprieta\' CR Store S.r.l.',
+    },
   },
 
   grazie: {

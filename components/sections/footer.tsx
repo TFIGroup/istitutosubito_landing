@@ -1,75 +1,72 @@
 'use client'
 
 import Link from 'next/link'
-import { MessageCircle } from 'lucide-react'
+import { Phone, Mail, MessageCircle, MapPin } from 'lucide-react'
 import { content } from '@/lib/content'
 
 export function Footer() {
   const { footer } = content
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '393XXXXXXXXX'
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Ciao, vorrei informazioni sul corso')}`
 
   return (
     <footer className="bg-[var(--navy)] text-white">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-12 md:py-16">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
-          {/* Brand */}
+          {/* Colonna 1 — Brand & contatti operativi */}
           <div className="md:col-span-1">
-            <Link href="/" className="text-xl font-bold mb-4 block">
+            <Link href="/" className="text-xl font-bold mb-3 block">
               {footer.logo}
             </Link>
-            <p className="text-white/60 text-sm mb-4">
+            <p className="text-white/60 text-sm mb-5">
               {footer.tagline}
             </p>
-            <a
-              href={whatsappLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-[var(--whatsapp-green)] hover:text-[var(--whatsapp-green-hover)] transition-colors"
-            >
-              <MessageCircle className="w-5 h-5" />
-              <span>WhatsApp</span>
-            </a>
-            
-            {/* Addresses */}
-            {footer.addresses && (
-              <div className="mt-4 space-y-3">
-                {footer.addresses.map((addr, index) => (
-                  <div key={index} className="text-sm">
-                    <p className="text-white/80 font-medium">{addr.label}</p>
-                    <p className="text-white/50">{addr.address}</p>
-                  </div>
-                ))}
+
+            {/* Sede operativa */}
+            <div className="mb-5">
+              <div className="flex items-center gap-1.5 mb-1">
+                <MapPin className="w-4 h-4 text-white/70" />
+                <span className="text-sm font-semibold text-white/90">{footer.sedeOperativa.label}</span>
               </div>
-            )}
+              <p className="text-sm text-white/60 pl-5.5">{footer.sedeOperativa.line1}</p>
+              <p className="text-sm text-white/60 pl-5.5">{footer.sedeOperativa.line2}</p>
+            </div>
+
+            {/* Contatti */}
+            <div className="space-y-2">
+              <a
+                href={footer.contacts.phoneHref}
+                className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors"
+              >
+                <Phone className="w-4 h-4" />
+                {footer.contacts.phone}
+              </a>
+              <a
+                href={footer.contacts.whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm text-[var(--whatsapp-green)] hover:text-[var(--whatsapp-green-hover)] transition-colors"
+              >
+                <MessageCircle className="w-4 h-4" />
+                {footer.contacts.whatsapp}
+              </a>
+              <a
+                href={footer.contacts.emailHref}
+                className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors"
+              >
+                <Mail className="w-4 h-4" />
+                {footer.contacts.email}
+              </a>
+            </div>
           </div>
 
-          {/* Corso */}
+          {/* Colonna 2 — Il Corso */}
           <div>
             <h4 className="font-semibold mb-4">Il Corso</h4>
             <ul className="space-y-2">
               {footer.links.corso.map((link, index) => (
                 <li key={`corso-${index}`}>
-                  <Link
-                    href={link.href}
-                    className="text-white/60 hover:text-white text-sm transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Supporto */}
-          <div>
-            <h4 className="font-semibold mb-4">Supporto</h4>
-            <ul className="space-y-2">
-              {footer.links.supporto.map((link, index) => (
-                <li key={`supporto-${index}`}>
-                  {link.label === 'WhatsApp' ? (
+                  {link.href.startsWith('http') ? (
                     <a
-                      href={whatsappLink}
+                      href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-white/60 hover:text-white text-sm transition-colors"
@@ -89,7 +86,35 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Legale */}
+          {/* Colonna 3 — Supporto */}
+          <div>
+            <h4 className="font-semibold mb-4">Supporto</h4>
+            <ul className="space-y-2">
+              {footer.links.supporto.map((link, index) => (
+                <li key={`supporto-${index}`}>
+                  {link.href.startsWith('http') || link.href.startsWith('mailto:') ? (
+                    <a
+                      href={link.href}
+                      target={link.href.startsWith('http') ? '_blank' : undefined}
+                      rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                      className="text-white/60 hover:text-white text-sm transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-white/60 hover:text-white text-sm transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Colonna 4 — Legale */}
           <div>
             <h4 className="font-semibold mb-4">Legale</h4>
             <ul className="space-y-2">
@@ -107,10 +132,12 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/60">
-          <p>{footer.copyright}</p>
-          <p>{footer.vatInfo}</p>
+        {/* Bottom Bar — dati legali */}
+        <div className="pt-8 border-t border-white/10 space-y-1 text-xs text-white/50">
+          <p>{footer.legal.line1}</p>
+          <p>{footer.legal.line2}</p>
+          <p>{footer.legal.line3}</p>
+          <p>{footer.legal.line4}</p>
         </div>
       </div>
     </footer>

@@ -7,6 +7,48 @@ import { checkoutConfirmationHtml, internalNotificationHtml } from '@/lib/email-
 import { generateTermsPdf } from '@/lib/generate-terms-pdf'
 import { getTierById } from '@/lib/tiers'
 
+// Notifica Zoho Cliq con fuochi d'artificio
+async function notifyCliq(data: {
+  fullName: string
+  tier: string
+  tierName: string
+  amount: string
+  email: string
+  phone: string
+  city: string
+  province: string
+  sessionId: string
+}) {
+  const zohoUrl = process.env.ZOHO_CLIQ_WEBHOOK_URL
+  if (!zohoUrl) return
+
+  const message = [
+    `🎆🎆🎆 VENDITA! 🎆🎆🎆`,
+    ``,
+    `💰 Incassati €${data.amount}`,
+    `📋 Corso: ${data.tier.toUpperCase()} - ${data.tierName}`,
+    `👤 ${data.fullName}`,
+    `📧 ${data.email}`,
+    `📱 +39 ${data.phone}`,
+    `📍 ${data.city} (${data.province})`,
+    ``,
+    `🔗 https://dashboard.stripe.com/search?query=${data.sessionId}`,
+    ``,
+    `🎉🎉🎉 GRANDE! 🎉🎉🎉`,
+  ].join('\n')
+
+  try {
+    await fetch(zohoUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: message }),
+    })
+    console.log('Notifica Cliq inviata')
+  } catch (err) {
+    console.error('Errore notifica Cliq:', err)
+  }
+}
+
 export async function POST(request: NextRequest) {
   const body = await request.text()
   const headersList = await headers()
@@ -57,6 +99,7 @@ export async function POST(request: NextRequest) {
       // Estrai dati dalla metadata
       const tier = meta.tier || 'lv1'
       const tierData = getTierById(tier)
+      const tierName = tierData?.name || tier.toUpperCase()
       const fullName = meta.full_name || 'Studente'
       const email = session.customer_email || meta.email || ''
       const phone = meta.phone || ''
@@ -71,7 +114,20 @@ export async function POST(request: NextRequest) {
       const timestamp = meta.terms_accepted_at || new Date().toISOString()
       const amountTotal = session.amount_total ? (session.amount_total / 100).toFixed(0) : '0'
 
-      // Genera PDF dei termini accettati
+      // 1. Notifica Zoho Cliq con fuochi d'artificio
+      await notifyCliq({
+        fullName,
+        tier,
+        tierName,
+        amount: amountTotal,
+        email,
+        phone,
+        city,
+        province,
+        sessionId: session.id,
+      })
+
+      // 2. Genera PDF dei termini accettati
       let pdfBuffer: Buffer | null = null
       try {
         pdfBuffer = await generateTermsPdf({
@@ -82,7 +138,7 @@ export async function POST(request: NextRequest) {
           postalCode,
           city,
           province,
-          tierName: tierData?.name || tier.toUpperCase(),
+          tierName,
           tier,
           price: amountTotal,
           orderId: session.id,
@@ -94,7 +150,7 @@ export async function POST(request: NextRequest) {
         console.error('Errore generazione PDF:', pdfErr)
       }
 
-      // Invia email conferma all'utente
+      // 3. Email conferma all'utente
       if (email) {
         try {
           await sendEmail({
@@ -102,7 +158,7 @@ export async function POST(request: NextRequest) {
             subject: 'Iscrizione confermata - Istituto Subito',
             html: checkoutConfirmationHtml({
               fullName,
-              tierName: tierData?.name || tier.toUpperCase(),
+              tierName,
               price: amountTotal,
               orderId: session.id,
               phone,
@@ -123,7 +179,7 @@ export async function POST(request: NextRequest) {
         }
       }
 
-      // Invia email interna copia a info@istitutosubito.com
+      // 4. Email interna a info@istitutosubito.com
       try {
         await sendEmail({
           to: 'info@istitutosubito.com',
@@ -132,7 +188,7 @@ export async function POST(request: NextRequest) {
             fullName,
             email,
             phone,
-            tierName: tierData?.name || tier.toUpperCase(),
+            tierName,
             tier,
             price: amountTotal,
             orderId: session.id,
@@ -155,6 +211,34 @@ export async function POST(request: NextRequest) {
         console.log('Email interna inviata a info@istitutosubito.com')
       } catch (emailErr) {
         console.error('Errore invio email interna:', emailErr)
+      }
+
+      // 5. Email CONGRATULAZIONI a Daniele
+      try {
+        await sendEmail({
+          to: 'vietridaniele@gmail.com',
+          subject: `CONGRATULAZIONI - €${amountTotal} incassato`,
+          html: `
+            <div style="font-family:sans-serif;max-width:500px;margin:0 auto;text-align:center;padding:40px 20px;">
+              <h1 style="font-size:48px;margin:0;">🎉</h1>
+              <h1 style="color:#0A2540;font-size:28px;margin:16px 0 8px;">CONGRATULAZIONI!</h1>
+              <p style="font-size:36px;font-weight:800;color:#1E88E5;margin:0;">&euro;${amountTotal} incassato</p>
+              <hr style="border:none;border-top:1px solid #eee;margin:24px 0;">
+              <table style="width:100%;text-align:left;font-size:14px;color:#555;">
+                <tr><td style="padding:6px 0;font-weight:600;">Corso:</td><td>${tier.toUpperCase()} - ${tierName}</td></tr>
+                <tr><td style="padding:6px 0;font-weight:600;">Studente:</td><td>${fullName}</td></tr>
+                <tr><td style="padding:6px 0;font-weight:600;">Email:</td><td>${email}</td></tr>
+                <tr><td style="padding:6px 0;font-weight:600;">Telefono:</td><td>+39 ${phone}</td></tr>
+                <tr><td style="padding:6px 0;font-weight:600;">Citta:</td><td>${city} (${province})</td></tr>
+              </table>
+              <hr style="border:none;border-top:1px solid #eee;margin:24px 0;">
+              <a href="https://dashboard.stripe.com/search?query=${session.id}" style="display:inline-block;background:#1E88E5;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;">Apri in Stripe</a>
+            </div>
+          `,
+        })
+        console.log('Email congratulazioni inviata a Daniele')
+      } catch (emailErr) {
+        console.error('Errore invio email congratulazioni:', emailErr)
       }
 
       break

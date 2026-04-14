@@ -84,6 +84,10 @@ export function FinalCTA({ onCheckout, onOpenLeadModal, isLoading }: FinalCTAPro
             {finalCta.secondaryCta}
           </Button>
         </div>
+
+        <p className="text-white/50 text-sm mt-6">
+          1-to-1 in videocall live col Capotecnico · Ovunque in Italia · Kit professionale a casa tua
+        </p>
       </div>
     </section>
   )

@@ -44,10 +44,13 @@ export function LabGallery() {
           </h2>
 
           <p
-            className="text-lg text-muted-foreground"
+            className="text-lg text-muted-foreground mb-3"
           >
-            Imparerai utilizzando le stesse attrezzature dei centri assistenza autorizzati: 
+            Imparerai utilizzando le stesse attrezzature dei centri assistenza autorizzati:
             microscopi professionali, stazioni di saldatura, macchine laser e molto altro.
+          </p>
+          <p className="text-sm text-muted-foreground/80 italic">
+            I laboratori che vedi sono il nostro centro di formazione. Tu lavori da casa col tuo kit, in videocall live col Capotecnico — ovunque tu sia in Italia.
           </p>
         </div>
 

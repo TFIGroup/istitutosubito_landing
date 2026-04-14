@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { Star, MapPin, Shield, Clock, ExternalLink } from 'lucide-react'
+import { Star, Shield, Clock, ExternalLink } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 const googleReviews = [
@@ -47,12 +47,11 @@ export function TrustProof() {
         </div>
 
         {/* Big Numbers Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-3 gap-6 mb-16">
           {[
             { value: '2.512', label: 'Recensioni Google', icon: Star, color: 'text-yellow-500' },
             { value: '16', label: 'Anni di Esperienza', icon: Clock, color: 'text-[var(--electric-blue)]' },
             { value: '130K+', label: 'Dispositivi Riparati', icon: Shield, color: 'text-[var(--whatsapp-green)]' },
-            { value: '2', label: 'Sedi in Campania', icon: MapPin, color: 'text-[var(--premium-gold)]' },
           ].map((stat, index) => (
             <div
               key={index}
@@ -141,32 +140,12 @@ export function TrustProof() {
           </div>
         </div>
 
-        {/* Locations */}
-        <div
-          className="mt-12 grid md:grid-cols-2 gap-6"
-        >
-          <div className="flex items-start gap-4 p-6 border border-border rounded-xl">
-            <MapPin className="w-6 h-6 text-[var(--electric-blue)] flex-shrink-0 mt-1" />
-            <div>
-              <h4 className="font-semibold text-foreground">Sede Nocera Inferiore</h4>
-              <p className="text-muted-foreground text-sm">Via S. D&apos;Alessandro, 61 - 84014 Nocera Inferiore (SA)</p>
-            </div>
-          </div>
-          <div className="flex items-start gap-4 p-6 border border-border rounded-xl">
-            <MapPin className="w-6 h-6 text-[var(--electric-blue)] flex-shrink-0 mt-1" />
-            <div>
-              <h4 className="font-semibold text-foreground">Sede Cava de&apos; Tirreni</h4>
-              <p className="text-muted-foreground text-sm">Via A. Sorrentino, 35 - 84013 Cava de&apos; Tirreni (SA)</p>
-            </div>
-          </div>
-        </div>
-
         {/* Trust Statement */}
         <div
           className="mt-12 text-center"
         >
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            <strong className="text-foreground">Non siamo una scuola teorica.</strong> Siamo tecnici che riparano 
+            <strong className="text-foreground">Non siamo una scuola teorica.</strong> Siamo tecnici che riparano
             smartphone ogni giorno da 16 anni. Quello che insegniamo è quello che facciamo
             quotidianamente nel nostro laboratorio con clienti reali.
           </p>

@@ -31,12 +31,12 @@ export const content = {
         subheadline: 'Percorso 1-to-1 col Capotecnico, licenza professionale verificabile, sbocco lavorativo concreto.',
       },
     },
-    description: 'Da 16 anni ripariamo 900 dispositivi al mese nei nostri due laboratori. Ora insegniamo a fare lo stesso a te. 1-to-1 con un Capotecnico vero, calendario costruito sui tuoi tempi, licenza professionale che il mercato riconosce.',
+    description: '1-to-1 in videocall live col Capotecnico. Da casa tua, ovunque in Italia. Da 16 anni ripariamo 900 dispositivi al mese nei nostri due laboratori. Ora insegniamo a fare lo stesso a te. Calendario costruito sui tuoi tempi, licenza professionale che il mercato riconosce.',
     priceTeaser: 'Da €1.490',
     installmentTeaser: 'o 3 rate da €497 con Klarna',
     primaryCta: 'Iscriviti Ora',
     secondaryCta: 'Parla con un Capotecnico',
-    trustBar: '4,9/5 su Google - Dal 2009 - 2 laboratori in Campania - 130.000+ dispositivi riparati',
+    trustBar: '4,9/5 su Google - Dal 2009 - 130.000+ dispositivi riparati - Ovunque in Italia',
     trustBadges: [
       { icon: 'shield', label: 'Pagamento Sicuro Stripe' },
       { icon: 'creditCard', label: 'Klarna - 3 rate senza interessi' },
@@ -88,7 +88,8 @@ export const content = {
         earningsRange: '€40 - €120 per riparazione',
         marketCoverage: 'La maggior parte delle riparazioni quotidiane',
         features: [
-          '30 ore 1-to-1 col Capotecnico',
+          'Da casa tua, ovunque in Italia',
+          '30 ore 1-to-1 in videocall live col Capotecnico',
           'Calendario flessibile, costruito su di te',
           'Kit hardware professionale in comodato d\'uso',
           'Licenza professionale LV1 verificabile via QR',
@@ -112,7 +113,8 @@ export const content = {
         earningsRange: '€80 - €200 per riparazione',
         marketCoverage: 'Quasi tutto il mercato, incluso quello che gli altri rifiutano',
         features: [
-          '50 ore 1-to-1 col Capotecnico',
+          'Da casa tua, ovunque in Italia',
+          '50 ore 1-to-1 in videocall live col Capotecnico',
           'Calendario flessibile + priorità di prenotazione',
           'Kit hardware professionale in proprietà (te lo tieni)',
           'Licenza professionale LV2 verificabile via QR',
@@ -137,7 +139,8 @@ export const content = {
         earningsRange: '€150 - €400+ per riparazione',
         marketCoverage: '100% del mercato, incluse riparazioni che oggi vengono mandate a noi',
         features: [
-          '80 ore 1-to-1 col Capotecnico',
+          'Da casa tua, ovunque in Italia',
+          '80 ore 1-to-1 in videocall live col Capotecnico',
           'Massima priorità sul calendario',
           'Kit completo + stazione microsaldatura inclusa, in proprietà',
           'Licenza professionale LV3 verificabile via QR',
@@ -192,8 +195,8 @@ export const content = {
     points: [
       {
         icon: 'users',
-        title: '1-to-1 col Capotecnico, sempre.',
-        description: 'Niente videocorsi preregistrati, niente classi da 30 persone. Solo tu e un Capotecnico esperto, in diretta, su misura sui tuoi tempi e sui tuoi obiettivi.',
+        title: '1-to-1 in videocall live col Capotecnico',
+        description: 'Niente videocorsi preregistrati, niente classi affollate. Solo tu e un Capotecnico esperto, in diretta via videocall, su misura sui tuoi tempi e sui tuoi obiettivi. Da ovunque in Italia.',
       },
       {
         icon: 'wrench',
@@ -259,7 +262,7 @@ export const content = {
       },
       {
         question: 'Il corso è online o in presenza?',
-        answer: 'Le lezioni sono live online 1-to-1 col Capotecnico, con calendario flessibile costruito sui tuoi tempi. NON sono videocorsi preregistrati. Il kit hardware te lo spediamo a casa. L\'esame finale e la consegna della licenza fisica avvengono nei nostri laboratori in Campania, oppure online con sessione registrata se non puoi spostarti.',
+        answer: 'Il corso si svolge in videocall live 1-to-1 col Capotecnico, con calendario flessibile concordato sui tuoi tempi. NON sono videocorsi preregistrati: è una vera lezione in diretta. Il kit hardware ti arriva a casa, ovunque tu sia in Italia. L\'esame finale e la consegna licenza avvengono in sessione live online registrata, valida a tutti gli effetti.',
       },
       {
         question: 'Cosa vuol dire "kit in comodato d\'uso" o "in proprietà"?',
@@ -310,9 +313,9 @@ export const content = {
       },
     ],
     contacts: {
-      phone: '[Numero di telefono]',
+      phone: '+39 389 967 7650',
       email: 'info@istitutosubito.com',
-      whatsapp: '[Numero WhatsApp]',
+      whatsapp: '+39 389 967 7650',
     },
     links: {
       corso: [
@@ -333,7 +336,7 @@ export const content = {
       ],
     },
     copyright: '© 2026 Istituto Subito - Subito Riparato S.r.l. - Tutti i diritti riservati',
-    vatInfo: 'P.IVA: [INSERIRE P.IVA]',
+    vatInfo: 'P.IVA: 05953900656',
   },
 
   grazie: {

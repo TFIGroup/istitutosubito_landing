@@ -96,7 +96,7 @@ export function Testimonials({ onOpenLeadModal }: TestimonialsProps) {
               </div>
 
               {/* Text */}
-              <p className="text-muted-foreground text-sm mb-4 line-clamp-4">
+              <p className="text-gray-700 text-sm mb-4 line-clamp-4">
                 {review.text}
               </p>
 

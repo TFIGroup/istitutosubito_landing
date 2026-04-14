@@ -25,7 +25,7 @@ export function Hero({ onCheckout, onOpenLeadModal, isLoading }: HeroProps) {
   
   // Get hero variant from env var, default to 'A'
   const variant = (process.env.NEXT_PUBLIC_HERO_VARIANT as 'A' | 'B') || 'A'
-  const headline = hero.variants[variant]
+  const headline = hero.variants[variant] || hero.variants.A
   
   const spotsRemaining = getSpotsRemaining()
   const urgent = isUrgent()

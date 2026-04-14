@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { LegalLayout } from '@/components/legal-layout'
+import { TERMS_VERSION, TERMS_LAST_UPDATED } from '@/lib/terms-version'
 
 export const metadata: Metadata = {
   title: 'Termini e Condizioni — Istituto Subito',
@@ -10,7 +11,7 @@ export default function TerminiPage() {
   return (
     <LegalLayout>
       <h1>Termini e Condizioni di Vendita</h1>
-      <p><strong>Ultimo aggiornamento: 14 gennaio 2026</strong></p>
+      <p><strong>Versione {TERMS_VERSION} — Ultimo aggiornamento: {TERMS_LAST_UPDATED}</strong></p>
 
       <h2>1. Premessa</h2>
       <p>Le presenti Condizioni Generali di Vendita disciplinano l&apos;acquisto dei servizi formativi offerti tramite il sito istitutosubito.com (di seguito &quot;Sito&quot;) da parte di CR Store S.r.l. (di seguito &quot;Venditore&quot; o &quot;Istituto Subito&quot;).</p>

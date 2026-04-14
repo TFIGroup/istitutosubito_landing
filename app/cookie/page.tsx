@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { LegalLayout } from '@/components/legal-layout'
+import { TERMS_VERSION, TERMS_LAST_UPDATED } from '@/lib/terms-version'
 
 export const metadata: Metadata = {
   title: 'Cookie Policy — Istituto Subito',
@@ -10,7 +11,7 @@ export default function CookiePage() {
   return (
     <LegalLayout>
       <h1>Cookie Policy</h1>
-      <p><strong>Ultimo aggiornamento: 14 gennaio 2026</strong></p>
+      <p><strong>Versione {TERMS_VERSION} — Ultimo aggiornamento: {TERMS_LAST_UPDATED}</strong></p>
 
       <h2>Cosa sono i cookie</h2>
       <p>I cookie sono piccoli file di testo che i siti visitati inviano al dispositivo dell&apos;utente, dove vengono memorizzati per essere ritrasmessi agli stessi siti alla visita successiva.</p>

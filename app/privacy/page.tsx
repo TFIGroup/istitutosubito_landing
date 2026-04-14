@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { LegalLayout } from '@/components/legal-layout'
+import { TERMS_VERSION, TERMS_LAST_UPDATED } from '@/lib/terms-version'
 
 export const metadata: Metadata = {
   title: 'Privacy Policy — Istituto Subito',
@@ -10,7 +11,7 @@ export default function PrivacyPage() {
   return (
     <LegalLayout>
       <h1>Privacy Policy</h1>
-      <p><strong>Ultimo aggiornamento: 14 gennaio 2026</strong></p>
+      <p><strong>Versione {TERMS_VERSION} — Ultimo aggiornamento: {TERMS_LAST_UPDATED}</strong></p>
 
       <h2>1. Titolare del Trattamento</h2>
       <p>Il Titolare del trattamento dei dati personali e&apos;:</p>

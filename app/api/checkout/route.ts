@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
     // Create embedded checkout session
     const sessionConfig: Stripe.Checkout.SessionCreateParams = {
       mode: 'payment',
-      ui_mode: 'embedded_page',
+      ui_mode: 'embedded',
       return_url: `${baseUrl}/grazie?session_id={CHECKOUT_SESSION_ID}`,
       locale: 'it',
       metadata: {
@@ -78,10 +78,11 @@ export async function POST(request: NextRequest) {
     const session = await stripe.checkout.sessions.create(sessionConfig)
 
     return NextResponse.json({ clientSecret: session.client_secret })
-  } catch (error) {
-    console.error('Checkout session error:', error)
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : 'Unknown error'
+    console.error('Checkout session error:', message, error)
     return NextResponse.json(
-      { error: 'Failed to create checkout session' },
+      { error: `Checkout error: ${message}` },
       { status: 500 }
     )
   }

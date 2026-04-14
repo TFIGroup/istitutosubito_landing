@@ -6,9 +6,10 @@ import { sendEmail } from '@/lib/email'
 import { checkoutConfirmationHtml, internalNotificationHtml } from '@/lib/email-templates'
 import { generateTermsPdf } from '@/lib/generate-terms-pdf'
 import { getTierById } from '@/lib/tiers'
+import { saveCheckoutEvent, updateDeliveryStatus } from '@/lib/db'
 
 // Notifica Zoho Cliq con fuochi d'artificio
-async function notifyCliq(data: {
+async function notifyCliq(sessionId: string, data: {
   fullName: string
   tier: string
   tierName: string
@@ -20,7 +21,10 @@ async function notifyCliq(data: {
   sessionId: string
 }) {
   const zohoUrl = process.env.ZOHO_CLIQ_WEBHOOK_URL
-  if (!zohoUrl) return
+  if (!zohoUrl) {
+    await updateDeliveryStatus(sessionId, 'cliq', 'failed', 'ZOHO_CLIQ_WEBHOOK_URL non configurato')
+    return
+  }
 
   const message = [
     `🎆🎆🎆 VENDITA! 🎆🎆🎆`,
@@ -43,9 +47,10 @@ async function notifyCliq(data: {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ text: message }),
     })
-    console.log('Notifica Cliq inviata')
+    await updateDeliveryStatus(sessionId, 'cliq', 'sent')
   } catch (err) {
-    console.error('Errore notifica Cliq:', err)
+    const msg = err instanceof Error ? err.message : 'Unknown'
+    await updateDeliveryStatus(sessionId, 'cliq', 'failed', msg)
   }
 }
 
@@ -55,33 +60,21 @@ export async function POST(request: NextRequest) {
   const signature = headersList.get('stripe-signature')
 
   if (!signature) {
-    return NextResponse.json(
-      { error: 'Missing stripe-signature header' },
-      { status: 400 }
-    )
+    return NextResponse.json({ error: 'Missing stripe-signature header' }, { status: 400 })
   }
 
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET
-
   if (!webhookSecret) {
-    console.error('STRIPE_WEBHOOK_SECRET is not configured')
-    return NextResponse.json(
-      { error: 'Webhook secret not configured' },
-      { status: 500 }
-    )
+    return NextResponse.json({ error: 'Webhook secret not configured' }, { status: 500 })
   }
 
   let event: Stripe.Event
-
   try {
     event = stripe!.webhooks.constructEvent(body, signature, webhookSecret)
   } catch (err) {
     const errorMessage = err instanceof Error ? err.message : 'Unknown error'
     console.error(`Webhook signature verification failed: ${errorMessage}`)
-    return NextResponse.json(
-      { error: `Webhook Error: ${errorMessage}` },
-      { status: 400 }
-    )
+    return NextResponse.json({ error: `Webhook Error: ${errorMessage}` }, { status: 400 })
   }
 
   switch (event.type) {
@@ -89,14 +82,6 @@ export async function POST(request: NextRequest) {
       const session = event.data.object as Stripe.Checkout.Session
       const meta = session.metadata || {}
 
-      console.log('=== CHECKOUT COMPLETED ===')
-      console.log('Session ID:', session.id)
-      console.log('Customer Email:', session.customer_email)
-      console.log('Amount Total:', session.amount_total)
-      console.log('Metadata:', meta)
-      console.log('========================')
-
-      // Estrai dati dalla metadata
       const tier = meta.tier || 'lv1'
       const tierData = getTierById(tier)
       const tierName = tierData?.name || tier.toUpperCase()
@@ -114,103 +99,91 @@ export async function POST(request: NextRequest) {
       const timestamp = meta.terms_accepted_at || new Date().toISOString()
       const amountTotal = session.amount_total ? (session.amount_total / 100).toFixed(0) : '0'
 
-      // 1. Notifica Zoho Cliq con fuochi d'artificio
-      await notifyCliq({
-        fullName,
-        tier,
-        tierName,
-        amount: amountTotal,
-        email,
-        phone,
-        city,
-        province,
-        sessionId: session.id,
-      })
-
-      // 2. Genera PDF dei termini accettati
-      let pdfBuffer: Buffer | null = null
+      // 0. Salva nel database
       try {
-        pdfBuffer = await generateTermsPdf({
-          fullName,
+        await saveCheckoutEvent({
+          session_id: session.id,
+          tier,
+          full_name: fullName,
           email,
           phone,
           address,
-          postalCode,
+          postal_code: postalCode,
           city,
           province,
-          tierName,
-          tier,
-          price: amountTotal,
-          orderId: session.id,
-          timestamp,
-          ip,
-          termsVersion,
+          delivery_notes: deliveryNotes,
+          marketing_consent: marketingConsent,
+          terms_version: termsVersion,
+          terms_accepted_at: timestamp,
+          ip_address: ip,
+          user_agent: meta.user_agent || '',
+          amount_cents: session.amount_total || 0,
+        })
+      } catch (dbErr) {
+        console.error('Errore salvataggio DB (non bloccante):', dbErr)
+      }
+
+      // 1. Notifica Zoho Cliq
+      await notifyCliq(session.id, {
+        fullName, tier, tierName, amount: amountTotal,
+        email, phone, city, province, sessionId: session.id,
+      })
+
+      // 2. Genera PDF dei termini
+      let pdfBuffer: Buffer | null = null
+      try {
+        pdfBuffer = await generateTermsPdf({
+          fullName, email, phone, address, postalCode, city, province,
+          tierName, tier, price: amountTotal, orderId: session.id,
+          timestamp, ip, termsVersion,
         })
       } catch (pdfErr) {
         console.error('Errore generazione PDF:', pdfErr)
       }
 
-      // 3. Email conferma all'utente
+      const pdfAttachment = pdfBuffer ? [{
+        filename: `Termini-Iscrizione-IstitutoSubito-${session.id.slice(-8)}.pdf`,
+        content: pdfBuffer,
+        contentType: 'application/pdf' as const,
+      }] : undefined
+
+      // 3. Email conferma utente
       if (email) {
         try {
           await sendEmail({
             to: email,
             subject: 'Iscrizione confermata - Istituto Subito',
             html: checkoutConfirmationHtml({
-              fullName,
-              tierName,
-              price: amountTotal,
-              orderId: session.id,
-              phone,
-              address,
-              postalCode,
-              city,
-              province,
+              fullName, tierName, price: amountTotal, orderId: session.id,
+              phone, address, postalCode, city, province,
             }),
-            attachments: pdfBuffer ? [{
-              filename: `Termini-Iscrizione-IstitutoSubito-${session.id.slice(-8)}.pdf`,
-              content: pdfBuffer,
-              contentType: 'application/pdf',
-            }] : undefined,
+            attachments: pdfAttachment,
           })
-          console.log('Email conferma inviata a:', email)
-        } catch (emailErr) {
-          console.error('Errore invio email conferma:', emailErr)
+          await updateDeliveryStatus(session.id, 'email_user', 'sent')
+        } catch (err) {
+          const msg = err instanceof Error ? err.message : 'Unknown'
+          console.error('Errore email utente:', msg)
+          await updateDeliveryStatus(session.id, 'email_user', 'failed', msg)
         }
       }
 
-      // 4. Email interna a info@istitutosubito.com
+      // 4. Email interna info@
       try {
         await sendEmail({
           to: 'info@istitutosubito.com',
           subject: `Nuova iscrizione - ${fullName} - ${tier.toUpperCase()}`,
           html: internalNotificationHtml({
-            fullName,
-            email,
-            phone,
-            tierName,
-            tier,
-            price: amountTotal,
-            orderId: session.id,
-            address,
-            postalCode,
-            city,
-            province,
-            deliveryNotes,
-            marketingConsent,
-            termsVersion,
-            ip,
-            timestamp,
+            fullName, email, phone, tierName, tier, price: amountTotal,
+            orderId: session.id, address, postalCode, city, province,
+            deliveryNotes, marketingConsent, termsVersion, ip, timestamp,
           }),
-          attachments: pdfBuffer ? [{
-            filename: `Termini-Iscrizione-IstitutoSubito-${session.id.slice(-8)}.pdf`,
-            content: pdfBuffer,
-            contentType: 'application/pdf',
-          }] : undefined,
+          attachments: pdfAttachment,
         })
-        console.log('Email interna inviata a info@istitutosubito.com')
-      } catch (emailErr) {
-        console.error('Errore invio email interna:', emailErr)
+        await updateDeliveryStatus(session.id, 'email_internal', 'sent')
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : 'Unknown'
+        console.error('Errore email interna:', msg)
+        await updateDeliveryStatus(session.id, 'email_internal', 'failed', msg)
       }
 
       // 5. Email CONGRATULAZIONI a Daniele
@@ -236,9 +209,11 @@ export async function POST(request: NextRequest) {
             </div>
           `,
         })
-        console.log('Email congratulazioni inviata a Daniele')
-      } catch (emailErr) {
-        console.error('Errore invio email congratulazioni:', emailErr)
+        await updateDeliveryStatus(session.id, 'email_daniele', 'sent')
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : 'Unknown'
+        console.error('Errore email Daniele:', msg)
+        await updateDeliveryStatus(session.id, 'email_daniele', 'failed', msg)
       }
 
       break

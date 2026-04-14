@@ -1,8 +1,7 @@
 'use client'
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
-import { Suspense } from 'react'
 import { useToast } from '@/hooks/use-toast'
 
 // Sections
@@ -33,13 +32,12 @@ import { LeadModal } from '@/components/conversion/lead-modal'
 import { ExitIntentModal } from '@/components/conversion/exit-intent-modal'
 import { CheckoutModal } from '@/components/conversion/checkout-modal'
 
-function LandingPageContent() {
-  const [checkoutTierId, setCheckoutTierId] = useState<string | null>(null)
-  const [isLeadModalOpen, setIsLeadModalOpen] = useState(false)
-  const { toast } = useToast()
+// Tiny component that uses useSearchParams — isolated in its own Suspense
+// so it doesn't block the entire page from being statically prerendered
+function CheckoutCancelledHandler() {
   const searchParams = useSearchParams()
+  const { toast } = useToast()
 
-  // Handle cancelled checkout
   useEffect(() => {
     if (searchParams.get('checkout') === 'cancelled') {
       toast({
@@ -49,6 +47,13 @@ function LandingPageContent() {
       })
     }
   }, [searchParams, toast])
+
+  return null
+}
+
+export default function LandingPage() {
+  const [checkoutTierId, setCheckoutTierId] = useState<string | null>(null)
+  const [isLeadModalOpen, setIsLeadModalOpen] = useState(false)
 
   const handleCheckout = useCallback((tierId: string = 'lv2') => {
     markCheckoutStarted()
@@ -61,6 +66,11 @@ function LandingPageContent() {
 
   return (
     <>
+      {/* Handle ?checkout=cancelled without blocking SSR */}
+      <Suspense fallback={null}>
+        <CheckoutCancelledHandler />
+      </Suspense>
+
       {/* Abandonment Banner */}
       <AbandonmentBanner onContinue={() => handleCheckout('lv2')} />
 
@@ -139,17 +149,5 @@ function LandingPageContent() {
       {/* Mobile bottom spacing for sticky bar */}
       <div className="h-20 md:hidden" />
     </>
-  )
-}
-
-export default function LandingPage() {
-  return (
-    <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <div className="animate-pulse text-muted-foreground">Caricamento...</div>
-      </div>
-    }>
-      <LandingPageContent />
-    </Suspense>
   )
 }

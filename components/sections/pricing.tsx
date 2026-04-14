@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { Check, MessageCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { content } from '@/lib/content'
@@ -21,34 +20,23 @@ export function Pricing({ onSelectTier, onOpenLeadModal, loadingTier }: PricingP
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <div
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--electric-blue)]/10 text-[var(--electric-blue)] text-sm font-medium mb-6"
           >
             {pricing.badge}
-          </motion.div>
+          </div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+          <h2
             className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance"
           >
             {pricing.headline}
-          </motion.h2>
+          </h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+          <p
             className="text-lg text-muted-foreground"
           >
             {pricing.description}
-          </motion.p>
+          </p>
         </div>
 
         {/* Pricing Cards */}
@@ -79,11 +67,7 @@ interface PricingCardProps {
 
 function PricingCard({ tier, index, onSelectCheckout, onSelectLead, isLoading }: PricingCardProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.1 + index * 0.1 }}
+    <div
       className={cn(
         'relative flex flex-col rounded-2xl border p-6 md:p-8',
         tier.popular
@@ -163,6 +147,6 @@ function PricingCard({ tier, index, onSelectCheckout, onSelectLead, isLoading }:
           </Button>
         )}
       </div>
-    </motion.div>
+    </div>
   )
 }

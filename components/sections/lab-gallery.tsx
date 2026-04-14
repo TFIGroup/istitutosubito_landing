@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import Image from 'next/image'
 
 const labImages = [
@@ -32,46 +31,31 @@ export function LabGallery() {
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <div
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--electric-blue)]/10 text-[var(--electric-blue)] text-sm font-medium mb-6"
           >
             Il Nostro Laboratorio
-          </motion.div>
+          </div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+          <h2
             className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance"
           >
             Attrezzature Professionali di Ultima Generazione
-          </motion.h2>
+          </h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+          <p
             className="text-lg text-muted-foreground"
           >
             Imparerai utilizzando le stesse attrezzature dei centri assistenza autorizzati: 
             microscopi professionali, stazioni di saldatura, macchine laser e molto altro.
-          </motion.p>
+          </p>
         </div>
 
         {/* Gallery Grid - 2x2 on mobile, single row on desktop */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           {labImages.map((image, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 + index * 0.05 }}
               className="group relative aspect-square overflow-hidden rounded-xl"
             >
               <Image
@@ -87,7 +71,7 @@ export function LabGallery() {
                   {image.caption}
                 </span>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

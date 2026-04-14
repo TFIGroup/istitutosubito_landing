@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { Star, ExternalLink, MessageCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
@@ -54,10 +53,7 @@ export function Testimonials({ onOpenLeadModal }: TestimonialsProps) {
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <div
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--premium-gold-light)] text-[var(--navy)] text-sm font-medium mb-6"
           >
             <svg viewBox="0 0 24 24" className="w-4 h-4">
@@ -67,41 +63,29 @@ export function Testimonials({ onOpenLeadModal }: TestimonialsProps) {
               <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
             </svg>
             Recensioni verificate Google
-          </motion.div>
+          </div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+          <h2
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 text-balance"
           >
             Cosa dicono i nostri corsisti
-          </motion.h2>
+          </h2>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+          <p
             className="text-lg text-muted-foreground max-w-2xl mx-auto"
           >
             Recensioni reali di chi ha completato il corso. Clicca per verificarle su Google Maps.
-          </motion.p>
+          </p>
         </div>
 
         {/* Reviews Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {realReviews.map((review, index) => (
-            <motion.a
+            <a
               key={review.name}
               href={review.link}
               target="_blank"
               rel="noopener noreferrer"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 + index * 0.05 }}
               className="group bg-card rounded-xl p-6 border border-border hover:border-[var(--electric-blue)] hover:shadow-lg transition-all duration-300"
             >
               {/* Stars */}
@@ -128,15 +112,12 @@ export function Testimonials({ onOpenLeadModal }: TestimonialsProps) {
                   Verifica su Google <ExternalLink className="w-3 h-3" />
                 </span>
               </div>
-            </motion.a>
+            </a>
           ))}
         </div>
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="text-center"
         >
           <p className="text-muted-foreground mb-4">
@@ -150,7 +131,7 @@ export function Testimonials({ onOpenLeadModal }: TestimonialsProps) {
             <MessageCircle className="w-5 h-5 mr-2" />
             Parla con un Capotecnico
           </Button>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

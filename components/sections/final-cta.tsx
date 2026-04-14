@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { MessageCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -35,10 +34,7 @@ export function FinalCTA({ onCheckout, onOpenLeadModal, isLoading }: FinalCTAPro
       <div className="relative max-w-3xl mx-auto px-4 md:px-6 lg:px-8 text-center">
         {/* Scarcity */}
         {scarcity.enabled && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <div
             className={cn(
               "inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6",
               urgent
@@ -51,36 +47,24 @@ export function FinalCTA({ onCheckout, onOpenLeadModal, isLoading }: FinalCTAPro
               urgent ? "bg-red-400" : "bg-[var(--whatsapp-green)]"
             )} />
             {scarcity.messages.spotsLabel}: {spotsRemaining}
-          </motion.div>
+          </div>
         )}
 
         {/* Headline */}
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
+        <h2
           className="text-3xl md:text-4xl font-bold text-white mb-4 text-balance"
         >
           {finalCta.headline}
-        </motion.h2>
+        </h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
+        <p
           className="text-lg text-white/80 mb-8"
         >
           {finalCta.description}
-        </motion.p>
+        </p>
 
         {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
+        <div
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <Button
@@ -99,7 +83,7 @@ export function FinalCTA({ onCheckout, onOpenLeadModal, isLoading }: FinalCTAPro
             <MessageCircle className="w-5 h-5 mr-2" />
             {finalCta.secondaryCta}
           </Button>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

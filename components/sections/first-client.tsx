@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { CheckCircle2, Euro, Briefcase } from 'lucide-react'
 
@@ -10,10 +9,7 @@ export function FirstClient() {
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+          <div
           >
             <span className="inline-block px-4 py-1.5 rounded-full bg-[var(--premium-gold)] text-[var(--navy)] text-sm font-semibold mb-6">
               La Realta
@@ -60,13 +56,10 @@ export function FirstClient() {
                 </li>
               ))}
             </ul>
-          </motion.div>
-          
+          </div>
+
           {/* Image */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+          <div
             className="relative"
           >
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
@@ -78,7 +71,7 @@ export function FirstClient() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

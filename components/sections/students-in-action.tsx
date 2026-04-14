@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { CheckCircle2, Users } from 'lucide-react'
 import { content } from '@/lib/content'
@@ -13,10 +12,7 @@ export function StudentsInAction() {
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Image Side */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+          <div
             className="relative"
           >
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
@@ -30,11 +26,7 @@ export function StudentsInAction() {
             </div>
             
             {/* Floating Badge - uses stats from content */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
+            <div
               className="absolute -bottom-4 -right-4 md:bottom-8 md:-right-8 bg-white rounded-xl shadow-xl p-4 border border-border"
             >
               <div className="flex items-center gap-3">
@@ -46,14 +38,11 @@ export function StudentsInAction() {
                   <div className="text-sm text-muted-foreground">{manifesto.stats[2]?.label || 'Tasso occupazione'}</div>
                 </div>
               </div>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Content Side */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+          <div
             className="lg:pl-8"
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--premium-gold-light)] text-[var(--navy)] text-sm font-medium mb-6">
@@ -78,20 +67,16 @@ export function StudentsInAction() {
                 'Supporto WhatsApp anche dopo il diploma',
                 '80% dei diplomati trova lavoro entro 6 mesi',
               ].map((item, index) => (
-                <motion.li
+                <li
                   key={index}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 + index * 0.1 }}
                   className="flex items-start gap-3"
                 >
                   <CheckCircle2 className="w-5 h-5 text-[var(--whatsapp-green)] mt-0.5 flex-shrink-0" />
                   <span className="text-foreground">{item}</span>
-                </motion.li>
+                </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

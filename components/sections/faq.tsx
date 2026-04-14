@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import {
   Accordion,
   AccordionContent,
@@ -17,33 +16,21 @@ export function FAQ() {
       <div className="max-w-3xl mx-auto px-4 md:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <div
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--electric-blue)]/10 text-[var(--electric-blue)] text-sm font-medium mb-6"
           >
             {faq.badge}
-          </motion.div>
+          </div>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+          <h2
             className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance"
           >
             {faq.headline}
-          </motion.h2>
+          </h2>
         </div>
 
         {/* Accordion */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-        >
+        <div>
           <Accordion type="single" collapsible className="space-y-4">
             {faq.questions.map((item, index) => (
               <AccordionItem
@@ -60,7 +47,7 @@ export function FAQ() {
               </AccordionItem>
             ))}
           </Accordion>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

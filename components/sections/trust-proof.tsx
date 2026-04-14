@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { Star, MapPin, Shield, Clock, ExternalLink } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -35,10 +34,7 @@ export function TrustProof() {
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         
         {/* Main Trust Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-[var(--navy)] mb-4">
@@ -48,7 +44,7 @@ export function TrustProof() {
             Istituto Subito nasce dall&apos;esperienza di Subito Riparato, il laboratorio 
             di riparazione smartphone più recensito della Campania.
           </p>
-        </motion.div>
+        </div>
 
         {/* Big Numbers Grid */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
@@ -58,26 +54,19 @@ export function TrustProof() {
             { value: '130K+', label: 'Dispositivi Riparati', icon: Shield, color: 'text-[var(--whatsapp-green)]' },
             { value: '2', label: 'Sedi in Campania', icon: MapPin, color: 'text-[var(--premium-gold)]' },
           ].map((stat, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
               className="text-center p-6 bg-gray-50 rounded-xl"
             >
               <stat.icon className={`w-8 h-8 ${stat.color} mx-auto mb-3`} />
               <div className="text-3xl md:text-4xl font-bold text-[var(--navy)]">{stat.value}</div>
               <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Google Reviews Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="bg-[var(--navy)] rounded-2xl p-8 md:p-12"
         >
           {/* Google Badge */}
@@ -121,12 +110,8 @@ export function TrustProof() {
           {/* Reviews Grid */}
           <div className="grid md:grid-cols-3 gap-6">
             {googleReviews.map((review, index) => (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 + index * 0.1 }}
                 className="bg-white/10 backdrop-blur rounded-xl p-6"
               >
                 {/* Highlight Badge */}
@@ -151,16 +136,13 @@ export function TrustProof() {
                   <span className="text-white font-medium text-sm">{review.name}</span>
                   <span className="text-white/50 text-xs">{review.date}</span>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* Locations */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="mt-12 grid md:grid-cols-2 gap-6"
         >
           <div className="flex items-start gap-4 p-6 border border-border rounded-xl">
@@ -177,13 +159,10 @@ export function TrustProof() {
               <p className="text-muted-foreground text-sm">Via A. Sorrentino, 35 - 84013 Cava de&apos; Tirreni (SA)</p>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Trust Statement */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="mt-12 text-center"
         >
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -191,7 +170,7 @@ export function TrustProof() {
             smartphone ogni giorno da 16 anni. Quello che insegniamo è quello che facciamo
             quotidianamente nel nostro laboratorio con clienti reali.
           </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

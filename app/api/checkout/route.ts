@@ -147,7 +147,7 @@ export async function POST(request: NextRequest) {
       console.error('Email notifica interna fallita (non bloccante):', emailErr)
     }
 
-    return NextResponse.json({ url: session.url })
+    return NextResponse.json({ clientSecret: session.client_secret })
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : 'Unknown error'
     console.error('Checkout session error:', message, error)

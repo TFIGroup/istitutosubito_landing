@@ -31,7 +31,7 @@ export const content = {
         subheadline: 'Percorso 1-to-1 col Capotecnico, licenza professionale verificabile, sbocco lavorativo concreto.',
       },
     },
-    description: '1-to-1 in videocall live col Capotecnico. Da casa tua, ovunque in Italia. Da 16 anni ripariamo 900 dispositivi al mese nei nostri due laboratori. Ora insegniamo a fare lo stesso a te. Calendario costruito sui tuoi tempi, licenza professionale che il mercato riconosce.',
+    description: '1-to-1 in videocall live col Capotecnico. Da casa tua, ovunque in Italia. Da 16 anni ripariamo 900 dispositivi al mese nei nostri due laboratori. Ora insegniamo a fare lo stesso a te.',
     priceTeaser: 'Da €1.490',
     installmentTeaser: 'o 3 rate da €497 con Klarna',
     primaryCta: 'Iscriviti Ora',
@@ -304,17 +304,20 @@ export const content = {
     tagline: 'La scuola dei tecnici riparatori. Powered by Subito Riparato, dal 2009.',
     addresses: [
       {
-        label: 'Sede Nocera Inferiore',
+        label: 'Sede Corsi',
+        address: 'Nocera Inferiore (SA) - Laboratorio attrezzato 100 mq dedicato alla formazione',
+      },
+      {
+        label: 'Laboratorio Nocera Inferiore',
         address: 'Via S. D\'Alessandro, 61 - 84014 Nocera Inferiore (SA)',
       },
       {
-        label: 'Sede Cava de\' Tirreni',
+        label: 'Laboratorio Cava de\' Tirreni',
         address: 'Via A. Sorrentino, 35 - 84013 Cava de\' Tirreni (SA)',
       },
     ],
     contacts: {
       phone: '+39 389 967 7650',
-      email: 'info@istitutosubito.com',
       whatsapp: '+39 389 967 7650',
     },
     links: {
@@ -336,7 +339,7 @@ export const content = {
       ],
     },
     copyright: '© 2026 Istituto Subito - Subito Riparato S.r.l. - Tutti i diritti riservati',
-    vatInfo: 'P.IVA: 05953900656',
+    vatInfo: 'CR STORE SRL - P.IVA IT08955511210 - Capitale sociale versato € 10.000',
   },
 
   grazie: {

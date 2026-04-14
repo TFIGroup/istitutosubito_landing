@@ -184,7 +184,7 @@ export const content = {
     ],
     demoLink: {
       label: 'Prova: scansiona o clicca per vedere una licenza vera',
-      url: 'https://www.subitoriparato.com/12345678-00/',
+      url: 'https://www.subitoriparato.com/19284725-11',
     },
   },
 
@@ -328,7 +328,7 @@ export const content = {
       ],
       supporto: [
         { label: 'FAQ', href: '#faq' },
-        { label: 'Verifica una licenza', href: 'https://www.subitoriparato.com/12345678-00/' },
+        { label: 'Verifica una licenza', href: 'https://www.subitoriparato.com/19284725-11' },
         { label: 'Parla con un Capotecnico', href: '#lead' },
       ],
       legale: [

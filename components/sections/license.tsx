@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { Check, QrCode, Shield, ExternalLink } from 'lucide-react'
+import { Check, QrCode, ExternalLink } from 'lucide-react'
 import { content } from '@/lib/content'
 import { Button } from '@/components/ui/button'
 
@@ -61,77 +61,39 @@ export function License() {
             )}
           </div>
 
-          {/* License Card Visual */}
-          <div
-            className="relative"
-          >
-            {/* Decorative background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[var(--electric-blue)]/20 to-[var(--premium-gold)]/20 rounded-3xl transform rotate-3" />
-
-            {/* License Card Mock */}
-            <div className="relative bg-gradient-to-br from-[var(--navy)] to-[var(--navy-light)] rounded-2xl p-6 md:p-8 shadow-2xl">
-              {/* Card Header */}
-              <div className="flex items-center justify-between mb-6">
-                <div>
-                  <h3 className="text-white font-bold text-lg">ISTITUTO SUBITO</h3>
-                  <p className="text-white/60 text-sm">Licenza Professionale</p>
-                </div>
-                <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center">
-                  <Shield className="w-6 h-6 text-[var(--premium-gold)]" />
-                </div>
+          {/* License Card — Foto reale */}
+          <div className="relative">
+            {/* Immagine principale: mano che tiene la licenza in laboratorio */}
+            <a
+              href={license.demoLink?.url || '#'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block group"
+            >
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/licenza-mano.png"
+                  alt="Licenza Professionale Tecnico Smartphone — esempio reale tenuta in mano in laboratorio"
+                  width={800}
+                  height={533}
+                  className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                  priority
+                />
               </div>
+              <p className="mt-3 text-center text-sm text-muted-foreground">
+                {license.demoLink?.label || 'Clicca per verificare una licenza reale'}
+              </p>
+            </a>
 
-              {/* Card Content */}
-              <div className="flex gap-4 mb-6">
-                {/* Photo placeholder */}
-                <div className="w-20 h-24 bg-white/20 rounded-lg flex items-center justify-center">
-                  <span className="text-white/40 text-xs text-center">FOTO<br/>TECNICO</span>
-                </div>
-
-                {/* Info */}
-                <div className="flex-1">
-                  <div className="mb-2">
-                    <span className="text-white/60 text-xs">NOME</span>
-                    <p className="text-white font-medium">Mario Rossi</p>
-                  </div>
-                  <div className="mb-2">
-                    <span className="text-white/60 text-xs">LIVELLO</span>
-                    <p className="text-[var(--premium-gold)] font-bold">LV2 - Microsaldatore</p>
-                  </div>
-                  <div>
-                    <span className="text-white/60 text-xs">NUMERO LICENZA</span>
-                    <p className="text-white font-mono text-sm">IS-2024-00847</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* QR Code */}
-              <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                <div>
-                  <span className="text-white/60 text-xs">VERIFICA ONLINE</span>
-                  <p className="text-white text-sm">subitoriparato.com/verifica</p>
-                </div>
-                <div className="w-16 h-16 bg-white rounded-lg p-2">
-                  <div className="w-full h-full bg-[var(--navy)] rounded grid grid-cols-5 gap-0.5 p-1">
-                    {/* Simple QR code pattern */}
-                    {Array.from({ length: 25 }).map((_, i) => (
-                      <div
-                        key={i}
-                        className={`rounded-sm ${
-                          [0,1,2,4,5,6,10,12,14,18,19,20,22,23,24].includes(i)
-                            ? 'bg-white'
-                            : 'bg-transparent'
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Validity badge */}
-              <div className="absolute -bottom-3 -right-3 bg-[var(--premium-gold)] text-[var(--navy)] px-4 py-1 rounded-full text-sm font-bold shadow-lg">
-                VALIDA
-              </div>
+            {/* Dettaglio close-up della licenza */}
+            <div className="mt-6 rounded-xl overflow-hidden shadow-lg border border-border">
+              <Image
+                src="/licenza-daniele-vietri.png"
+                alt="Licenza Professionale Tecnico Smartphone — Daniele Vietri, LV3, 95/100, numero 19284725-11"
+                width={800}
+                height={500}
+                className="w-full h-auto object-cover"
+              />
             </div>
           </div>
         </div>

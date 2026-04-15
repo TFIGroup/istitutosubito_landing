@@ -67,23 +67,7 @@ export function LabGallery() {
           </div>
           <p className="mt-4 text-sm text-muted-foreground leading-relaxed max-w-3xl mx-auto text-center">
             Una lezione live tipica, vista dal tuo banco di lavoro. Il Capotecnico ti vede lavorare dall&apos;alto in tempo reale grazie alla webcam con braccio che ti spediamo a casa, ti corregge la posizione delle mani, ti suggerisce il prossimo passo. Esattamente come se fosse seduto accanto a te.
-          </p>
-
-          {/* Micro trust row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6 max-w-3xl mx-auto">
-            {[
-              { emoji: '📦', text: 'Kit hardware professionale completo, spedito a casa' },
-              { emoji: '📸', text: 'Webcam con braccio e ring light incluse' },
-              { emoji: '🎯', text: '1-to-1 in videocall live col Capotecnico' },
-              { emoji: '🇮🇹', text: 'Spedito ovunque in Italia. Zero pensieri tecnici.' },
-            ].map((item) => (
-              <div key={item.text} className="flex items-center gap-2 text-sm text-muted-foreground">
-                <span>{item.emoji}</span>
-                <span>{item.text}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+          </p>        </div>
 
         {/* Gallery Grid - 2x2 on mobile, single row on desktop */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">

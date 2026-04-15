@@ -9,9 +9,9 @@ const labImages = [
     caption: 'Microscopio Professionale',
   },
   {
-    src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/412cd0b4-fb59-41e1-9442-1510241fd76d%202.JPG-LmwPxwIzhbz9wDb6bSFhW3wLNjwWD4.jpeg',
-    alt: 'Smartphone smontati su tappetino antistatico blu',
-    caption: 'Riparazione in Corso',
+    src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/F0FBD725-466D-4925-BA70-0E66B55F2871.PNG-zYivbqK3g0jbDhAZFExnmxd6Jovwuc.png',
+    alt: 'Tecnici al lavoro nel laboratorio Subito Riparato',
+    caption: 'Formazione in Laboratorio',
   },
   {
     src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/0f1f78dc-2aa3-4c92-8fc5-d11b3cf26a9e.JPG-1p6QxoVcQCLCpFbAxymENs1ItSlw2L.jpeg',
@@ -53,21 +53,6 @@ export function LabGallery() {
             I laboratori che vedi sono la nostra sede corsi a Nocera Inferiore: 100 mq attrezzati dedicati alla formazione. Puoi frequentare qui in presenza, oppure da casa tua in videocall live col Capotecnico, ovunque tu sia in Italia.
           </p>
         </div>
-
-        {/* Main videocall photo + caption */}
-        <div className="mb-8">
-          <div className="relative aspect-video md:aspect-[21/9] overflow-hidden rounded-xl">
-            <Image
-              src="/questa.png"
-              alt="Lezione videocall live: il Capotecnico vede il banco di lavoro dall'alto"
-              fill
-              className="object-cover"
-              sizes="100vw"
-            />
-          </div>
-          <p className="mt-4 text-sm text-muted-foreground leading-relaxed max-w-3xl mx-auto text-center">
-            Una lezione live tipica, vista dal tuo banco di lavoro. Il Capotecnico ti vede lavorare dall&apos;alto in tempo reale grazie alla webcam con braccio che ti spediamo a casa, ti corregge la posizione delle mani, ti suggerisce il prossimo passo. Esattamente come se fosse seduto accanto a te.
-          </p>        </div>
 
         {/* Gallery Grid - 2x2 on mobile, single row on desktop */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">

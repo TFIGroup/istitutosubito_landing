@@ -17,8 +17,8 @@ export function StudentsInAction() {
           >
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/F0FBD725-466D-4925-BA70-0E66B55F2871.PNG-zYivbqK3g0jbDhAZFExnmxd6Jovwuc.png"
-                alt="Studenti del corso durante la formazione pratica"
+                src="/questa.png"
+                alt="Lezione videocall live: il Capotecnico vede il banco di lavoro dall'alto"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"

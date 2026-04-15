@@ -50,8 +50,39 @@ export function LabGallery() {
             microscopi professionali, stazioni di saldatura, macchine laser e molto altro.
           </p>
           <p className="text-sm text-muted-foreground/80 italic">
-            I laboratori che vedi sono la nostra sede corsi a Nocera Inferiore: 100 mq attrezzati dedicati alla formazione. Puoi frequentare qui in presenza, oppure da casa tua in videocall live col Capotecnico — ovunque tu sia in Italia.
+            I laboratori che vedi sono la nostra sede corsi a Nocera Inferiore: 100 mq attrezzati dedicati alla formazione. Puoi frequentare qui in presenza, oppure da casa tua in videocall live col Capotecnico, ovunque tu sia in Italia.
           </p>
+        </div>
+
+        {/* Main videocall photo + caption */}
+        <div className="mb-8">
+          <div className="relative aspect-video md:aspect-[21/9] overflow-hidden rounded-xl">
+            <Image
+              src="/questa.png"
+              alt="Lezione videocall live: il Capotecnico vede il banco di lavoro dall'alto"
+              fill
+              className="object-cover"
+              sizes="100vw"
+            />
+          </div>
+          <p className="mt-4 text-sm text-muted-foreground leading-relaxed max-w-3xl mx-auto text-center">
+            Una lezione live tipica, vista dal tuo banco di lavoro. Il Capotecnico ti vede lavorare dall&apos;alto in tempo reale grazie alla webcam con braccio che ti spediamo a casa. Ti corregge la posizione delle mani, ti suggerisce il prossimo passo, ti aiuta in diretta. Esattamente come se fosse seduto accanto a te.
+          </p>
+
+          {/* Micro trust row */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-6 max-w-3xl mx-auto">
+            {[
+              { emoji: '📦', text: 'Kit completo a casa' },
+              { emoji: '📸', text: 'Webcam e ring light incluse' },
+              { emoji: '🎯', text: '1-to-1 in videocall live' },
+              { emoji: '🇮🇹', text: 'Spedito ovunque in Italia' },
+            ].map((item) => (
+              <div key={item.text} className="flex items-center gap-2 text-sm text-muted-foreground">
+                <span>{item.emoji}</span>
+                <span>{item.text}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Gallery Grid - 2x2 on mobile, single row on desktop */}

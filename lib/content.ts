@@ -196,7 +196,7 @@ export const content = {
   whyUs: {
     badge: 'Il differenziale',
     headline: 'Perché Istituto Subito non è come gli altri corsi.',
-    description: 'Quattro cose che nessun altro in Italia mette insieme.',
+    description: 'Sei cose che nessun altro in Italia mette insieme.',
     points: [
       {
         icon: 'users',
@@ -217,6 +217,18 @@ export const content = {
         icon: 'award',
         title: 'Una licenza che vale.',
         description: 'L\'unica licenza professionale del settore con sistema di verifica pubblica via QR. Chi ti assume sa subito chi sei.',
+      },
+      {
+        icon: 'package',
+        title: 'Kit: apri la scatola. Sei già operativo.',
+        description: 'Ti spediamo a casa tutto: strumenti professionali, webcam con braccio e ring light, materiale didattico. Zero da comprare, zero da configurare.',
+        href: '#welcome-kit',
+      },
+      {
+        icon: 'shield',
+        title: 'Soddisfatto o Rimborsato.',
+        description: 'Hai 14 giorni di garanzia soddisfatti o rimborsati. Inoltre, la prima lezione live col Capotecnico è di prova: se non ti convince, rimborso pieno entro 48 ore.',
+        href: '#garanzia',
       },
     ],
   },

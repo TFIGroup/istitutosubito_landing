@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { CheckCircle2, Users } from 'lucide-react'
+import { CheckCircle2, Video } from 'lucide-react'
 import { content } from '@/lib/content'
 
 export function StudentsInAction() {
@@ -25,17 +25,17 @@ export function StudentsInAction() {
               />
             </div>
             
-            {/* Floating Badge - uses stats from content */}
+            {/* Floating Badge */}
             <div
               className="absolute -bottom-4 -right-4 md:bottom-8 md:-right-8 bg-white rounded-xl shadow-xl p-4 border border-border"
             >
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-[var(--whatsapp-green)] flex items-center justify-center">
-                  <Users className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 rounded-full bg-[var(--electric-blue)] flex items-center justify-center">
+                  <Video className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-foreground">{manifesto.stats[2]?.value || '80%'}</div>
-                  <div className="text-sm text-muted-foreground">{manifesto.stats[2]?.label || 'Tasso occupazione'}</div>
+                  <div className="text-2xl font-bold text-foreground">Live</div>
+                  <div className="text-sm text-muted-foreground">1-to-1 col Capotecnico</div>
                 </div>
               </div>
             </div>
@@ -54,8 +54,8 @@ export function StudentsInAction() {
             </h2>
 
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Dal primo giorno lavori su dispositivi reali, fianco a fianco col Capotecnico. 
-              Niente classi affollate, niente teoria inutile. Solo pratica mirata sulle riparazioni 
+              Dal primo giorno lavori su dispositivi reali che ti spediremo noi insieme al kit completo di strumenti e webcam, fianco a fianco col Capotecnico.
+              Niente classi affollate, niente teoria inutile. Solo pratica mirata sulle riparazioni
               che il mercato richiede ogni giorno.
             </p>
 

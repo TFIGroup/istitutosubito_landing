@@ -116,7 +116,7 @@ export function Hero({ onCheckout, onOpenLeadModal, isLoading }: HeroProps) {
             href="https://share.google/jctGdFe0ugTXK4qvw"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8 p-5 bg-white/10 backdrop-blur rounded-xl border border-white/20 hover:bg-white/15 transition-colors"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8 p-5 bg-white/10 backdrop-blur rounded-xl border border-white/20 hover:bg-white/15 hover:border-white/40 transition-all cursor-pointer"
           >
             <div className="flex items-center gap-2">
               <svg viewBox="0 0 24 24" className="w-7 h-7">

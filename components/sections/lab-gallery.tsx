@@ -9,7 +9,7 @@ const labImages = [
     caption: 'Microscopio Professionale',
   },
   {
-    src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/F0FBD725-466D-4925-BA70-0E66B55F2871.PNG-zYivbqK3g0jbDhAZFExnmxd6Jovwuc.png',
+    src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/412cd0b4-fb59-41e1-9442-1510241fd76d%202.JPG-LmwPxwIzhbz9wDb6bSFhW3wLNjwWD4.jpeg',
     alt: 'Tecnici al lavoro nel laboratorio Subito Riparato',
     caption: 'Formazione in Laboratorio',
   },

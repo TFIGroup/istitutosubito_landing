@@ -16,12 +16,6 @@ const kitBlocks = [
       "Webcam plug-and-play con braccio articolato e luce led integrata. Si fissa al banco di lavoro in 30 secondi, posizionata dall'alto: il Capotecnico vede esattamente quello che fai durante le lezioni live. Zero da configurare, zero da comprare.",
   },
   {
-    emoji: '📚',
-    title: 'Materiale didattico digitale',
-    description:
-      "Schede di riparazione passo-passo, video tutorial di approfondimento e accesso al gruppo WhatsApp dei corsisti. Tutto disponibile dal giorno dell'iscrizione.",
-  },
-  {
     emoji: '📞',
     title: 'Contatto diretto col Capotecnico',
     description:
@@ -45,36 +39,33 @@ export function WelcomeKit() {
           </p>
         </div>
 
-        {/* Two columns: image + grid */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Left: lab/kit image */}
-          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-muted">
-            <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/412cd0b4-fb59-41e1-9442-1510241fd76d%202.JPG-LmwPxwIzhbz9wDb6bSFhW3wLNjwWD4.jpeg"
-              alt="Strumenti professionali e smartphone sul banco di lavoro"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-          </div>
+        {/* Image */}
+        <div className="relative aspect-[21/9] rounded-2xl overflow-hidden bg-muted mb-10">
+          <Image
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/412cd0b4-fb59-41e1-9442-1510241fd76d%202.JPG-LmwPxwIzhbz9wDb6bSFhW3wLNjwWD4.jpeg"
+            alt="Strumenti professionali e smartphone sul banco di lavoro"
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+        </div>
 
-          {/* Right: 2x2 grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {kitBlocks.map((block) => (
-              <div
-                key={block.title}
-                className="bg-muted/50 rounded-xl p-5 border border-border"
-              >
-                <span className="text-2xl mb-3 block">{block.emoji}</span>
-                <h3 className="font-semibold text-foreground mb-1.5">
-                  {block.title}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {block.description}
-                </p>
-              </div>
-            ))}
-          </div>
+        {/* 3 blocks row */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {kitBlocks.map((block) => (
+            <div
+              key={block.title}
+              className="bg-muted/50 rounded-xl p-6 border border-border"
+            >
+              <span className="text-2xl mb-3 block">{block.emoji}</span>
+              <h3 className="font-semibold text-foreground mb-2">
+                {block.title}
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {block.description}
+              </p>
+            </div>
+          ))}
         </div>
 
         {/* Trust signal row */}

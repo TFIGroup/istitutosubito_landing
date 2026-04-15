@@ -17,6 +17,7 @@ import { FAQ } from '@/components/sections/faq'
 import { FinalCTA } from '@/components/sections/final-cta'
 import { Footer } from '@/components/sections/footer'
 import { LabGallery } from '@/components/sections/lab-gallery'
+import { WelcomeKit } from '@/components/sections/welcome-kit'
 import { StudentsInAction } from '@/components/sections/students-in-action'
 import { License } from '@/components/sections/license'
 import { TrustProof } from '@/components/sections/trust-proof'
@@ -32,7 +33,7 @@ import { LeadModal } from '@/components/conversion/lead-modal'
 import { ExitIntentModal } from '@/components/conversion/exit-intent-modal'
 import { CheckoutModal } from '@/components/conversion/checkout-modal'
 
-// Tiny component that uses useSearchParams — isolated in its own Suspense
+// Tiny component that uses useSearchParams, isolated in its own Suspense
 // so it doesn't block the entire page from being statically prerendered
 function CheckoutCancelledHandler() {
   const searchParams = useSearchParams()
@@ -92,6 +93,8 @@ export default function LandingPage() {
         <FirstClient />
 
         <LabGallery />
+
+        <WelcomeKit />
 
         <Pricing
           onSelectTier={handleCheckout}

@@ -10,6 +10,7 @@ export interface Tier {
   tagline: string
   price: number // in cents for Stripe
   priceFormatted: string
+  priceFullFormatted: string
   installmentFormatted: string
   popular: boolean
   features: string[]
@@ -21,10 +22,10 @@ export interface Tier {
 }
 
 // Map content.ts pricing launch prices (in EUR) to Stripe cents
-const PRICE_MAP: Record<string, { price: number; priceFormatted: string; installmentFormatted: string }> = {
-  lv1: { price: 149000, priceFormatted: '1.490', installmentFormatted: '497' },
-  lv2: { price: 249000, priceFormatted: '2.490', installmentFormatted: '830' },
-  lv3: { price: 399000, priceFormatted: '3.990', installmentFormatted: '1.330' },
+const PRICE_MAP: Record<string, { price: number; priceFormatted: string; priceFullFormatted: string; installmentFormatted: string }> = {
+  lv1: { price: 149000, priceFormatted: '1.490', priceFullFormatted: '1.690', installmentFormatted: '497' },
+  lv2: { price: 249000, priceFormatted: '2.490', priceFullFormatted: '2.690', installmentFormatted: '830' },
+  lv3: { price: 399000, priceFormatted: '3.990', priceFullFormatted: '4.190', installmentFormatted: '1.330' },
 }
 
 export const TIERS: Tier[] = content.pricing.tiers.map((t) => ({
@@ -34,6 +35,7 @@ export const TIERS: Tier[] = content.pricing.tiers.map((t) => ({
   tagline: t.tagline,
   price: PRICE_MAP[t.id].price,
   priceFormatted: PRICE_MAP[t.id].priceFormatted,
+  priceFullFormatted: PRICE_MAP[t.id].priceFullFormatted,
   installmentFormatted: PRICE_MAP[t.id].installmentFormatted,
   popular: t.highlighted,
   features: t.features,

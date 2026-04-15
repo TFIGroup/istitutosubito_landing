@@ -92,10 +92,16 @@ function PricingCard({ tier, index, onSelectCheckout, onSelectLead, isLoading }:
 
       {/* Price */}
       <div className="text-center mb-6">
-        <div className="flex items-baseline justify-center gap-1">
+        <div className="flex items-center justify-center gap-3">
+          <span className="text-lg md:text-xl text-muted-foreground line-through">
+            €{tier.priceFullFormatted}
+          </span>
           <span className="text-4xl md:text-5xl font-bold text-foreground">
             €{tier.priceFormatted}
           </span>
+        </div>
+        <div className="inline-block mt-2 px-3 py-1 rounded-full bg-[var(--whatsapp-green)]/10 text-[var(--whatsapp-green)] text-xs font-semibold">
+          Risparmia €{(Number(tier.priceFullFormatted.replace('.', '')) - Number(tier.priceFormatted.replace('.', ''))).toLocaleString('it-IT')}
         </div>
         <p className="text-sm text-muted-foreground mt-2">
           o 3 rate da €{tier.installmentFormatted}

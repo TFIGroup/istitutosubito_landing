@@ -62,7 +62,7 @@ export function FirstClient() {
           <div
             className="relative"
           >
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="/primo-cliente.png"
                 alt="Smartphone riparato, banconote e strumenti professionali sul banco di lavoro"

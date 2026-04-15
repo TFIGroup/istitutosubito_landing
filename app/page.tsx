@@ -20,6 +20,7 @@ import { LabGallery } from '@/components/sections/lab-gallery'
 import { StudentsInAction } from '@/components/sections/students-in-action'
 import { License } from '@/components/sections/license'
 import { TrustProof } from '@/components/sections/trust-proof'
+import { PainProfiles } from '@/components/sections/pain-profiles'
 import { Guarantee } from '@/components/sections/guarantee'
 
 // Conversion Components
@@ -84,6 +85,8 @@ export default function LandingPage() {
         />
 
         <TrustProof />
+
+        <PainProfiles />
 
         <Manifesto />
 

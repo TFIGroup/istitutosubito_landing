@@ -15,7 +15,7 @@ export function StudentsInAction() {
           <div
             className="relative"
           >
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="/questa.png"
                 alt="Lezione videocall live: il Capotecnico vede il banco di lavoro dall'alto"

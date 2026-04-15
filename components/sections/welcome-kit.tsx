@@ -1,22 +1,23 @@
 'use client'
 
 import Image from 'next/image'
+import { Package, Camera, MessageCircle } from 'lucide-react'
 
 const kitBlocks = [
   {
-    emoji: '📦',
+    icon: Package,
     title: 'Kit hardware professionale',
     description:
       "Cacciaviti di precisione, pinzette ESD, tappetino magnetico, spudger, multimetro digitale e tutti gli strumenti per le 10 riparazioni più richieste. Oltre 20 strumenti professionali, già pronti all'uso.",
   },
   {
-    emoji: '📸',
+    icon: Camera,
     title: 'Webcam, braccio e ring light',
     description:
       "Webcam plug-and-play con braccio articolato e luce led integrata. Si fissa al banco di lavoro in 30 secondi, posizionata dall'alto: il Capotecnico vede esattamente quello che fai durante le lezioni live. Zero da configurare, zero da comprare.",
   },
   {
-    emoji: '📞',
+    icon: MessageCircle,
     title: 'Contatto diretto col Capotecnico',
     description:
       'Numero WhatsApp dedicato per domande tra una lezione e l\'altra. Risposte rapide, supporto reale, mai chatbot.',
@@ -52,20 +53,25 @@ export function WelcomeKit() {
 
         {/* 3 blocks row */}
         <div className="grid md:grid-cols-3 gap-6">
-          {kitBlocks.map((block) => (
-            <div
-              key={block.title}
-              className="bg-muted/50 rounded-xl p-6 border border-border"
-            >
-              <span className="text-2xl mb-3 block">{block.emoji}</span>
-              <h3 className="font-semibold text-foreground mb-2">
-                {block.title}
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
-                {block.description}
-              </p>
-            </div>
-          ))}
+          {kitBlocks.map((block) => {
+            const Icon = block.icon
+            return (
+              <div
+                key={block.title}
+                className="p-6 bg-card rounded-xl border border-border"
+              >
+                <div className="w-12 h-12 rounded-lg bg-[var(--electric-blue)]/10 flex items-center justify-center mb-4">
+                  <Icon className="w-6 h-6 text-[var(--electric-blue)]" />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground mb-2">
+                  {block.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {block.description}
+                </p>
+              </div>
+            )
+          })}
         </div>
 
         {/* Trust signal row */}

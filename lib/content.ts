@@ -43,7 +43,7 @@ export const content = {
       { icon: 'creditCard', label: 'Klarna - 3 rate senza interessi' },
       { icon: 'undo', label: 'Soddisfatto o Rimborsato', href: '#garanzia' },
       { icon: 'flag', label: 'Made in Italy - dal 2009' },
-      { icon: 'package', label: 'Kit completo spedito a casa' },
+      { icon: 'package', label: 'Kit completo spedito a casa', href: '#welcome-kit' },
     ],
     licenseCaption: 'Clicca la licenza per verificarne una reale',
   },

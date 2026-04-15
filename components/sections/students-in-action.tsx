@@ -10,12 +10,12 @@ export function StudentsInAction() {
   return (
     <section className="py-16 md:py-24 bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-stretch">
           {/* Image Side */}
           <div
             className="relative"
           >
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative h-full min-h-[300px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="/questa.png"
                 alt="Lezione videocall live: il Capotecnico vede il banco di lavoro dall'alto"

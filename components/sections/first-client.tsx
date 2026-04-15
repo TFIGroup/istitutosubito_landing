@@ -7,7 +7,7 @@ export function FirstClient() {
   return (
     <section id="corso" className="py-20 md:py-28 bg-[var(--navy)] text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-stretch">
           {/* Content */}
           <div
           >
@@ -62,7 +62,7 @@ export function FirstClient() {
           <div
             className="relative"
           >
-            <div className="relative aspect-square rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative h-full min-h-[300px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="/primo-cliente.png"
                 alt="Smartphone riparato, banconote e strumenti professionali sul banco di lavoro"

@@ -64,8 +64,8 @@ export function FirstClient() {
           >
             <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/412cd0b4-fb59-41e1-9442-1510241fd76d%202.JPG-LmwPxwIzhbz9wDb6bSFhW3wLNjwWD4.jpeg"
-                alt="Riparazione smartphone professionale in corso"
+                src="/primo-cliente.png"
+                alt="Smartphone riparato, banconote e strumenti professionali sul banco di lavoro"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"

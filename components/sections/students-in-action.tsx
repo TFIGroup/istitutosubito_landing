@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { CheckCircle2, Users } from 'lucide-react'
+import { CheckCircle2, Video } from 'lucide-react'
 import { content } from '@/lib/content'
 
 export function StudentsInAction() {
@@ -10,32 +10,32 @@ export function StudentsInAction() {
   return (
     <section className="py-16 md:py-24 bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 items-stretch">
           {/* Image Side */}
           <div
             className="relative"
           >
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative h-full min-h-[300px] rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/F0FBD725-466D-4925-BA70-0E66B55F2871.PNG-zYivbqK3g0jbDhAZFExnmxd6Jovwuc.png"
-                alt="Studenti del corso durante la formazione pratica"
+                src="/questa.png"
+                alt="Lezione videocall live: il Capotecnico vede il banco di lavoro dall'alto"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
             
-            {/* Floating Badge - uses stats from content */}
+            {/* Floating Badge */}
             <div
               className="absolute -bottom-4 -right-4 md:bottom-8 md:-right-8 bg-white rounded-xl shadow-xl p-4 border border-border"
             >
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-[var(--whatsapp-green)] flex items-center justify-center">
-                  <Users className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 rounded-full bg-[var(--electric-blue)] flex items-center justify-center">
+                  <Video className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-foreground">{manifesto.stats[2]?.value || '80%'}</div>
-                  <div className="text-sm text-muted-foreground">{manifesto.stats[2]?.label || 'Tasso occupazione'}</div>
+                  <div className="text-2xl font-bold text-foreground">Live</div>
+                  <div className="text-sm text-muted-foreground">1-to-1 col Capotecnico</div>
                 </div>
               </div>
             </div>
@@ -54,8 +54,8 @@ export function StudentsInAction() {
             </h2>
 
             <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Dal primo giorno lavori su dispositivi reali, fianco a fianco col Capotecnico. 
-              Niente classi affollate, niente teoria inutile. Solo pratica mirata sulle riparazioni 
+              Dal primo giorno lavori su dispositivi reali che ti spediremo noi insieme al kit completo di strumenti e webcam, fianco a fianco col Capotecnico.
+              Niente classi affollate, niente teoria inutile. Solo pratica mirata sulle riparazioni
               che il mercato richiede ogni giorno.
             </p>
 

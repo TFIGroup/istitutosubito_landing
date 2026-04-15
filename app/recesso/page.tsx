@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { LegalLayout } from '@/components/legal-layout'
 
 export const metadata: Metadata = {
-  title: 'Diritto di Recesso — Istituto Subito',
+  title: 'Diritto di Recesso - Istituto Subito',
   description: 'Informativa sul diritto di recesso e modulo tipo per i corsi di CR Store S.r.l. (Istituto Subito).',
 }
 

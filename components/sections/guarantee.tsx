@@ -27,7 +27,7 @@ const guarantees = [
 
 export function Guarantee() {
   return (
-    <section className="py-16 md:py-20 bg-[var(--premium-gold-light)]">
+    <section id="garanzia" className="py-16 md:py-20 bg-[var(--premium-gold-light)]">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         <div
           className="text-center mb-12"
@@ -67,7 +67,7 @@ export function Guarantee() {
           <p className="text-[var(--navy)]/80 max-w-3xl mx-auto">
             <strong className="text-[var(--navy)]">Il nostro obiettivo è il tuo successo.</strong> Non guadagniamo
             nulla da studenti insoddisfatti. Per questo investiamo nella tua formazione come se fosse
-            la nostra reputazione — perché lo è.
+            la nostra reputazione, perché lo è.
           </p>
         </div>
       </div>

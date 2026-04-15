@@ -10,8 +10,8 @@ const labImages = [
   },
   {
     src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/412cd0b4-fb59-41e1-9442-1510241fd76d%202.JPG-LmwPxwIzhbz9wDb6bSFhW3wLNjwWD4.jpeg',
-    alt: 'Smartphone smontati su tappetino antistatico blu',
-    caption: 'Riparazione in Corso',
+    alt: 'Tecnici al lavoro nel laboratorio Subito Riparato',
+    caption: 'Formazione in Laboratorio',
   },
   {
     src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/0f1f78dc-2aa3-4c92-8fc5-d11b3cf26a9e.JPG-1p6QxoVcQCLCpFbAxymENs1ItSlw2L.jpeg',
@@ -50,7 +50,7 @@ export function LabGallery() {
             microscopi professionali, stazioni di saldatura, macchine laser e molto altro.
           </p>
           <p className="text-sm text-muted-foreground/80 italic">
-            I laboratori che vedi sono la nostra sede corsi a Nocera Inferiore: 100 mq attrezzati dedicati alla formazione. Puoi frequentare qui in presenza, oppure da casa tua in videocall live col Capotecnico — ovunque tu sia in Italia.
+            I laboratori che vedi sono la nostra sede corsi a Nocera Inferiore: 100 mq attrezzati dedicati alla formazione. Puoi frequentare qui in presenza, oppure da casa tua in videocall live col Capotecnico, ovunque tu sia in Italia.
           </p>
         </div>
 

@@ -61,7 +61,7 @@ export function License() {
             )}
           </div>
 
-          {/* License Card — Foto reale */}
+          {/* License Card: Foto reale */}
           <div className="relative">
             {/* Immagine principale: mano che tiene la licenza in laboratorio */}
             <a
@@ -73,7 +73,7 @@ export function License() {
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <Image
                   src="/licenza-mano.png"
-                  alt="Licenza Professionale Tecnico Smartphone — esempio reale tenuta in mano in laboratorio"
+                  alt="Licenza Professionale Tecnico Smartphone, esempio reale tenuta in mano in laboratorio"
                   width={800}
                   height={533}
                   className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-[1.02]"
@@ -89,7 +89,7 @@ export function License() {
             <div className="mt-6 rounded-xl overflow-hidden shadow-lg border border-border">
               <Image
                 src="/licenza-daniele-vietri.png"
-                alt="Licenza Professionale Tecnico Smartphone — Daniele Vietri, LV3, 95/100, numero 19284725-11"
+                alt="Licenza Professionale Tecnico Smartphone, Daniele Vietri, LV3, 95/100, numero 19284725-11"
                 width={800}
                 height={500}
                 className="w-full h-auto object-cover"

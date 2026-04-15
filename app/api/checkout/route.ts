@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
     // Create embedded checkout session
     const sessionConfig: Stripe.Checkout.SessionCreateParams = {
       mode: 'payment',
-      ui_mode: 'embedded',
+      ui_mode: 'embedded_page',
       return_url: `${baseUrl}/grazie?session_id={CHECKOUT_SESSION_ID}`,
       locale: 'it',
       metadata: {

@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
             html: `<div style="font-family:sans-serif;text-align:center;padding:40px 20px;">
               <h1>🎉 CONGRATULAZIONI!</h1>
               <p style="font-size:36px;font-weight:800;color:#1E88E5;">&euro;${amountTotal} incassato</p>
-              <p>${fullName} — ${tier.toUpperCase()} ${tierName}</p>
+              <p>${fullName} · ${tier.toUpperCase()} ${tierName}</p>
             </div>`,
           })
           await updateDeliveryStatus(sessionId, 'email_daniele', 'sent')
@@ -97,7 +97,7 @@ export async function POST(request: NextRequest) {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
-                text: `🎆 VENDITA (retry) — €${amountTotal} — ${fullName} — ${tier.toUpperCase()}`,
+                text: `🎆 VENDITA (retry) · €${amountTotal} · ${fullName} · ${tier.toUpperCase()}`,
               }),
             })
             await updateDeliveryStatus(sessionId, 'cliq', 'sent')

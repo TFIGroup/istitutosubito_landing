@@ -8,7 +8,7 @@ const transporter = (() => {
   const pass = process.env.SMTP_PASS
 
   if (!host || !user || !pass) {
-    console.warn('⚠ SMTP non configurato — le email non verranno inviate.')
+    console.warn('⚠ SMTP non configurato. Le email non verranno inviate.')
     return null
   }
 

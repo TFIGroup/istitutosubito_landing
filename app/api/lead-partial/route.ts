@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 
-// Schema flessibile — salva qualsiasi combinazione di dati parziali
+// Schema flessibile: salva qualsiasi combinazione di dati parziali
 const partialLeadSchema = z.object({
   tier: z.string().optional(),
   phone: z.string().min(6).optional(),
@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            text: `Lead checkout (step: ${data.step}) — Tel: +39${data.phone}${data.email ? ` — Email: ${data.email}` : ''}${data.fullName ? ` — Nome: ${data.fullName}` : ''} — Tier: ${data.tier || '?'}`,
+            text: `Lead checkout (step: ${data.step}) · Tel: +39${data.phone}${data.email ? ` · Email: ${data.email}` : ''}${data.fullName ? ` · Nome: ${data.fullName}` : ''} · Tier: ${data.tier || '?'}`,
           }),
         })
       } catch (e) {
@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
       const { sendEmail } = await import('@/lib/email')
       await sendEmail({
         to: 'info@istitutosubito.com',
-        subject: `Lead parziale (${data.step}) — ${data.phone ? '+39' + data.phone : data.email || 'anonimo'}`,
+        subject: `Lead parziale (${data.step}) - ${data.phone ? '+39' + data.phone : data.email || 'anonimo'}`,
         html: `
           <h3>Lead parziale dal checkout</h3>
           <p><strong>Step completato:</strong> ${data.step}</p>
@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
         `,
       })
     } catch {
-      // Non blocca — l'email potrebbe non essere configurata
+      // Non blocca: l'email potrebbe non essere configurata
     }
 
     return NextResponse.json({ ok: true })

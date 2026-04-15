@@ -11,7 +11,7 @@ export function Footer() {
     <footer className="bg-[var(--navy)] text-white">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-12 md:py-16">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
-          {/* Colonna 1 — Brand & contatti operativi */}
+          {/* Colonna 1: Brand & contatti operativi */}
           <div className="md:col-span-1">
             <Link href="/" className="text-xl font-bold mb-3 block">
               {footer.logo}
@@ -58,7 +58,7 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Colonna 2 — Il Corso */}
+          {/* Colonna 2: Il Corso */}
           <div>
             <h4 className="font-semibold mb-4">Il Corso</h4>
             <ul className="space-y-2">
@@ -86,7 +86,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Colonna 3 — Supporto */}
+          {/* Colonna 3: Supporto */}
           <div>
             <h4 className="font-semibold mb-4">Supporto</h4>
             <ul className="space-y-2">
@@ -114,7 +114,7 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Colonna 4 — Legale */}
+          {/* Colonna 4: Legale */}
           <div>
             <h4 className="font-semibold mb-4">Legale</h4>
             <ul className="space-y-2">
@@ -132,7 +132,7 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar — dati legali */}
+        {/* Bottom Bar: dati legali */}
         <div className="pt-8 border-t border-white/10 space-y-1 text-xs text-white/50">
           <p>{footer.legal.line1}</p>
           <p>{footer.legal.line2}</p>

@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
     const timestamp = new Date().toISOString()
     const termsVersion = body.termsVersion || TERMS_VERSION
 
-    // Log completo per audit trail (OPZIONE C — zero-setup)
+    // Log completo per audit trail (OPZIONE C: zero-setup)
     console.log('=== CHECKOUT FORM SUBMITTED ===')
     console.log('Timestamp:', timestamp)
     console.log('IP:', ip)

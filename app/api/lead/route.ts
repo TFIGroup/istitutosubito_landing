@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
     const zohoWebhookUrl = process.env.ZOHO_CLIQ_WEBHOOK_URL
     if (zohoWebhookUrl) {
       const message = [
-        `📞 NUOVO LEAD — Vuole parlare con un Capotecnico`,
+        `📞 NUOVO LEAD - Vuole parlare con un Capotecnico`,
         ``,
         `👤 ${name}`,
         `📱 ${phone}`,
@@ -68,7 +68,7 @@ export async function POST(request: NextRequest) {
       const { sendEmail } = await import('@/lib/email')
       await sendEmail({
         to: 'info@istitutosubito.com',
-        subject: `Nuovo lead — ${name} — ${interest.toUpperCase()}`,
+        subject: `Nuovo lead - ${name} - ${interest.toUpperCase()}`,
         html: `
           <h2>Nuovo lead dal sito</h2>
           <table style="border-collapse:collapse;font-family:sans-serif;font-size:14px;">

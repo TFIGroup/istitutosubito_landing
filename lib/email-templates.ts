@@ -50,7 +50,7 @@ export function checkoutConfirmationHtml(data: CheckoutConfirmationData): string
                   <span style="display:inline-block;width:24px;height:24px;background:#1E88E5;color:#fff;border-radius:50%;text-align:center;line-height:24px;font-size:12px;font-weight:700;">1</span>
                 </td>
                 <td style="padding:8px 0 8px 8px;font-size:14px;color:#555;line-height:1.5;">
-                  <strong>Email di conferma</strong> — questa email e' la tua ricevuta. Conservala.
+                  <strong>Email di conferma</strong>: questa email e' la tua ricevuta. Conservala.
                 </td>
               </tr>
               <tr>
@@ -78,7 +78,7 @@ export function checkoutConfirmationHtml(data: CheckoutConfirmationData): string
             <hr style="border:none;border-top:1px solid #eee;margin:24px 0;">
 
             <p style="color:#888;font-size:13px;margin:0;">
-              Per qualsiasi domanda: <a href="mailto:info@istitutosubito.com" style="color:#1E88E5;">info@istitutosubito.com</a> — <a href="tel:+39389967650" style="color:#1E88E5;">+39 389 967 7650</a>
+              Per qualsiasi domanda: <a href="mailto:info@istitutosubito.com" style="color:#1E88E5;">info@istitutosubito.com</a> · <a href="tel:+39389967650" style="color:#1E88E5;">+39 389 967 7650</a>
             </p>
           </td>
         </tr>
@@ -86,8 +86,8 @@ export function checkoutConfirmationHtml(data: CheckoutConfirmationData): string
         <tr>
           <td style="background:#f8f9fa;padding:16px 32px;border-top:1px solid #eee;">
             <p style="color:#aaa;font-size:11px;margin:0;line-height:1.5;">
-              CR Store S.r.l. — P.IVA IT08955511210 — REA NA-997450<br>
-              Sede legale: Via R. Vastola, 5 — 80040 Poggiomarino (NA)
+              CR Store S.r.l. · P.IVA IT08955511210 · REA NA-997450<br>
+              Sede legale: Via R. Vastola, 5, 80040 Poggiomarino (NA)
             </p>
           </td>
         </tr>

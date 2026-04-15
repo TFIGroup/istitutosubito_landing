@@ -50,7 +50,7 @@ export async function generateTermsPdf(data: TermsPdfData): Promise<Buffer> {
   const mesi = ['gennaio','febbraio','marzo','aprile','maggio','giugno','luglio','agosto','settembre','ottobre','novembre','dicembre']
   const timestampIt = `${date.getDate()} ${mesi[date.getMonth()]} ${date.getFullYear()} alle ${String(date.getHours()).padStart(2,'0')}:${String(date.getMinutes()).padStart(2,'0')} CET`
 
-  // ===== PAGINA 1 — Riepilogo iscrizione =====
+  // ===== PAGINA 1: Riepilogo iscrizione =====
   const p1 = addPage()
   let y = 792
 
@@ -85,7 +85,7 @@ export async function generateTermsPdf(data: TermsPdfData): Promise<Buffer> {
 
   drawFooter(p1)
 
-  // ===== PAGINA 2-3 — Termini accettati =====
+  // ===== PAGINA 2-3: Termini accettati =====
   const termsText = `TERMINI E CONDIZIONI ACCETTATI AL MOMENTO DEL CHECKOUT
 
 Versione: ${data.termsVersion}

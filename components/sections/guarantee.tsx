@@ -67,7 +67,7 @@ export function Guarantee() {
           <p className="text-[var(--navy)]/80 max-w-3xl mx-auto">
             <strong className="text-[var(--navy)]">Il nostro obiettivo è il tuo successo.</strong> Non guadagniamo
             nulla da studenti insoddisfatti. Per questo investiamo nella tua formazione come se fosse
-            la nostra reputazione — perché lo è.
+            la nostra reputazione, perché lo è.
           </p>
         </div>
       </div>

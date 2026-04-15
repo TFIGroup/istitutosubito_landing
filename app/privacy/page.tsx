@@ -3,7 +3,7 @@ import { LegalLayout } from '@/components/legal-layout'
 import { TERMS_VERSION, TERMS_LAST_UPDATED } from '@/lib/terms-version'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — Istituto Subito',
+  title: 'Privacy Policy - Istituto Subito',
   description: 'Informativa sulla privacy e trattamento dati personali di CR Store S.r.l. (Istituto Subito).',
 }
 
@@ -11,7 +11,7 @@ export default function PrivacyPage() {
   return (
     <LegalLayout>
       <h1>Privacy Policy</h1>
-      <p><strong>Versione {TERMS_VERSION} — Ultimo aggiornamento: {TERMS_LAST_UPDATED}</strong></p>
+      <p><strong>Versione {TERMS_VERSION} · Ultimo aggiornamento: {TERMS_LAST_UPDATED}</strong></p>
 
       <h2>1. Titolare del Trattamento</h2>
       <p>Il Titolare del trattamento dei dati personali e&apos;:</p>
@@ -48,11 +48,11 @@ export default function PrivacyPage() {
       <h2>3. Finalita&apos; del Trattamento</h2>
       <p>I dati personali sono trattati per le seguenti finalita&apos;:</p>
       <ol type="a">
-        <li><strong>Erogazione del servizio formativo</strong> — gestione iscrizioni, fornitura del corso, rilascio della licenza professionale</li>
-        <li><strong>Gestione contrattuale e amministrativa</strong> — fatturazione, adempimenti fiscali, supporto post-vendita</li>
-        <li><strong>Comunicazioni di servizio</strong> — invio di informazioni operative relative al corso, modifiche orari, materiali didattici</li>
-        <li><strong>Marketing diretto</strong> (previo consenso esplicito) — invio di comunicazioni promozionali su nuovi corsi e iniziative</li>
-        <li><strong>Adempimento obblighi di legge</strong> — risposta a richieste delle autorita&apos;, conservazione dati fiscali</li>
+        <li><strong>Erogazione del servizio formativo</strong>: gestione iscrizioni, fornitura del corso, rilascio della licenza professionale</li>
+        <li><strong>Gestione contrattuale e amministrativa</strong>: fatturazione, adempimenti fiscali, supporto post-vendita</li>
+        <li><strong>Comunicazioni di servizio</strong>: invio di informazioni operative relative al corso, modifiche orari, materiali didattici</li>
+        <li><strong>Marketing diretto</strong> (previo consenso esplicito): invio di comunicazioni promozionali su nuovi corsi e iniziative</li>
+        <li><strong>Adempimento obblighi di legge</strong>: risposta a richieste delle autorita&apos;, conservazione dati fiscali</li>
       </ol>
 
       <h2>4. Base Giuridica del Trattamento</h2>
@@ -79,11 +79,11 @@ export default function PrivacyPage() {
       <h2>7. Soggetti Terzi e Trasferimento Dati</h2>
       <p>I dati possono essere comunicati a:</p>
       <ul>
-        <li><strong>Stripe Payments Europe Ltd</strong> (Irlanda) — per la gestione dei pagamenti</li>
-        <li><strong>Vercel Inc.</strong> (USA, con clausole contrattuali standard UE) — per l&apos;hosting del sito</li>
-        <li><strong>Google LLC</strong> (USA, clausole standard UE) — per analytics e servizi pubblicitari</li>
-        <li><strong>Meta Platforms Ireland Ltd</strong> — per analytics, pixel di conversione e comunicazioni pubblicitarie</li>
-        <li><strong>Consulenti fiscali, legali e amministrativi</strong> — per adempimenti obbligatori</li>
+        <li><strong>Stripe Payments Europe Ltd</strong> (Irlanda): per la gestione dei pagamenti</li>
+        <li><strong>Vercel Inc.</strong> (USA, con clausole contrattuali standard UE): per l&apos;hosting del sito</li>
+        <li><strong>Google LLC</strong> (USA, clausole standard UE): per analytics e servizi pubblicitari</li>
+        <li><strong>Meta Platforms Ireland Ltd</strong>: per analytics, pixel di conversione e comunicazioni pubblicitarie</li>
+        <li><strong>Consulenti fiscali, legali e amministrativi</strong>: per adempimenti obbligatori</li>
       </ul>
       <p>I dati non sono ceduti a terzi per finalita&apos; commerciali.</p>
 

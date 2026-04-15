@@ -150,7 +150,7 @@ export function CheckoutModal({ isOpen, onClose, tierId }: CheckoutModalProps) {
             className="fixed inset-0 bg-black/60 z-50"
           />
 
-          {/* Modal — piu grande, full screen su mobile */}
+          {/* Modal: piu grande, full screen su mobile */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -166,7 +166,7 @@ export function CheckoutModal({ isOpen, onClose, tierId }: CheckoutModalProps) {
                 </h2>
                 {tierData && step < 4 && (
                   <p className="text-sm text-muted-foreground mt-0.5">
-                    &euro;{tierData.priceFormatted} — oppure 3 rate da &euro;{tierData.installmentFormatted}
+                    &euro;{tierData.priceFormatted} · oppure 3 rate da &euro;{tierData.installmentFormatted}
                   </p>
                 )}
               </div>
@@ -208,7 +208,7 @@ export function CheckoutModal({ isOpen, onClose, tierId }: CheckoutModalProps) {
             {/* Content */}
             <div className="flex-1 overflow-y-auto">
               <AnimatePresence mode="wait">
-                {/* ===== STEP 1 — Telefono ===== */}
+                {/* ===== STEP 1: Telefono ===== */}
                 {step === 1 && (
                   <motion.div
                     key="step1"
@@ -257,7 +257,7 @@ export function CheckoutModal({ isOpen, onClose, tierId }: CheckoutModalProps) {
                   </motion.div>
                 )}
 
-                {/* ===== STEP 2 — Email + Nome ===== */}
+                {/* ===== STEP 2: Email + Nome ===== */}
                 {step === 2 && (
                   <motion.div
                     key="step2"
@@ -309,7 +309,7 @@ export function CheckoutModal({ isOpen, onClose, tierId }: CheckoutModalProps) {
                   </motion.div>
                 )}
 
-                {/* ===== STEP 3 — Indirizzo + Termini ===== */}
+                {/* ===== STEP 3: Indirizzo + Termini ===== */}
                 {step === 3 && (
                   <motion.div
                     key="step3"
@@ -399,7 +399,7 @@ export function CheckoutModal({ isOpen, onClose, tierId }: CheckoutModalProps) {
                         </div>
                       )}
 
-                      {/* Riepilogo + CTA — sticky su mobile */}
+                      {/* Riepilogo + CTA: sticky su mobile */}
                       <div className="sticky bottom-0 bg-white pt-4 pb-2 -mx-6 px-6 border-t border-border md:static md:border-0 md:mx-0 md:px-0 md:pt-2 md:pb-0">
                         {tierData && (
                           <div className="bg-muted/50 rounded-xl p-3 text-center mb-4">
@@ -434,7 +434,7 @@ export function CheckoutModal({ isOpen, onClose, tierId }: CheckoutModalProps) {
                   </motion.div>
                 )}
 
-                {/* ===== STEP 4 — Stripe Embedded Checkout ===== */}
+                {/* ===== STEP 4: Stripe Embedded Checkout ===== */}
                 {step === 4 && (
                   <motion.div
                     key="step4"

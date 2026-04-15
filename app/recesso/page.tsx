@@ -3,7 +3,7 @@ import { LegalLayout } from '@/components/legal-layout'
 import { TERMS_VERSION, TERMS_LAST_UPDATED } from '@/lib/terms-version'
 
 export const metadata: Metadata = {
-  title: 'Diritto di Recesso — Istituto Subito',
+  title: 'Diritto di Recesso - Istituto Subito',
   description: 'Informativa sul diritto di recesso e modulo tipo per i corsi di CR Store S.r.l. (Istituto Subito).',
 }
 
@@ -11,7 +11,7 @@ export default function RecessoPage() {
   return (
     <LegalLayout>
       <h1>Diritto di Recesso</h1>
-      <p><strong>Versione {TERMS_VERSION} — Ultimo aggiornamento: {TERMS_LAST_UPDATED}</strong></p>
+      <p><strong>Versione {TERMS_VERSION} · Ultimo aggiornamento: {TERMS_LAST_UPDATED}</strong></p>
 
       <h2>Termini del recesso</h2>
       <p>L&apos;Utente che agisce in qualita&apos; di consumatore ha diritto di recedere dal contratto entro <strong>14 giorni</strong> dalla data di conferma dell&apos;iscrizione, senza dover fornire alcuna motivazione, ai sensi degli artt. 52 e seguenti del D.lgs 206/2005 (Codice del Consumo).</p>

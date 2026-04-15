@@ -31,7 +31,7 @@ export const content = {
         subheadline: 'Percorso 1-to-1 col Capotecnico, licenza professionale verificabile, sbocco lavorativo concreto.',
       },
     },
-    description: '1-to-1 in videocall live col Capotecnico. Da casa tua, ovunque in Italia. Da 16 anni ripariamo 900 dispositivi al mese nei nostri due laboratori. Ora insegniamo a fare lo stesso a te.',
+    description: '1-to-1 in videocall live col Capotecnico. Da casa tua, ovunque in Italia. Ti spediamo a casa tutto: kit hardware, webcam con braccio, ring light. Apri la scatola, colleghi al PC, sei pronto.',
     priceTeaser: 'Da €1.490',
     installmentTeaser: 'o 3 rate da €497 con Klarna',
     primaryCta: 'Iscriviti Ora',
@@ -42,6 +42,7 @@ export const content = {
       { icon: 'creditCard', label: 'Klarna - 3 rate senza interessi' },
       { icon: 'undo', label: 'Garanzia 14 giorni' },
       { icon: 'flag', label: 'Made in Italy - dal 2009' },
+      { icon: 'package', label: 'Kit completo spedito a casa' },
     ],
     licenseCaption: 'Clicca la licenza per verificarne una reale',
   },
@@ -88,13 +89,13 @@ export const content = {
         earningsRange: '€40 - €120 per riparazione',
         marketCoverage: 'La maggior parte delle riparazioni quotidiane',
         features: [
+          'Kit completo spedito a casa tua, pronto all\'uso',
           'Da casa tua, ovunque in Italia',
           '30 ore 1-to-1 in videocall live col Capotecnico',
           'Calendario flessibile, costruito su di te',
-          'Kit hardware professionale in comodato d\'uso',
+          'Webcam con braccio articolato e ring light, in comodato d\'uso (zero da configurare, plug-and-play)',
           'Licenza professionale LV1 verificabile via QR',
           'Supporto post-diploma per 1 mese',
-          'Esame finale e consegna licenza',
         ],
         ctaPrimary: { label: 'Iscriviti Ora', type: 'checkout' as const },
         ctaSecondary: { label: 'Parla con un Capotecnico', type: 'lead' as const },
@@ -113,10 +114,11 @@ export const content = {
         earningsRange: '€80 - €200 per riparazione',
         marketCoverage: 'Quasi tutto il mercato, incluso quello che gli altri rifiutano',
         features: [
+          'Kit completo spedito a casa tua, pronto all\'uso',
           'Da casa tua, ovunque in Italia',
           '50 ore 1-to-1 in videocall live col Capotecnico',
           'Calendario flessibile + priorità di prenotazione',
-          'Kit hardware professionale in proprietà (te lo tieni)',
+          'Webcam con braccio articolato e ring light, in proprietà (zero da configurare, plug-and-play)',
           'Licenza professionale LV2 verificabile via QR',
           'Ti mandiamo i primi clienti per 3 mesi',
           'Supporto post-diploma per 3 mesi',
@@ -139,13 +141,15 @@ export const content = {
         earningsRange: '€150 - €400+ per riparazione',
         marketCoverage: '100% del mercato, incluse riparazioni che oggi vengono mandate a noi',
         features: [
+          'Kit completo spedito a casa tua, pronto all\'uso',
           'Da casa tua, ovunque in Italia',
           '80 ore 1-to-1 in videocall live col Capotecnico',
           'Massima priorità sul calendario',
+          'Webcam con braccio articolato e ring light, in proprietà (zero da configurare, plug-and-play)',
           'Kit completo + stazione microsaldatura inclusa, in proprietà',
           'Licenza professionale LV3 verificabile via QR',
           'Ti mandiamo i primi clienti per 6 mesi',
-          'Priorita assoluta sui lavori complessi che giriamo dal nostro laboratorio',
+          'Supporto post-diploma per 6 mesi',
         ],
         ctaPrimary: { label: 'Iscriviti Ora', type: 'checkout' as const },
         ctaSecondary: { label: 'Parla con un Capotecnico', type: 'lead' as const },
@@ -161,7 +165,7 @@ export const content = {
     headline: 'Perché formiamo solo 11 tecnici a trimestre.',
     paragraphs: [
       'Il mercato della riparazione è grande, ma non è infinito. In ogni area c\'è un numero limitato di dispositivi e di clienti disposti a pagare un tecnico che non conoscono.',
-      'Per questo non formiamo masse di persone all\'anno. Formiamo pochi tecnici, li formiamo bene, e li accompagniamo a lavorare davvero — connessi con noi, con i nostri clienti, con il nostro metodo. Chi si forma con noi non resta mai da solo davanti al primo cliente.',
+      'Per questo non formiamo masse di persone all\'anno. Formiamo pochi tecnici, li formiamo bene, e li accompagniamo a lavorare davvero. Connessi con noi, con i nostri clienti, con il nostro metodo. Chi si forma con noi non resta mai da solo davanti al primo cliente.',
     ],
     counterLabel: 'Posti disponibili per il prossimo trimestre',
     counterValue: 8,
@@ -173,7 +177,7 @@ export const content = {
     badge: 'Sistema di certificazione unico in Italia',
     headline: 'Una licenza vera. Verificabile da chiunque, in tempo reale.',
     paragraphs: [
-      'Quando ti diplomi non ti diamo un certificato che vale quanto la carta su cui è stampato. Ti diamo una licenza professionale fisica, con il tuo numero univoco, foto, livello tecnico e un QR code che chiunque — un cliente, un datore di lavoro, un altro tecnico — può scansionare per verificare in tempo reale che sei un tecnico certificato Istituto Subito.',
+      'Quando ti diplomi non ti diamo un certificato che vale quanto la carta su cui è stampato. Ti diamo una licenza professionale fisica, con il tuo numero univoco, foto, livello tecnico e un QR code che chiunque (un cliente, un datore di lavoro, un altro tecnico) può scansionare per verificare in tempo reale che sei un tecnico certificato Istituto Subito.',
       'È l\'unica licenza del settore in Italia con un sistema di verifica pubblica online. E sta diventando lo standard di mercato.',
     ],
     features: [
@@ -253,8 +257,12 @@ export const content = {
         answer: 'No. Partiamo dalle basi e ti accompagniamo passo passo. Quello che serve è la voglia di imparare un mestiere vero e di lavorare con le mani. Il resto te lo insegniamo noi, 1-to-1 col Capotecnico.',
       },
       {
+        question: 'Cosa mi arriva a casa esattamente?',
+        answer: 'Tutto quello che ti serve. Kit hardware professionale completo con oltre 20 strumenti (cacciaviti precisione, pinzette ESD, tappetino magnetico, spudger, multimetro, e tutto il resto), webcam con braccio articolato e ring light per le lezioni live, materiali didattici digitali e accesso al gruppo WhatsApp. Spedizione tracciata in tutta Italia, da 2 a 5 giorni lavorativi. Apri la scatola, colleghi la webcam al PC, e sei pronto per la prima lezione live col Capotecnico. Zero da comprare, zero da configurare.',
+      },
+      {
         question: 'Perché non vendete il programma dettagliato del corso?',
-        answer: 'Perché non esiste un programma uguale per tutti. Il Capotecnico costruisce il percorso con te, sulla base del tuo livello di partenza e di dove vuoi arrivare. Insegniamo solo quello che ti serve per lavorare e guadagnare — non un elenco di argomenti che paghi e dimentichi. Ci sono corsi che ti spiegano per ore come si usa un multimetro che nella realtà aprirai una volta ogni cento riparazioni. Noi no.',
+        answer: 'Perché non esiste un programma uguale per tutti. Il Capotecnico costruisce il percorso con te, sulla base del tuo livello di partenza e di dove vuoi arrivare. Insegniamo solo quello che ti serve per lavorare e guadagnare, non un elenco di argomenti che paghi e dimentichi. Ci sono corsi che ti spiegano per ore come si usa un multimetro che nella realtà aprirai una volta ogni cento riparazioni. Noi no.',
       },
       {
         question: 'Quanto tempo ci metto a finire il corso?',
@@ -265,8 +273,8 @@ export const content = {
         answer: 'Il corso si svolge in videocall live 1-to-1 col Capotecnico, con calendario flessibile concordato sui tuoi tempi. NON sono videocorsi preregistrati: è una vera lezione in diretta. Il kit hardware ti arriva a casa, ovunque tu sia in Italia. L\'esame finale e la consegna licenza avvengono in sessione live online registrata, valida a tutti gli effetti.',
       },
       {
-        question: 'Cosa vuol dire "kit in comodato d\'uso" o "in proprietà"?',
-        answer: 'Per LV1 il kit professionale di lavoro te lo spediamo a casa in comodato d\'uso per tutta la durata del corso, e a fine percorso lo restituisci o lo acquisti a prezzo agevolato. Per LV2 e LV3 il kit è incluso nel prezzo e diventa di tua proprietà — te lo tieni e lo usi per lavorare anche dopo il diploma.',
+        question: 'La webcam come funziona? Devo comprarne una io?',
+        answer: 'No, la webcam te la spediamo noi col kit. È una webcam professionale con braccio articolato flessibile e ring light integrato, plug-and-play su Mac, Windows e Chromebook. Si fissa al tuo banco di lavoro in 30 secondi e si posiziona dall\'alto, così il Capotecnico durante le lezioni live vede esattamente quello che fai con le mani sul tappetino. Per LV1 ti viene fornita in comodato d\'uso per la durata del corso. Per LV2 e LV3 è tua, te la tieni anche dopo il diploma. Zero pensieri tecnici: apri la scatola e funziona.',
       },
       {
         question: 'Posso pagare a rate?',
@@ -278,7 +286,7 @@ export const content = {
       },
       {
         question: 'Posso davvero trovare lavoro dopo?',
-        answer: 'L\'80% dei nostri 46 diplomati ad oggi lavora nel settore: con noi nei nostri laboratori, in altri negozi di riparazione, o con la propria attività autonoma. Non garantiamo posti di lavoro a tutti — non sarebbe onesto — ma proprio per questo selezioniamo pochi corsisti per trimestre, così possiamo accompagnarli realmente nei primi mesi di attività.',
+        answer: 'L\'80% dei nostri 46 diplomati ad oggi lavora nel settore: con noi nei nostri laboratori, in altri negozi di riparazione, o con la propria attività autonoma. Non garantiamo posti di lavoro a tutti (non sarebbe onesto), ma proprio per questo selezioniamo pochi corsisti per trimestre, così possiamo accompagnarli realmente nei primi mesi di attività.',
       },
       {
         question: 'Cosa rende la vostra licenza diversa da altri certificati?',
@@ -286,7 +294,7 @@ export const content = {
       },
       {
         question: 'Chi e "Subito Riparato"?',
-        answer: 'Subito Riparato è la nostra azienda madre: due laboratori di riparazione attivi in Campania (Nocera Inferiore e Cava de\' Tirreni) dal 2009. Oltre 130.000 dispositivi riparati, 900 al mese. Istituto Subito è la scuola che nasce da quell\'esperienza concreta — non dai libri, dal lavoro vero di tutti i giorni.',
+        answer: 'Subito Riparato è la nostra azienda madre: due laboratori di riparazione attivi in Campania (Nocera Inferiore e Cava de\' Tirreni) dal 2009. Oltre 130.000 dispositivi riparati, 900 al mese. Istituto Subito è la scuola che nasce da quell\'esperienza concreta, non dai libri, dal lavoro vero di tutti i giorni.',
       },
     ],
   },
@@ -336,9 +344,9 @@ export const content = {
       ],
     },
     legal: {
-      line1: 'CR Store S.r.l. — P.IVA IT08955511210 — REA NA-997450',
-      line2: 'Sede legale: Via R. Vastola, 5 — 80040 Poggiomarino (NA)',
-      line3: '\u00A9 2026 CR Store S.r.l. — Tutti i diritti riservati',
+      line1: 'CR Store S.r.l. · P.IVA IT08955511210 · REA NA-997450',
+      line2: 'Sede legale: Via R. Vastola, 5, 80040 Poggiomarino (NA)',
+      line3: '\u00A9 2026 CR Store S.r.l. · Tutti i diritti riservati',
       line4: 'Marchi \'Istituto Subito\' e \'Subito Riparato\' di proprieta\' CR Store S.r.l.',
     },
   },
@@ -378,9 +386,9 @@ export const content = {
       motivation: 'Cosa ti interessa di più?',
     },
     interestOptions: [
-      { value: 'lv1', label: 'LV1 — Tecnico Riparatore (€1.490)' },
-      { value: 'lv2', label: 'LV2 — Tecnico Microsaldatore (€2.490)' },
-      { value: 'lv3', label: 'LV3 — Tecnico Master (€3.990)' },
+      { value: 'lv1', label: 'LV1 - Tecnico Riparatore (€1.490)' },
+      { value: 'lv2', label: 'LV2 - Tecnico Microsaldatore (€2.490)' },
+      { value: 'lv3', label: 'LV3 - Tecnico Master (€3.990)' },
       { value: 'unsure', label: 'Non lo so ancora, voglio capire' },
     ],
     motivationOptions: [
@@ -410,7 +418,7 @@ export const content = {
   socialProof: {
     enabled: true,
     intervalSeconds: 30,
-    placeholderNote: '[I nomi sono placeholder — sostituire con iscrizioni reali appena disponibili. Tenere realistici geograficamente: target ads attualmente Campania + nazionale.]',
+    placeholderNote: '[I nomi sono placeholder. Sostituire con iscrizioni reali appena disponibili. Tenere realistici geograficamente: target ads attualmente Campania + nazionale.]',
     items: [
       { name: 'Marco', city: 'Salerno', tier: 'LV2', timeAgo: '2 ore fa' },
       { name: 'Giulia', city: 'Napoli', tier: 'LV1', timeAgo: '4 ore fa' },

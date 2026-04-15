@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { LegalLayout } from '@/components/legal-layout'
 
 export const metadata: Metadata = {
-  title: 'Cookie Policy — Istituto Subito',
+  title: 'Cookie Policy - Istituto Subito',
   description: 'Informativa sull\'uso dei cookie sul sito istitutosubito.com di CR Store S.r.l.',
 }
 
@@ -40,7 +40,7 @@ export default function CookiePage() {
 
       <h3>Cookie di terze parti</h3>
       <ul>
-        <li><strong>Stripe</strong> — per la gestione dei pagamenti durante il checkout</li>
+        <li><strong>Stripe</strong>: per la gestione dei pagamenti durante il checkout</li>
       </ul>
 
       <h2>Gestione del consenso</h2>
@@ -62,7 +62,7 @@ export default function CookiePage() {
       </ul>
 
       <h2>Titolare del Trattamento</h2>
-      <p>CR Store S.r.l. — P.IVA IT08955511210<br />
+      <p>CR Store S.r.l. · P.IVA IT08955511210<br />
       Email: <a href="mailto:info@istitutosubito.com">info@istitutosubito.com</a></p>
       <p>Per maggiori informazioni vedi la <a href="/privacy">Privacy Policy</a> completa.</p>
     </LegalLayout>

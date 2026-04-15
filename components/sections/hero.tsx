@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { Shield, CreditCard, Undo2, Flag, MessageCircle, Star } from 'lucide-react'
+import { Shield, CreditCard, Undo2, Flag, MessageCircle, Star, Package } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { content } from '@/lib/content'
 import { scarcity, isUrgent, getSpotsRemaining } from '@/lib/scarcity'
@@ -12,6 +12,7 @@ const trustBadgeIcons = {
   creditCard: CreditCard,
   undo: Undo2,
   flag: Flag,
+  package: Package,
 }
 
 interface HeroProps {
@@ -138,7 +139,7 @@ export function Hero({ onCheckout, onOpenLeadModal, isLoading }: HeroProps) {
           </div>
 
           {/* Trust Badges */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {hero.trustBadges.map((badge) => {
               const Icon = trustBadgeIcons[badge.icon as keyof typeof trustBadgeIcons]
               return (

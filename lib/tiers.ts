@@ -1,4 +1,4 @@
-// Tier types and helpers — fonte di verità: content.ts
+// Tier types and helpers. Fonte di verità: content.ts
 import { content } from '@/lib/content'
 
 type ContentTier = (typeof content.pricing.tiers)[number]

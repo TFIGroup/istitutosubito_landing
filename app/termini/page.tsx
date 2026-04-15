@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { LegalLayout } from '@/components/legal-layout'
 
 export const metadata: Metadata = {
-  title: 'Termini e Condizioni — Istituto Subito',
+  title: 'Termini e Condizioni - Istituto Subito',
   description: 'Condizioni generali di vendita dei servizi formativi di CR Store S.r.l. (Istituto Subito).',
 }
 
@@ -17,8 +17,8 @@ export default function TerminiPage() {
       <p>
         <strong>Venditore:</strong> CR Store S.r.l.<br />
         Sede legale: Via R. Vastola, 5 - 80040 Poggiomarino (NA)<br />
-        P.IVA: IT08955511210 — REA: NA-997450<br />
-        Email: <a href="mailto:info@istitutosubito.com">info@istitutosubito.com</a> — Tel: <a href="tel:+39389967650">+39 389 967 7650</a>
+        P.IVA: IT08955511210 · REA: NA-997450<br />
+        Email: <a href="mailto:info@istitutosubito.com">info@istitutosubito.com</a> · Tel: <a href="tel:+39389967650">+39 389 967 7650</a>
       </p>
 
       <h2>2. Oggetto</h2>
@@ -66,7 +66,7 @@ export default function TerminiPage() {
 
       <hr />
 
-      <p>Per chiarimenti: <strong><a href="mailto:info@istitutosubito.com">info@istitutosubito.com</a></strong> — Tel. <strong><a href="tel:+39389967650">+39 389 967 7650</a></strong></p>
+      <p>Per chiarimenti: <strong><a href="mailto:info@istitutosubito.com">info@istitutosubito.com</a></strong> · Tel. <strong><a href="tel:+39389967650">+39 389 967 7650</a></strong></p>
     </LegalLayout>
   )
 }

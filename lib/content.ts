@@ -15,6 +15,7 @@ export const content = {
       { label: 'Il Metodo', href: '#manifesto' },
       { label: 'Percorsi', href: '#prezzi' },
       { label: 'La Licenza', href: '#licenza' },
+      { label: 'Garanzia di Rimborso', href: '#garanzia' },
       { label: 'FAQ', href: '#faq' },
     ],
     cta: 'Iscriviti Ora',
@@ -40,7 +41,7 @@ export const content = {
     trustBadges: [
       { icon: 'shield', label: 'Pagamento Sicuro Stripe' },
       { icon: 'creditCard', label: 'Klarna - 3 rate senza interessi' },
-      { icon: 'undo', label: 'Garanzia 14 giorni' },
+      { icon: 'undo', label: 'Soddisfatto o Rimborsato', href: '#garanzia' },
       { icon: 'flag', label: 'Made in Italy - dal 2009' },
       { icon: 'package', label: 'Kit completo spedito a casa' },
     ],

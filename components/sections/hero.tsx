@@ -142,13 +142,24 @@ export function Hero({ onCheckout, onOpenLeadModal, isLoading }: HeroProps) {
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {hero.trustBadges.map((badge) => {
               const Icon = trustBadgeIcons[badge.icon as keyof typeof trustBadgeIcons]
-              return (
-                <div
-                  key={badge.label}
-                  className="flex items-center justify-center gap-2 px-4 py-3 bg-white/5 rounded-lg border border-white/10"
-                >
+              const content = (
+                <>
                   <Icon className="w-5 h-5 text-white/70" />
                   <span className="text-sm text-white/80">{badge.label}</span>
+                </>
+              )
+              const className = "flex items-center justify-center gap-2 px-4 py-3 bg-white/5 rounded-lg border border-white/10"
+              return 'href' in badge && badge.href ? (
+                <a
+                  key={badge.label}
+                  href={badge.href as string}
+                  className={`${className} hover:bg-white/10 transition-colors`}
+                >
+                  {content}
+                </a>
+              ) : (
+                <div key={badge.label} className={className}>
+                  {content}
                 </div>
               )
             })}

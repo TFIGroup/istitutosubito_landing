@@ -101,17 +101,19 @@ export function LeadModal({ isOpen, onClose, defaultTier = 'lv2' }: LeadModalPro
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:max-w-md md:w-full z-50 flex items-center justify-center md:block"
           >
-            <div className="bg-card rounded-2xl shadow-xl w-full max-h-[90vh] overflow-y-auto">
-              {/* Close Button */}
-              <button
-                onClick={handleClose}
-                className="absolute top-4 right-4 p-2 text-muted-foreground hover:text-foreground transition-colors"
-                aria-label="Chiudi"
-              >
-                <X className="w-5 h-5" />
-              </button>
+            <div className="relative bg-card rounded-2xl shadow-xl w-full max-h-[90vh] flex flex-col">
+              {/* Close Button: fixed in top-right corner */}
+              <div className="flex justify-end p-3 pb-0 shrink-0">
+                <button
+                  onClick={handleClose}
+                  className="p-2 rounded-full hover:bg-muted transition-colors cursor-pointer"
+                  aria-label="Chiudi"
+                >
+                  <X className="w-5 h-5 text-muted-foreground" />
+                </button>
+              </div>
 
-              <div className="p-6 md:p-8">
+              <div className="p-6 pt-0 md:p-8 md:pt-0 overflow-y-auto">
                 {!isSuccess ? (
                   <>
                     {/* Header */}

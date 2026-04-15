@@ -31,12 +31,12 @@ export function ExitIntentModal({ enabled = true }: ExitIntentModalProps) {
       }
     }
 
-    // Mobile: trigger after 30 seconds
+    // Mobile: trigger after 90 seconds (give user time to read)
     const mobileTimeout = setTimeout(() => {
       if (window.innerWidth < 768) {
         handleExitIntent()
       }
-    }, 30000)
+    }, 90000)
 
     document.addEventListener('mouseleave', handleMouseLeave)
 

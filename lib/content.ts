@@ -282,7 +282,11 @@ export const content = {
       },
       {
         question: 'Quanto tempo ci metto a finire il corso?',
-        answer: 'Dipende da te. Le ore sono garantite (30 per LV1, 50 per LV2, 80 per LV3), ma il calendario lo concordi 1-to-1 col Capotecnico in base ai tuoi impegni. C\'e chi finisce in 6 settimane, chi in 4 mesi. Decidi tu.',
+        answer: 'Dipende dal tuo ritmo. Le lezioni durano minimo 2 ore ciascuna, ma c\'è flessibilità. Il calendario lo decidi tu insieme al Capotecnico: scegli i giorni e gli orari che ti vanno meglio, con disponibilità tutti i giorni della settimana. Puoi fare 2 lezioni a settimana e finire in 3-4 mesi, oppure accelerare con 3-4 lezioni a settimana e finire prima. Ti adeguiamo ai tuoi tempi, non il contrario.',
+      },
+      {
+        question: 'Posso scegliere gli orari delle lezioni?',
+        answer: 'Sì, il calendario è completamente flessibile. Concordi direttamente con il Capotecnico i giorni e gli orari che preferisci. Abbiamo disponibilità tutti i giorni della settimana, mattina e pomeriggio. Se un giorno non puoi, sposti senza problemi. Il corso si adegua alla tua vita, non il contrario.',
       },
       {
         question: 'Il corso è online o in presenza?',

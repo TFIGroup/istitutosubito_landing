@@ -32,6 +32,7 @@ import { ScarcityCounter } from '@/components/conversion/scarcity-counter'
 import { LeadModal } from '@/components/conversion/lead-modal'
 import { ExitIntentModal } from '@/components/conversion/exit-intent-modal'
 import { CheckoutModal } from '@/components/conversion/checkout-modal'
+import { RecoveryModal } from '@/components/conversion/recovery-modal'
 
 // Tiny component that uses useSearchParams, isolated in its own Suspense
 // so it doesn't block the entire page from being statically prerendered
@@ -55,6 +56,8 @@ function CheckoutCancelledHandler() {
 export default function LandingPage() {
   const [checkoutTierId, setCheckoutTierId] = useState<string | null>(null)
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false)
+  const [recoveryTierId, setRecoveryTierId] = useState<string | null>(null)
+  const [isRecoveryOpen, setIsRecoveryOpen] = useState(false)
 
   const handleCheckout = useCallback((tierId: string = 'lv2') => {
     markCheckoutStarted()
@@ -63,6 +66,52 @@ export default function LandingPage() {
 
   const handleOpenLeadModal = useCallback(() => {
     setIsLeadModalOpen(true)
+  }, [])
+
+  const triggerRecovery = useCallback((tierId: string) => {
+    try {
+      if (sessionStorage.getItem('recovery_dismissed') === 'true') return
+      if (sessionStorage.getItem('recovery_shown') === 'true') return
+      if (sessionStorage.getItem('stripe_checkout_completed') === 'true') return
+      if (sessionStorage.getItem('stripe_checkout_started') !== 'true') return
+    } catch {
+      return
+    }
+    setRecoveryTierId(tierId)
+    setTimeout(() => {
+      setIsRecoveryOpen(true)
+      try { sessionStorage.setItem('recovery_shown', 'true') } catch {}
+    }, 2000)
+  }, [])
+
+  const handleCheckoutAbandoned = useCallback((tierId: string) => {
+    triggerRecovery(tierId)
+  }, [triggerRecovery])
+
+  useEffect(() => {
+    const onVisible = () => {
+      if (document.visibilityState !== 'visible') return
+      try {
+        const started = sessionStorage.getItem('stripe_checkout_started') === 'true'
+        const completed = sessionStorage.getItem('stripe_checkout_completed') === 'true'
+        if (!started || completed) return
+        const tier = sessionStorage.getItem('stripe_tier') || 'lv1'
+        // non mostrare se il checkout modal e' ancora aperto
+        if (checkoutTierId) return
+        triggerRecovery(tier)
+      } catch {}
+    }
+    document.addEventListener('visibilitychange', onVisible)
+    window.addEventListener('focus', onVisible)
+    return () => {
+      document.removeEventListener('visibilitychange', onVisible)
+      window.removeEventListener('focus', onVisible)
+    }
+  }, [checkoutTierId, triggerRecovery])
+
+  const handleCloseRecovery = useCallback(() => {
+    setIsRecoveryOpen(false)
+    try { sessionStorage.setItem('recovery_dismissed', 'true') } catch {}
   }, [])
 
   return (
@@ -147,6 +196,15 @@ export default function LandingPage() {
         isOpen={checkoutTierId !== null}
         onClose={() => setCheckoutTierId(null)}
         tierId={checkoutTierId}
+        onCheckoutAbandoned={handleCheckoutAbandoned}
+      />
+
+      {/* Recovery Modal (popup blocca posto €99) */}
+      <RecoveryModal
+        isOpen={isRecoveryOpen}
+        onClose={handleCloseRecovery}
+        onOpenLeadModal={handleOpenLeadModal}
+        tierId={recoveryTierId}
       />
 
       {/* Mobile bottom spacing for sticky bar */}

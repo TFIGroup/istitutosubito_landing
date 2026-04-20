@@ -1,8 +1,8 @@
 'use client'
 
+import { useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import { Suspense } from 'react'
 import { CheckCircle, Mail, MessageCircle, Package, ArrowLeft } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { content } from '@/lib/content'
@@ -10,6 +10,14 @@ import { content } from '@/lib/content'
 function GrazieContent() {
   const searchParams = useSearchParams()
   const sessionId = searchParams.get('session_id')
+
+  useEffect(() => {
+    try {
+      sessionStorage.setItem('stripe_checkout_completed', 'true')
+      sessionStorage.removeItem('stripe_checkout_started')
+      sessionStorage.removeItem('stripe_tier')
+    } catch {}
+  }, [])
   
   const { grazie } = content
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '393XXXXXXXXX'

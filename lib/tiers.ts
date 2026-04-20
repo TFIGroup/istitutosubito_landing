@@ -7,6 +7,7 @@ export interface Tier {
   id: ContentTier['id']
   code: string
   name: string
+  positioning: string
   tagline: string
   price: number // in cents for Stripe
   priceFormatted: string
@@ -32,6 +33,7 @@ export const TIERS: Tier[] = content.pricing.tiers.map((t) => ({
   id: t.id,
   code: t.code,
   name: t.name,
+  positioning: t.positioning,
   tagline: t.tagline,
   price: PRICE_MAP[t.id].price,
   priceFormatted: PRICE_MAP[t.id].priceFormatted,

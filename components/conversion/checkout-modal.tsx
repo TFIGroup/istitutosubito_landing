@@ -421,7 +421,7 @@ export function CheckoutModal({ isOpen, onClose, tierId }: CheckoutModalProps) {
                             disabled={!termsAccepted || !recessoWaiverAccepted || isSubmitting}
                             className="flex-1 py-3.5 bg-[var(--electric-blue)] hover:bg-[var(--electric-blue-hover)] disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 text-base cursor-pointer"
                           >
-                            {isSubmitting ? 'Caricamento...' : 'Vai al pagamento'}
+                            {isSubmitting ? 'Caricamento...' : 'Checkout'}
                             {!isSubmitting && <Lock className="w-4 h-4" />}
                           </button>
                         </div>

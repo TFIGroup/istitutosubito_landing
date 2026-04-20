@@ -56,3 +56,13 @@ export function getTierPrice(id: string): number {
   const tier = getTierById(id)
   return tier?.price ?? 0
 }
+
+// Prodotto deposito €99 per recovery checkout (non mostrato nel pricing pubblico)
+export const DEPOSIT_PRODUCT = {
+  id: 'deposit',
+  name: 'Acconto Blocca Posto',
+  price: 9900, // cents
+  priceFormatted: '99',
+  stripePriceId: process.env.STRIPE_DEPOSIT_PRICE_ID,
+  description: 'Blocca il tuo posto e parla col Capotecnico',
+} as const

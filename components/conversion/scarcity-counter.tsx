@@ -36,8 +36,8 @@ export function ScarcityCounter() {
           )}>
             {spotsRemaining}
           </div>
-          <p className="text-sm text-muted-foreground mt-2">
-            su {scarcity.maxSpots} disponibili questo mese
+          <p className="text-sm text-muted-foreground mt-2 max-w-2xl mx-auto leading-relaxed">
+            su {scarcity.maxSpots} disponibili questo trimestre. Ogni studente ha il suo Capotecnico dedicato: non possiamo accettare tutti.
           </p>
 
           {/* Urgent Message */}

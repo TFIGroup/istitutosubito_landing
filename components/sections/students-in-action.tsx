@@ -64,6 +64,7 @@ export function StudentsInAction() {
                 'Formazione individuale 1-to-1 col Capotecnico',
                 '16 anni di esperienza su 130.000+ dispositivi',
                 'Kit professionale incluso in ogni corso',
+                'Lezioni da minimo 2 ore, con flessibilità. Il calendario lo costruisci tu insieme al Capotecnico.',
                 'Supporto WhatsApp anche dopo il diploma',
                 '80% dei diplomati trova lavoro entro 6 mesi',
               ].map((item, index) => (

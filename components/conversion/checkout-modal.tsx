@@ -27,6 +27,7 @@ interface CheckoutModalProps {
   isOpen: boolean
   onClose: () => void
   tierId: string | null
+  onCheckoutAbandoned?: (tierId: string) => void
 }
 
 // Salva lead parziale (fire-and-forget)
@@ -38,7 +39,7 @@ function savePartialLead(data: { tier?: string; phone?: string; email?: string; 
   }).catch(() => {})
 }
 
-export function CheckoutModal({ isOpen, onClose, tierId }: CheckoutModalProps) {
+export function CheckoutModal({ isOpen, onClose, tierId, onCheckoutAbandoned }: CheckoutModalProps) {
   const [step, setStep] = useState<Step>(1)
   const [error, setError] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -104,6 +105,16 @@ export function CheckoutModal({ isOpen, onClose, tierId }: CheckoutModalProps) {
         return
       }
       setFormData(data)
+      // Marca il checkout Stripe come avviato (per recovery modal post-abbandono)
+      try {
+        sessionStorage.setItem('stripe_checkout_started', 'true')
+        if (tierId) sessionStorage.setItem('stripe_tier', tierId)
+        sessionStorage.setItem('stripe_checkout_user', JSON.stringify({
+          fullName: data.fullName,
+          email: data.email,
+          phone: data.phone,
+        }))
+      } catch {}
       setStep(4)
     } catch {
       setError('Errore di connessione. Riprova.')
@@ -125,11 +136,20 @@ export function CheckoutModal({ isOpen, onClose, tierId }: CheckoutModalProps) {
   }, [tierId, formData])
 
   const handleClose = () => {
+    const wasOnStripeStep = step === 4
+    const abandonedTier = tierId
     setStep(1)
     setError(null)
     setFormData(null)
     reset()
     onClose()
+    if (wasOnStripeStep && abandonedTier && onCheckoutAbandoned) {
+      let completed = false
+      try {
+        completed = sessionStorage.getItem('stripe_checkout_completed') === 'true'
+      } catch {}
+      if (!completed) onCheckoutAbandoned(abandonedTier)
+    }
   }
 
   const inputClass = 'w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground text-base focus:outline-none focus:ring-2 focus:ring-[var(--electric-blue)] focus:border-transparent transition-shadow'
@@ -421,7 +441,7 @@ export function CheckoutModal({ isOpen, onClose, tierId }: CheckoutModalProps) {
                             disabled={!termsAccepted || !recessoWaiverAccepted || isSubmitting}
                             className="flex-1 py-3.5 bg-[var(--electric-blue)] hover:bg-[var(--electric-blue-hover)] disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 text-base cursor-pointer"
                           >
-                            {isSubmitting ? 'Caricamento...' : 'Vai al pagamento'}
+                            {isSubmitting ? 'Caricamento...' : 'Checkout'}
                             {!isSubmitting && <Lock className="w-4 h-4" />}
                           </button>
                         </div>

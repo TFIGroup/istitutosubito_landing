@@ -69,16 +69,16 @@ function PricingCard({ tier, index, onSelectCheckout, onSelectLead, isLoading }:
   return (
     <div
       className={cn(
-        'relative flex flex-col rounded-2xl border p-6 md:p-8',
+        'relative flex flex-col rounded-2xl p-6 md:p-8',
         tier.popular
-          ? 'border-[var(--premium-gold)] bg-[var(--premium-gold-light)] shadow-xl scale-105 z-10'
-          : 'border-border bg-card'
+          ? 'border-2 border-[var(--electric-blue)] bg-[var(--electric-blue)]/5 shadow-xl lg:scale-105 z-10'
+          : 'border border-border bg-card'
       )}
     >
       {/* Popular Badge */}
-      {tier.popular && (
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-[var(--premium-gold)] text-[var(--navy)] text-sm font-semibold rounded-full">
-          Piu Popolare
+      {tier.popular && tier.badge && (
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-[var(--electric-blue)] text-white text-sm font-semibold rounded-full shadow-md">
+          {tier.badge}
         </div>
       )}
 
@@ -87,6 +87,14 @@ function PricingCard({ tier, index, onSelectCheckout, onSelectLead, isLoading }:
         <h3 className="text-2xl font-bold text-foreground mb-2">
           {tier.name}
         </h3>
+        <p
+          className={cn(
+            'text-sm font-semibold leading-relaxed mb-2',
+            tier.popular ? 'text-[var(--electric-blue)]' : 'text-foreground'
+          )}
+        >
+          {tier.positioning}
+        </p>
         <p className="text-sm text-muted-foreground leading-relaxed">{tier.tagline}</p>
       </div>
 
@@ -133,8 +141,8 @@ function PricingCard({ tier, index, onSelectCheckout, onSelectLead, isLoading }:
           className={cn(
             'w-full text-lg py-6 h-auto',
             tier.popular
-              ? 'bg-[var(--navy)] hover:bg-[var(--navy-light)] text-white'
-              : 'bg-[var(--electric-blue)] hover:bg-[var(--electric-blue-hover)] text-white'
+              ? 'bg-[var(--electric-blue)] hover:bg-[var(--electric-blue-hover)] text-white'
+              : 'bg-[var(--navy)] hover:bg-[var(--navy-light)] text-white'
           )}
         >
           {isLoading ? 'Caricamento...' : tier.ctaPrimary.label}

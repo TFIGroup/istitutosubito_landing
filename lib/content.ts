@@ -396,32 +396,11 @@ export const content = {
   },
 
   leadModal: {
-    headline: 'Aspetta. Parliamone prima.',
-    subheadline: 'Lascia il tuo numero e un Capotecnico ti richiama entro 24 ore. Senza impegno, senza spam, senza vendite forzate. Solo per capire se questo percorso fa per te.',
-    fields: {
-      name: 'Il tuo nome',
-      phone: 'Numero WhatsApp',
-      city: 'Città',
-      interest: 'Quale livello ti interessa?',
-      motivation: 'Cosa ti interessa di più?',
-    },
-    interestOptions: [
-      { value: 'lv1', label: 'LV1 - Tecnico Riparatore (€1.490)' },
-      { value: 'lv2', label: 'LV2 - Tecnico Microsaldatore (€2.490)' },
-      { value: 'lv3', label: 'LV3 - Tecnico Master (€3.990)' },
-      { value: 'unsure', label: 'Non lo so ancora, voglio capire' },
-    ],
-    motivationOptions: [
-      'Cambio lavoro completo',
-      'Secondo reddito / lavoro extra',
-      'Aprire una mia attività',
-      'Hobby con possibile sviluppo professionale',
-    ],
-    cta: 'Richiamatemi',
-    privacy: 'Ti contattiamo solo via WhatsApp o telefono. Niente spam, mai. I tuoi dati restano nostri.',
-    successTitle: 'Perfetto, ci sentiamo presto.',
-    successMessage: 'Un Capotecnico ti contatta entro 24 ore su WhatsApp. Se vuoi anticipare, scrivici tu intanto.',
-    whatsappCta: 'Scrivi su WhatsApp adesso',
+    headline: 'Parla con un Capotecnico',
+    subheadline: 'Lasciaci il numero e apriamo la chat WhatsApp. Continuiamo di là, senza form lunghi.',
+    phoneLabel: 'Numero WhatsApp',
+    cta: 'Apri chat WhatsApp',
+    privacy: 'Ti contattiamo solo via WhatsApp. Niente spam, mai.',
   },
 
   stickyBar: {

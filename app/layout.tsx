@@ -3,8 +3,9 @@ import { Inter, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { Toaster } from '@/components/ui/toaster'
 import { content } from '@/lib/content'
-import Script from 'next/script'
 import { MetaPixel } from '@/components/tracking/meta-pixel'
+import { GoogleAnalytics } from '@/components/tracking/google-analytics'
+import { CookieBanner } from '@/components/cookie-banner'
 import './globals.css'
 
 const inter = Inter({
@@ -56,32 +57,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const gaId = process.env.NEXT_PUBLIC_GA_ID
-
   return (
     <html lang="it" className={`${inter.variable} ${geistMono.variable} bg-background`}>
-      <head>
-        {/* Google Analytics */}
-        {gaId && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-              strategy="afterInteractive"
-            />
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${gaId}');
-              `}
-            </Script>
-          </>
-        )}
-      </head>
       <body className="font-sans antialiased">
         <MetaPixel />
+        <GoogleAnalytics />
         {children}
+        <CookieBanner />
         <Toaster />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

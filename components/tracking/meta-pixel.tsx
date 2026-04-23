@@ -2,8 +2,9 @@
 
 import Script from 'next/script'
 import { usePathname, useSearchParams } from 'next/navigation'
-import { useEffect, Suspense } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { trackPageView } from '@/lib/tracking'
+import { getConsent, subscribeConsent } from '@/lib/consent'
 
 const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID
 
@@ -12,7 +13,6 @@ function RouteChangePageView() {
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    // Il primo PageView lo fa già lo script init; questo copre le navigazioni client-side
     trackPageView()
   }, [pathname, searchParams])
 
@@ -20,7 +20,15 @@ function RouteChangePageView() {
 }
 
 export function MetaPixel() {
-  if (!PIXEL_ID) return null
+  const [hasConsent, setHasConsent] = useState(false)
+
+  useEffect(() => {
+    const update = () => setHasConsent(getConsent() === 'all')
+    update()
+    return subscribeConsent(update)
+  }, [])
+
+  if (!PIXEL_ID || !hasConsent) return null
 
   return (
     <>

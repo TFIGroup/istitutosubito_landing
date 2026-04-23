@@ -46,7 +46,7 @@ export function LeadModal({ isOpen, onClose, defaultTier = 'lv2' }: LeadModalPro
   })
 
   const selectedInterest = watch('interest')
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Ciao, vorrei informazioni sul corso ${selectedInterest?.toUpperCase() || 'LV2'}`)}`
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Ciao Istituto Subito, vi contatto dal sito e vorrei informazioni sul corso ${selectedInterest?.toUpperCase() || 'LV2'}`)}`
 
   const onSubmit = async (data: LeadFormData) => {
     setIsSubmitting(true)

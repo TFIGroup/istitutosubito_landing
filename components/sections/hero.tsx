@@ -32,7 +32,7 @@ export function Hero({ onCheckout, onOpenLeadModal, isLoading }: HeroProps) {
   const urgent = isUrgent()
   
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '393XXXXXXXXX'
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Ciao, vorrei informazioni sul corso')}`
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Ciao Istituto Subito, vi contatto dal sito e vorrei informazioni sul corso')}`
 
   return (
     <section className="relative overflow-hidden min-h-[90vh] flex items-center text-white">

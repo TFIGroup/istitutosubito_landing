@@ -12,7 +12,7 @@ interface StickyMobileBarProps {
 export function StickyMobileBar({ onCheckout, isLoading }: StickyMobileBarProps) {
   const { stickyBar } = content
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '393XXXXXXXXX'
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Ciao, vorrei informazioni sul corso')}`
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Ciao Istituto Subito, vi contatto dal sito e vorrei informazioni sul corso')}`
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-background border-t border-border p-3 safe-area-inset-bottom">

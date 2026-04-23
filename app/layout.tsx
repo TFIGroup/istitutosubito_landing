@@ -5,6 +5,7 @@ import { Toaster } from '@/components/ui/toaster'
 import { content } from '@/lib/content'
 import { MetaPixel } from '@/components/tracking/meta-pixel'
 import { GoogleAnalytics } from '@/components/tracking/google-analytics'
+import { Clarity } from '@/components/tracking/clarity'
 import { CookieBanner } from '@/components/cookie-banner'
 import './globals.css'
 
@@ -62,6 +63,7 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         <MetaPixel />
         <GoogleAnalytics />
+        <Clarity />
         {children}
         <CookieBanner />
         <Toaster />

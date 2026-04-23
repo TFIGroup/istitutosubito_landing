@@ -358,7 +358,7 @@ export function CheckoutModal({ isOpen, onClose, tierId, onOpenLeadModal }: Chec
                             autoFocus
                             {...register('phone')}
                             className={`${inputClass} rounded-l-none text-lg`}
-                            placeholder="389 967 7650"
+                            placeholder="377 359 1545"
                             onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); goToStep2() } }}
                           />
                         </div>

@@ -336,10 +336,10 @@ export const content = {
       line2: '84014 Nocera Inferiore (SA)',
     },
     contacts: {
-      phone: '+39 389 967 7650',
-      phoneHref: 'tel:+39389967650',
+      phone: '+39 377 359 1545',
+      phoneHref: 'tel:+393773591545',
       whatsapp: 'WhatsApp',
-      whatsappHref: 'https://wa.me/393899677650?text=Ciao,%20vorrei%20informazioni%20sui%20corsi',
+      whatsappHref: 'https://wa.me/393773591545?text=Ciao,%20vorrei%20informazioni%20sui%20corsi',
       email: 'info@istitutosubito.com',
       emailHref: 'mailto:info@istitutosubito.com',
     },
@@ -353,7 +353,7 @@ export const content = {
       supporto: [
         { label: 'FAQ', href: '#faq' },
         { label: 'Parla con un Capotecnico', href: '#lead' },
-        { label: 'Contatto WhatsApp', href: 'https://wa.me/393899677650?text=Ciao,%20vorrei%20informazioni%20sui%20corsi' },
+        { label: 'Contatto WhatsApp', href: 'https://wa.me/393773591545?text=Ciao,%20vorrei%20informazioni%20sui%20corsi' },
         { label: 'Contatto email', href: 'mailto:info@istitutosubito.com' },
       ],
       legale: [

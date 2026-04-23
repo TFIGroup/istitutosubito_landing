@@ -65,7 +65,7 @@ Firma: _____________________`}</code></pre>
       <p>Per qualsiasi chiarimento sul diritto di recesso:</p>
       <p>
         Email: <strong><a href="mailto:info@istitutosubito.com">info@istitutosubito.com</a></strong><br />
-        Telefono: <strong><a href="tel:+39389967650">+39 389 967 7650</a></strong>
+        Telefono: <strong><a href="tel:+393773591545">+39 377 359 1545</a></strong>
       </p>
     </LegalLayout>
   )

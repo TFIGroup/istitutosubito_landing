@@ -78,7 +78,7 @@ export function checkoutConfirmationHtml(data: CheckoutConfirmationData): string
             <hr style="border:none;border-top:1px solid #eee;margin:24px 0;">
 
             <p style="color:#888;font-size:13px;margin:0;">
-              Per qualsiasi domanda: <a href="mailto:info@istitutosubito.com" style="color:#1E88E5;">info@istitutosubito.com</a> · <a href="tel:+39389967650" style="color:#1E88E5;">+39 389 967 7650</a>
+              Per qualsiasi domanda: <a href="mailto:info@istitutosubito.com" style="color:#1E88E5;">info@istitutosubito.com</a> · <a href="tel:+393773591545" style="color:#1E88E5;">+39 377 359 1545</a>
             </p>
           </td>
         </tr>

@@ -14,7 +14,7 @@ function GrazieAccontoContent() {
     } catch {}
   }, [])
 
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '393899677650'
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '393773591545'
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Ciao! Ho appena bloccato il mio posto con l\'acconto. Vorrei fissare l\'appuntamento col Capotecnico.')}`
 
   const steps = [
@@ -83,7 +83,7 @@ function GrazieAccontoContent() {
               rel="noopener noreferrer"
               className="text-[var(--whatsapp-green)] font-semibold hover:underline"
             >
-              +39 389 967 7650
+              +39 377 359 1545
             </a>
           </p>
         </div>

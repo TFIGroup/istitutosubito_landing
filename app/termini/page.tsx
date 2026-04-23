@@ -18,7 +18,7 @@ export default function TerminiPage() {
         <strong>Venditore:</strong> CR Store S.r.l.<br />
         Sede legale: Via R. Vastola, 5 - 80040 Poggiomarino (NA)<br />
         P.IVA: IT08955511210 · REA: NA-997450<br />
-        Email: <a href="mailto:info@istitutosubito.com">info@istitutosubito.com</a> · Tel: <a href="tel:+39389967650">+39 389 967 7650</a>
+        Email: <a href="mailto:info@istitutosubito.com">info@istitutosubito.com</a> · Tel: <a href="tel:+393773591545">+39 377 359 1545</a>
       </p>
 
       <h2>2. Oggetto</h2>
@@ -80,7 +80,7 @@ export default function TerminiPage() {
 
       <hr />
 
-      <p>Per chiarimenti: <strong><a href="mailto:info@istitutosubito.com">info@istitutosubito.com</a></strong> · Tel. <strong><a href="tel:+39389967650">+39 389 967 7650</a></strong></p>
+      <p>Per chiarimenti: <strong><a href="mailto:info@istitutosubito.com">info@istitutosubito.com</a></strong> · Tel. <strong><a href="tel:+393773591545">+39 377 359 1545</a></strong></p>
     </LegalLayout>
   )
 }

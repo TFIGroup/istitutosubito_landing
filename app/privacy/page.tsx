@@ -21,7 +21,7 @@ export default function PrivacyPage() {
         P.IVA: IT08955511210<br />
         REA: NA-997450<br />
         Email: <a href="mailto:info@istitutosubito.com">info@istitutosubito.com</a><br />
-        Telefono: <a href="tel:+39389967650">+39 389 967 7650</a>
+        Telefono: <a href="tel:+393773591545">+39 377 359 1545</a>
       </p>
       <p>CR Store S.r.l. opera con i marchi commerciali &quot;Istituto Subito&quot; e &quot;Subito Riparato&quot;.</p>
 

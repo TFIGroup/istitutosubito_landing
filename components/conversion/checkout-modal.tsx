@@ -2,7 +2,7 @@
 
 import { useCallback, useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, Lock, ChevronRight, ChevronLeft, Check, Phone, Mail, MapPin, CreditCard } from 'lucide-react'
+import { X, Lock, ChevronRight, ChevronLeft, Check, Phone, Mail, MapPin, CreditCard, CheckCircle2, Target, Clock, BadgeEuro } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { loadStripe } from '@stripe/stripe-js'
@@ -15,6 +15,7 @@ import { getTierById } from '@/lib/tiers'
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
 
 type Step = 1 | 2 | 3 | 4
+type View = 'form' | 'recovery'
 
 const STEPS = [
   { num: 1, label: 'Cellulare', icon: Phone },
@@ -27,7 +28,7 @@ interface CheckoutModalProps {
   isOpen: boolean
   onClose: () => void
   tierId: string | null
-  onCheckoutAbandoned?: (tierId: string) => void
+  onOpenLeadModal: () => void
 }
 
 // Salva lead parziale (fire-and-forget)
@@ -39,11 +40,13 @@ function savePartialLead(data: { tier?: string; phone?: string; email?: string; 
   }).catch(() => {})
 }
 
-export function CheckoutModal({ isOpen, onClose, tierId, onCheckoutAbandoned }: CheckoutModalProps) {
+export function CheckoutModal({ isOpen, onClose, tierId, onOpenLeadModal }: CheckoutModalProps) {
   const [step, setStep] = useState<Step>(1)
+  const [view, setView] = useState<View>('form')
   const [error, setError] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [formData, setFormData] = useState<CheckoutFormData | null>(null)
+  const [recoverySecondsLeft, setRecoverySecondsLeft] = useState(600)
 
   const tierData = tierId ? getTierById(tierId) : null
 
@@ -57,7 +60,7 @@ export function CheckoutModal({ isOpen, onClose, tierId, onCheckoutAbandoned }: 
     },
   })
 
-  const { register, handleSubmit, formState: { errors }, reset, watch, trigger } = form
+  const { register, handleSubmit, formState: { errors }, reset, watch, trigger, setValue } = form
 
   // Reset quando cambia tier
   useEffect(() => {
@@ -66,11 +69,34 @@ export function CheckoutModal({ isOpen, onClose, tierId, onCheckoutAbandoned }: 
     }
   }, [tierId, isOpen, form])
 
+  // Countdown 10 min dall'apertura del popup, persiste per tutta la sessione
+  useEffect(() => {
+    if (!isOpen) return
+    setRecoverySecondsLeft(600)
+    const id = setInterval(() => {
+      setRecoverySecondsLeft((s) => (s > 0 ? s - 1 : 0))
+    }, 1000)
+    return () => clearInterval(id)
+  }, [isOpen])
+
+  const recoveryMins = Math.floor(recoverySecondsLeft / 60)
+  const recoverySecs = recoverySecondsLeft % 60
+  const recoveryTimer = `${String(recoveryMins).padStart(2, '0')}:${String(recoverySecs).padStart(2, '0')}`
+
   const phone = watch('phone')
   const email = watch('email')
   const fullName = watch('fullName')
   const termsAccepted = watch('termsAccepted')
   const recessoWaiverAccepted = watch('recessoWaiverAccepted')
+  const marketingConsent = watch('marketingConsent')
+  const allAccepted = Boolean(termsAccepted && recessoWaiverAccepted && marketingConsent)
+
+  const toggleAcceptAll = () => {
+    const next = !allAccepted
+    setValue('termsAccepted', next as unknown as true, { shouldValidate: true })
+    setValue('recessoWaiverAccepted', next as unknown as true, { shouldValidate: true })
+    setValue('marketingConsent', next)
+  }
 
   // Step 1 → 2: salva telefono
   const goToStep2 = async () => {
@@ -93,7 +119,6 @@ export function CheckoutModal({ isOpen, onClose, tierId, onCheckoutAbandoned }: 
     setIsSubmitting(true)
     setError(null)
     try {
-      // Verifica che l'API risponda prima di passare a step 4
       const response = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -105,7 +130,6 @@ export function CheckoutModal({ isOpen, onClose, tierId, onCheckoutAbandoned }: 
         return
       }
       setFormData(data)
-      // Marca il checkout Stripe come avviato (per recovery modal post-abbandono)
       try {
         sessionStorage.setItem('stripe_checkout_started', 'true')
         if (tierId) sessionStorage.setItem('stripe_tier', tierId)
@@ -123,6 +147,7 @@ export function CheckoutModal({ isOpen, onClose, tierId, onCheckoutAbandoned }: 
     }
   }
 
+  // Client secret per checkout corso completo
   const fetchClientSecret = useCallback(async () => {
     if (!tierId || !formData) throw new Error('Dati mancanti')
     const response = await fetch('/api/checkout', {
@@ -135,21 +160,76 @@ export function CheckoutModal({ isOpen, onClose, tierId, onCheckoutAbandoned }: 
     return data.clientSecret
   }, [tierId, formData])
 
-  const handleClose = () => {
-    const wasOnStripeStep = step === 4
-    const abandonedTier = tierId
+  const resetAll = () => {
     setStep(1)
+    setView('form')
     setError(null)
     setFormData(null)
     reset()
-    onClose()
-    if (wasOnStripeStep && abandonedTier && onCheckoutAbandoned) {
-      let completed = false
-      try {
-        completed = sessionStorage.getItem('stripe_checkout_completed') === 'true'
-      } catch {}
-      if (!completed) onCheckoutAbandoned(abandonedTier)
+  }
+
+  const handleClose = () => {
+    // Se utente sta nella schermata recovery: chiude davvero
+    if (view === 'recovery') {
+      try { sessionStorage.setItem('recovery_dismissed', 'true') } catch {}
+      resetAll()
+      onClose()
+      return
     }
+
+    // Dal form: mostra recovery se non gia' vista e pagamento non completato
+    let alreadyShown = false
+    let completed = false
+    try {
+      alreadyShown = sessionStorage.getItem('recovery_shown') === 'true'
+        || sessionStorage.getItem('recovery_dismissed') === 'true'
+      completed = sessionStorage.getItem('stripe_checkout_completed') === 'true'
+    } catch {}
+
+    if (alreadyShown || completed) {
+      resetAll()
+      onClose()
+      return
+    }
+
+    try { sessionStorage.setItem('recovery_shown', 'true') } catch {}
+    setView('recovery')
+  }
+
+  const handleStartDeposit = async () => {
+    setIsSubmitting(true)
+    setError(null)
+    try {
+      const promoPrice = tierData ? tierData.price / 100 : undefined
+      const response = await fetch('/api/checkout/deposit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          tier: tierId || 'lv1',
+          promoPrice,
+          fullName,
+          email,
+          phone,
+        }),
+      })
+      const result = await response.json()
+      if (!response.ok || !result.url) {
+        setError(result.error || 'Errore durante la creazione del checkout')
+        setIsSubmitting(false)
+        return
+      }
+      window.location.href = result.url
+    } catch {
+      setError('Errore di connessione. Riprova.')
+      setIsSubmitting(false)
+    }
+  }
+
+  const handleOpenLeadFromRecovery = () => {
+    try { sessionStorage.setItem('recovery_dismissed', 'true') } catch {}
+    resetAll()
+    onClose()
+    onOpenLeadModal()
   }
 
   const inputClass = 'w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground text-base focus:outline-none focus:ring-2 focus:ring-[var(--electric-blue)] focus:border-transparent transition-shadow'
@@ -157,11 +237,18 @@ export function CheckoutModal({ isOpen, onClose, tierId, onCheckoutAbandoned }: 
   const errorClass = 'text-xs text-destructive mt-1'
   const hintClass = 'text-xs text-muted-foreground mt-1.5'
 
+  const headerTitle = view === 'recovery'
+    ? 'Non perdere il prezzo di lancio'
+    : step < 4
+      ? `Iscrizione ${tierData?.name || ''}`
+      : 'Pagamento sicuro'
+
+  const showStepper = view === 'form'
+
   return (
     <AnimatePresence>
       {isOpen && tierId && (
         <>
-          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -170,7 +257,6 @@ export function CheckoutModal({ isOpen, onClose, tierId, onCheckoutAbandoned }: 
             className="fixed inset-0 bg-black/60 z-50"
           />
 
-          {/* Modal: piu grande, full screen su mobile */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -181,12 +267,15 @@ export function CheckoutModal({ isOpen, onClose, tierId, onCheckoutAbandoned }: 
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b shrink-0">
               <div>
-                <h2 className="text-xl font-bold text-foreground">
-                  {step < 4 ? `Iscrizione ${tierData?.name || ''}` : 'Pagamento sicuro'}
-                </h2>
-                {tierData && step < 4 && (
+                <h2 className="text-xl font-bold text-foreground">{headerTitle}</h2>
+                {view === 'form' && tierData && step < 4 && (
                   <p className="text-sm text-muted-foreground mt-0.5">
                     &euro;{tierData.priceFormatted} · oppure 3 rate da &euro;{tierData.installmentFormatted}
+                  </p>
+                )}
+                {view === 'recovery' && (
+                  <p className="text-sm text-muted-foreground mt-0.5">
+                    &euro;99 rimborsabili al 100% · prezzo lancio bloccato
                   </p>
                 )}
               </div>
@@ -199,37 +288,50 @@ export function CheckoutModal({ isOpen, onClose, tierId, onCheckoutAbandoned }: 
               </button>
             </div>
 
-            {/* Stepper visivo */}
-            <div className="flex items-center justify-between px-6 py-3 border-b bg-muted/30 shrink-0">
-              {STEPS.map((s, i) => {
-                const Icon = s.icon
-                const isActive = step === s.num
-                const isDone = step > s.num
-                return (
-                  <div key={s.num} className="flex items-center gap-1.5 flex-1">
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${
-                      isDone ? 'bg-green-500 text-white' :
-                      isActive ? 'bg-[var(--electric-blue)] text-white' :
-                      'bg-muted text-muted-foreground'
-                    }`}>
-                      {isDone ? <Check className="w-4 h-4" /> : <Icon className="w-4 h-4" />}
-                    </div>
-                    <span className={`text-xs font-medium hidden sm:inline ${isActive ? 'text-[var(--electric-blue)]' : isDone ? 'text-green-600' : 'text-muted-foreground'}`}>
-                      {s.label}
-                    </span>
-                    {i < STEPS.length - 1 && (
-                      <div className={`flex-1 h-0.5 mx-2 rounded ${isDone ? 'bg-green-500' : 'bg-muted'}`} />
-                    )}
-                  </div>
-                )
-              })}
+            {/* Timer posto riservato (persiste in tutti gli step) */}
+            <div className="flex items-center justify-center gap-2 px-4 py-2 bg-destructive/5 border-b border-destructive/20 shrink-0">
+              <Clock className="w-4 h-4 text-destructive shrink-0 animate-pulse" />
+              <span className="text-sm text-foreground">
+                Posto riservato per:{' '}
+                <span className="font-bold text-destructive tabular-nums">{recoveryTimer}</span>
+              </span>
             </div>
+
+            {/* Stepper visivo (solo in view form) */}
+            {showStepper && (
+              <div className="flex items-center justify-between px-6 py-3 border-b bg-muted/30 shrink-0">
+                {STEPS.map((s, i) => {
+                  const Icon = s.icon
+                  const isActive = step === s.num
+                  const isDone = step > s.num
+                  return (
+                    <div key={s.num} className="flex items-center gap-1.5 flex-1">
+                      <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-colors ${
+                        isDone ? 'bg-green-500 text-white' :
+                        isActive ? 'bg-[var(--electric-blue)] text-white' :
+                        'bg-muted text-muted-foreground'
+                      }`}>
+                        {isDone ? <Check className="w-4 h-4" /> : <Icon className="w-4 h-4" />}
+                      </div>
+                      <span className={`text-xs font-medium hidden sm:inline ${isActive ? 'text-[var(--electric-blue)]' : isDone ? 'text-green-600' : 'text-muted-foreground'}`}>
+                        {s.label}
+                      </span>
+                      {i < STEPS.length - 1 && (
+                        <div className={`flex-1 h-0.5 mx-2 rounded ${isDone ? 'bg-green-500' : 'bg-muted'}`} />
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
+            )}
 
             {/* Content */}
             <div className="flex-1 overflow-y-auto">
               <AnimatePresence mode="wait">
-                {/* ===== STEP 1: Telefono ===== */}
-                {step === 1 && (
+                {/* ============================================================
+                    VIEW: FORM
+                   ============================================================ */}
+                {view === 'form' && step === 1 && (
                   <motion.div
                     key="step1"
                     initial={{ opacity: 0, x: 20 }}
@@ -277,8 +379,7 @@ export function CheckoutModal({ isOpen, onClose, tierId, onCheckoutAbandoned }: 
                   </motion.div>
                 )}
 
-                {/* ===== STEP 2: Email + Nome ===== */}
-                {step === 2 && (
+                {view === 'form' && step === 2 && (
                   <motion.div
                     key="step2"
                     initial={{ opacity: 0, x: 20 }}
@@ -329,8 +430,7 @@ export function CheckoutModal({ isOpen, onClose, tierId, onCheckoutAbandoned }: 
                   </motion.div>
                 )}
 
-                {/* ===== STEP 3: Indirizzo + Termini ===== */}
-                {step === 3 && (
+                {view === 'form' && step === 3 && (
                   <motion.div
                     key="step3"
                     initial={{ opacity: 0, x: 20 }}
@@ -346,7 +446,6 @@ export function CheckoutModal({ isOpen, onClose, tierId, onCheckoutAbandoned }: 
                         <p className="text-sm text-muted-foreground">Dove ti spediamo il kit hardware professionale</p>
                       </div>
 
-                      {/* Indirizzo */}
                       <div>
                         <label htmlFor="address" className={labelClass}>Indirizzo (via, civico)</label>
                         <input id="address" type="text" autoFocus {...register('address')} className={inputClass} placeholder="Via Roma, 10" />
@@ -383,6 +482,19 @@ export function CheckoutModal({ isOpen, onClose, tierId, onCheckoutAbandoned }: 
 
                       {/* Checkbox termini */}
                       <div className="space-y-3 pt-4 border-t border-border">
+                        {/* Accetta tutte */}
+                        <label className="flex items-center gap-3 cursor-pointer p-3 rounded-xl bg-[var(--electric-blue)]/5 border border-[var(--electric-blue)]/20 hover:bg-[var(--electric-blue)]/10 transition-colors">
+                          <input
+                            type="checkbox"
+                            checked={allAccepted}
+                            onChange={toggleAcceptAll}
+                            className="w-5 h-5 rounded border-border accent-[var(--electric-blue)] shrink-0"
+                          />
+                          <span className="text-sm font-semibold text-foreground">
+                            Accetto tutte le condizioni
+                          </span>
+                        </label>
+
                         <label className="flex items-start gap-3 cursor-pointer">
                           <input type="checkbox" {...register('termsAccepted')} className="mt-0.5 w-5 h-5 rounded border-border accent-[var(--electric-blue)] shrink-0" />
                           <span className="text-sm text-muted-foreground leading-relaxed">
@@ -412,14 +524,12 @@ export function CheckoutModal({ isOpen, onClose, tierId, onCheckoutAbandoned }: 
                         </label>
                       </div>
 
-                      {/* Errore */}
                       {error && (
                         <div className="bg-destructive/10 text-destructive text-sm p-3 rounded-xl">
                           {error}
                         </div>
                       )}
 
-                      {/* Riepilogo + CTA: sticky su mobile */}
                       <div className="sticky bottom-0 bg-white pt-4 pb-2 -mx-6 px-6 border-t border-border md:static md:border-0 md:mx-0 md:px-0 md:pt-2 md:pb-0">
                         {tierData && (
                           <div className="bg-muted/50 rounded-xl p-3 text-center mb-4">
@@ -454,8 +564,7 @@ export function CheckoutModal({ isOpen, onClose, tierId, onCheckoutAbandoned }: 
                   </motion.div>
                 )}
 
-                {/* ===== STEP 4: Stripe Embedded Checkout ===== */}
-                {step === 4 && (
+                {view === 'form' && step === 4 && (
                   <motion.div
                     key="step4"
                     initial={{ opacity: 0, x: 20 }}
@@ -481,6 +590,106 @@ export function CheckoutModal({ isOpen, onClose, tierId, onCheckoutAbandoned }: 
                         <EmbeddedCheckout />
                       </EmbeddedCheckoutProvider>
                     )}
+                  </motion.div>
+                )}
+
+                {/* ============================================================
+                    VIEW: RECOVERY €99
+                   ============================================================ */}
+                {view === 'recovery' && (
+                  <motion.div
+                    key="recovery"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    className="p-6 md:p-8"
+                  >
+                    <div className="max-w-lg mx-auto space-y-5">
+                      <div className="flex items-start gap-4">
+                        <div className="w-14 h-14 rounded-full bg-[var(--electric-blue)]/10 flex items-center justify-center shrink-0">
+                          <Lock className="w-7 h-7 text-[var(--electric-blue)]" />
+                        </div>
+                        <h3 className="text-2xl md:text-3xl font-bold text-foreground leading-tight">
+                          Non perdere il prezzo di lancio.
+                        </h3>
+                      </div>
+
+                      <p className="text-base text-foreground leading-relaxed">
+                        Stai per uscire senza bloccare il tuo posto per il corso{' '}
+                        <span className="font-semibold">{tierData ? `${tierData.code} ${tierData.name}` : ''}</span>{' '}
+                        a <span className="font-semibold">&euro;{tierData?.priceFormatted}</span>.
+                        Questo prezzo è riservato ai primi 15 iscritti di questo trimestre. Quando i posti finiscono, il listino torna a <span className="font-semibold">&euro;{tierData?.priceFullFormatted}</span>.
+                      </p>
+
+                      <p className="text-base text-foreground leading-relaxed">
+                        Con <span className="font-semibold">&euro;99</span> blocchi due cose: il tuo posto e il prezzo di lancio. Poi ti chiamiamo per una conversazione di 20 minuti col Capotecnico, dove ti spiega il percorso, risponde alle tue domande e capisci se fa per te. Nessuno script di vendita, solo una chiacchierata tra tecnici.
+                      </p>
+
+                      <p className="text-base text-foreground leading-relaxed">
+                        Se dopo la call decidi che non fa per te, ti rimborsiamo <span className="font-semibold">&euro;99 al 100%</span>. Zero rischio.
+                      </p>
+
+                      <ul className="space-y-3 pt-1">
+                        <li className="flex items-start gap-3">
+                          <Target className="w-6 h-6 text-[var(--premium-gold)] shrink-0 mt-0.5" />
+                          <span className="text-foreground text-sm md:text-base">
+                            Prezzo lancio <span className="font-semibold">&euro;{tierData?.priceFormatted}</span> bloccato per te, anche se il listino sale
+                          </span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <CheckCircle2 className="w-6 h-6 text-[var(--whatsapp-green)] shrink-0 mt-0.5" />
+                          <span className="text-foreground text-sm md:text-base">
+                            Call di 20 minuti col Capotecnico, zero pressione
+                          </span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <BadgeEuro className="w-6 h-6 text-[var(--electric-blue)] shrink-0 mt-0.5" />
+                          <span className="text-foreground text-sm md:text-base">
+                            &euro;99 rimborsati al 100% se il corso non fa per te
+                          </span>
+                        </li>
+                      </ul>
+
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        Ti contattiamo entro 24 ore per fissare la call. Fissiamo insieme un appuntamento che va bene per te. Se non riesci a presentarti, lo spostiamo senza problemi. Dopo 2 appuntamenti mancati senza preavviso, l&apos;acconto non è più rimborsabile.
+                      </p>
+
+                      {error && (
+                        <div className="bg-destructive/10 text-destructive text-sm p-3 rounded-xl">
+                          {error}
+                        </div>
+                      )}
+
+                      <div className="space-y-3 pt-2">
+                        <button
+                          type="button"
+                          onClick={handleStartDeposit}
+                          disabled={isSubmitting}
+                          className="w-full py-4 bg-[var(--electric-blue)] hover:bg-[var(--electric-blue-hover)] disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 text-base md:text-lg cursor-pointer"
+                        >
+                          {isSubmitting ? 'Caricamento...' : 'Blocca il posto e il prezzo a €99'}
+                          {!isSubmitting && <Lock className="w-5 h-5" />}
+                        </button>
+
+                        <button
+                          type="button"
+                          onClick={handleClose}
+                          className="w-full py-3 border border-border hover:bg-muted text-foreground font-medium rounded-xl transition-colors cursor-pointer"
+                        >
+                          No grazie, rischio di pagare di più dopo
+                        </button>
+
+                        <div className="text-center pt-1">
+                          <button
+                            type="button"
+                            onClick={handleOpenLeadFromRecovery}
+                            className="text-xs text-muted-foreground hover:text-foreground underline cursor-pointer"
+                          >
+                            Preferisci parlare prima senza impegno? Parla con un Capotecnico
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>

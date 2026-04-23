@@ -18,6 +18,7 @@ export async function POST(request: NextRequest) {
     const fullName: string = typeof body.fullName === 'string' ? body.fullName : ''
     const email: string = typeof body.email === 'string' ? body.email : ''
     const phone: string = typeof body.phone === 'string' ? body.phone : ''
+    const promoPrice: number | undefined = typeof body.promoPrice === 'number' ? body.promoPrice : undefined
 
     const ip = request.headers.get('x-forwarded-for')?.split(',')[0]?.trim()
       || request.headers.get('x-real-ip')
@@ -34,6 +35,7 @@ export async function POST(request: NextRequest) {
       ip_address: ip,
       user_agent: userAgent.slice(0, 500),
     }
+    if (promoPrice !== undefined) stripeMetadata.promo_price = String(promoPrice)
     if (fullName) stripeMetadata.full_name = fullName
     if (email) stripeMetadata.email = email
     if (phone) stripeMetadata.phone = phone

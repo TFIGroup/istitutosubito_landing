@@ -44,10 +44,10 @@ export async function POST(request: NextRequest) {
 
     const sessionConfig: Stripe.Checkout.SessionCreateParams = {
       mode: 'payment',
+      ui_mode: 'embedded_page',
       locale: 'it',
       metadata: stripeMetadata,
-      success_url: `${baseUrl}/grazie-acconto?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${baseUrl}/?checkout=cancelled`,
+      return_url: `${baseUrl}/grazie-acconto?session_id={CHECKOUT_SESSION_ID}`,
     }
 
     if (email) sessionConfig.customer_email = email
@@ -78,7 +78,7 @@ export async function POST(request: NextRequest) {
 
     const session = await stripe.checkout.sessions.create(sessionConfig)
 
-    return NextResponse.json({ url: session.url, sessionId: session.id })
+    return NextResponse.json({ clientSecret: session.client_secret, sessionId: session.id })
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : 'Unknown error'
     console.error('Deposit checkout error:', message, error)

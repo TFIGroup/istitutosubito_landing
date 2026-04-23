@@ -15,7 +15,7 @@ import { getTierById } from '@/lib/tiers'
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
 
 type Step = 1 | 2 | 3 | 4
-type View = 'form' | 'recovery'
+type View = 'form' | 'recovery' | 'deposit-payment'
 
 const STEPS = [
   { num: 1, label: 'Cellulare', icon: Phone },
@@ -160,6 +160,25 @@ export function CheckoutModal({ isOpen, onClose, tierId, onOpenLeadModal }: Chec
     return data.clientSecret
   }, [tierId, formData])
 
+  // Client secret per checkout acconto €99 (embedded nel modal)
+  const fetchDepositClientSecret = useCallback(async () => {
+    const promoPrice = tierData ? tierData.price / 100 : undefined
+    const response = await fetch('/api/checkout/deposit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        tier: tierId || 'lv1',
+        promoPrice,
+        fullName,
+        email,
+        phone,
+      }),
+    })
+    const data = await response.json()
+    if (!response.ok) throw new Error(data.error)
+    return data.clientSecret
+  }, [tierId, tierData, fullName, email, phone])
+
   const resetAll = () => {
     setStep(1)
     setView('form')
@@ -169,24 +188,21 @@ export function CheckoutModal({ isOpen, onClose, tierId, onOpenLeadModal }: Chec
   }
 
   const handleClose = () => {
-    // Se utente sta nella schermata recovery: chiude davvero
-    if (view === 'recovery') {
+    // Se utente sta nella schermata recovery o nel pagamento acconto: chiude davvero
+    if (view === 'recovery' || view === 'deposit-payment') {
       try { sessionStorage.setItem('recovery_dismissed', 'true') } catch {}
       resetAll()
       onClose()
       return
     }
 
-    // Dal form: mostra recovery se non gia' vista e pagamento non completato
-    let alreadyShown = false
+    // Dal form: mostra SEMPRE recovery, tranne se pagamento completato
     let completed = false
     try {
-      alreadyShown = sessionStorage.getItem('recovery_shown') === 'true'
-        || sessionStorage.getItem('recovery_dismissed') === 'true'
       completed = sessionStorage.getItem('stripe_checkout_completed') === 'true'
     } catch {}
 
-    if (alreadyShown || completed) {
+    if (completed) {
       resetAll()
       onClose()
       return
@@ -196,33 +212,9 @@ export function CheckoutModal({ isOpen, onClose, tierId, onOpenLeadModal }: Chec
     setView('recovery')
   }
 
-  const handleStartDeposit = async () => {
-    setIsSubmitting(true)
+  const handleStartDeposit = () => {
     setError(null)
-    try {
-      const promoPrice = tierData ? tierData.price / 100 : undefined
-      const response = await fetch('/api/checkout/deposit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          tier: tierId || 'lv1',
-          promoPrice,
-          fullName,
-          email,
-          phone,
-        }),
-      })
-      const result = await response.json()
-      if (!response.ok || !result.url) {
-        setError(result.error || 'Errore durante la creazione del checkout')
-        setIsSubmitting(false)
-        return
-      }
-      window.location.href = result.url
-    } catch {
-      setError('Errore di connessione. Riprova.')
-      setIsSubmitting(false)
-    }
+    setView('deposit-payment')
   }
 
   const handleOpenLeadFromRecovery = () => {
@@ -239,9 +231,11 @@ export function CheckoutModal({ isOpen, onClose, tierId, onOpenLeadModal }: Chec
 
   const headerTitle = view === 'recovery'
     ? 'Non perdere il prezzo di lancio'
-    : step < 4
-      ? `Iscrizione ${tierData?.name || ''}`
-      : 'Pagamento sicuro'
+    : view === 'deposit-payment'
+      ? 'Pagamento acconto €99'
+      : step < 4
+        ? `Iscrizione ${tierData?.name || ''}`
+        : 'Pagamento sicuro'
 
   const showStepper = view === 'form'
 
@@ -276,6 +270,11 @@ export function CheckoutModal({ isOpen, onClose, tierId, onOpenLeadModal }: Chec
                 {view === 'recovery' && (
                   <p className="text-sm text-muted-foreground mt-0.5">
                     &euro;99 rimborsabili al 100% · prezzo lancio bloccato
+                  </p>
+                )}
+                {view === 'deposit-payment' && (
+                  <p className="text-sm text-muted-foreground mt-0.5">
+                    Blocca il posto · rimborsabile al 100%
                   </p>
                 )}
               </div>
@@ -664,11 +663,10 @@ export function CheckoutModal({ isOpen, onClose, tierId, onOpenLeadModal }: Chec
                         <button
                           type="button"
                           onClick={handleStartDeposit}
-                          disabled={isSubmitting}
-                          className="w-full py-4 bg-[var(--electric-blue)] hover:bg-[var(--electric-blue-hover)] disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 text-base md:text-lg cursor-pointer"
+                          className="w-full py-4 bg-[var(--electric-blue)] hover:bg-[var(--electric-blue-hover)] text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 text-base md:text-lg cursor-pointer"
                         >
-                          {isSubmitting ? 'Caricamento...' : 'Blocca il posto e il prezzo a €99'}
-                          {!isSubmitting && <Lock className="w-5 h-5" />}
+                          Blocca il posto e il prezzo a €99
+                          <Lock className="w-5 h-5" />
                         </button>
 
                         <button
@@ -689,6 +687,36 @@ export function CheckoutModal({ isOpen, onClose, tierId, onOpenLeadModal }: Chec
                           </button>
                         </div>
                       </div>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* ============================================================
+                    VIEW: DEPOSIT PAYMENT (Stripe embedded €99)
+                   ============================================================ */}
+                {view === 'deposit-payment' && (
+                  <motion.div
+                    key="deposit"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    className="p-4 md:p-6"
+                  >
+                    <EmbeddedCheckoutProvider
+                      stripe={stripePromise}
+                      options={{ fetchClientSecret: fetchDepositClientSecret }}
+                    >
+                      <EmbeddedCheckout />
+                    </EmbeddedCheckoutProvider>
+
+                    <div className="text-center mt-4">
+                      <button
+                        type="button"
+                        onClick={() => setView('recovery')}
+                        className="text-sm text-muted-foreground hover:text-foreground underline cursor-pointer"
+                      >
+                        Torna indietro
+                      </button>
                     </div>
                   </motion.div>
                 )}

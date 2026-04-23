@@ -10,7 +10,7 @@ export default function TerminiPage() {
   return (
     <LegalLayout>
       <h1>Termini e Condizioni di Vendita</h1>
-      <p><strong>Ultimo aggiornamento: 14 gennaio 2026</strong></p>
+      <p><strong>Ultimo aggiornamento: 23 aprile 2026</strong></p>
 
       <h2>1. Premessa</h2>
       <p>Le presenti Condizioni Generali di Vendita disciplinano l&apos;acquisto dei servizi formativi offerti tramite il sito istitutosubito.com (di seguito &quot;Sito&quot;) da parte di CR Store S.r.l. (di seguito &quot;Venditore&quot; o &quot;Istituto Subito&quot;).</p>
@@ -30,6 +30,20 @@ export default function TerminiPage() {
       <h2>4. Prezzi e Pagamento</h2>
       <p>I prezzi indicati sul Sito si intendono in Euro e includono IVA se dovuta. Il pagamento avviene tramite la piattaforma Stripe (carta di credito, debito, Klarna per pagamento rateale).</p>
       <p>E&apos; possibile, in alternativa, riservare il proprio posto con un acconto, contattando preventivamente il Venditore. Il saldo verra&apos; concordato successivamente.</p>
+
+      <h2>4bis. Acconto &quot;Blocca il Posto&quot;</h2>
+      <p>L&apos;Utente puo&apos; scegliere di versare un acconto di &euro;99 (&quot;Acconto Blocca il Posto&quot;) per riservare il proprio posto e bloccare il prezzo promozionale del corso selezionato.</p>
+      <p>A seguito del versamento dell&apos;acconto, il Venditore contatta l&apos;Utente entro 24 ore per concordare un appuntamento telefonico o in videocall con il Capotecnico (&quot;Call Conoscitiva&quot;).</p>
+      <p>L&apos;acconto e&apos; interamente rimborsabile nelle seguenti condizioni:</p>
+      <ul>
+        <li>a) L&apos;Utente partecipa alla Call Conoscitiva e decide di non proseguire con l&apos;iscrizione. In tal caso, l&apos;importo di &euro;99 viene rimborsato entro 14 giorni.</li>
+        <li>b) L&apos;Utente partecipa alla Call Conoscitiva e decide di proseguire. In tal caso, l&apos;importo di &euro;99 viene detratto dal saldo del corso.</li>
+      </ul>
+      <p>L&apos;acconto <strong>NON</strong> e&apos; rimborsabile se:</p>
+      <ul>
+        <li>c) L&apos;Utente non si presenta alla Call Conoscitiva per 2 appuntamenti concordati consecutivi senza fornire preavviso di almeno 24 ore. In tal caso, l&apos;importo di &euro;99 viene trattenuto a titolo di penale per la mancata partecipazione e il posto viene rimesso in disponibilita&apos;.</li>
+      </ul>
+      <p>Il prezzo promozionale bloccato con l&apos;acconto resta valido per 30 giorni dalla data del versamento. Trascorsi 30 giorni senza che l&apos;Utente abbia completato l&apos;iscrizione, il posto e il prezzo promozionale non sono piu&apos; garantiti. L&apos;acconto resta rimborsabile secondo le condizioni sopra indicate.</p>
 
       <h2>5. Conferma dell&apos;Ordine</h2>
       <p>A seguito del pagamento, l&apos;Utente ricevera&apos; email di conferma con i dettagli dell&apos;iscrizione. Il Capotecnico contattera&apos; lo studente entro 24-48 ore lavorative per definire il calendario delle lezioni.</p>

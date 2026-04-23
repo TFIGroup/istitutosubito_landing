@@ -1,2 +1,2 @@
-export const TERMS_VERSION = '1.0-2026-04-14'
-export const TERMS_LAST_UPDATED = '14 aprile 2026'
+export const TERMS_VERSION = '1.1-2026-04-23'
+export const TERMS_LAST_UPDATED = '23 aprile 2026'

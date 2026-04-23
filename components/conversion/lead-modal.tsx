@@ -101,11 +101,11 @@ export function LeadModal({ isOpen, onClose, defaultTier = 'lv2' }: LeadModalPro
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             className="fixed inset-4 md:inset-auto md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:max-w-md md:w-full z-50 flex items-center justify-center md:block"
           >
-            <div className="bg-card rounded-2xl shadow-xl w-full max-h-[90vh] overflow-y-auto">
-              {/* Close Button */}
+            <div className="relative bg-card rounded-2xl shadow-xl w-full max-h-[90vh] overflow-y-auto">
+              {/* Close Button (sticky: sempre visibile anche scrollando) */}
               <button
                 onClick={handleClose}
-                className="absolute top-4 right-4 p-2 text-muted-foreground hover:text-foreground transition-colors"
+                className="sticky top-3 right-3 float-right -mb-10 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-background/90 backdrop-blur-sm border border-border text-muted-foreground hover:text-foreground hover:bg-background transition-colors shadow-sm cursor-pointer"
                 aria-label="Chiudi"
               >
                 <X className="w-5 h-5" />

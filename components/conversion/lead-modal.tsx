@@ -1,12 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, MessageCircle, Loader2 } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { content } from '@/lib/content'
+import { trackLead } from '@/lib/tracking'
 
 const leadSchema = z.object({
   phone: z
@@ -26,6 +27,10 @@ interface LeadModalProps {
 export function LeadModal({ isOpen, onClose }: LeadModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { leadModal } = content
+
+  useEffect(() => {
+    if (isOpen) trackLead()
+  }, [isOpen])
 
   const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '393773591545'
 

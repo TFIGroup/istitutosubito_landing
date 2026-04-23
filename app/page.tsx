@@ -32,6 +32,8 @@ import { ScarcityCounter } from '@/components/conversion/scarcity-counter'
 import { LeadModal } from '@/components/conversion/lead-modal'
 import { ExitIntentModal } from '@/components/conversion/exit-intent-modal'
 import { CheckoutModal } from '@/components/conversion/checkout-modal'
+import { getTierById } from '@/lib/tiers'
+import { trackInitiateCheckout } from '@/lib/tracking'
 
 // Tiny component that uses useSearchParams, isolated in its own Suspense
 // so it doesn't block the entire page from being statically prerendered
@@ -58,6 +60,8 @@ export default function LandingPage() {
 
   const handleCheckout = useCallback((tierId: string = 'lv2') => {
     markCheckoutStarted()
+    const tier = getTierById(tierId)
+    if (tier) trackInitiateCheckout(tierId, tier.price)
     setCheckoutTierId(tierId)
   }, [])
 

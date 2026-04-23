@@ -6,6 +6,8 @@ import Link from 'next/link'
 import { CheckCircle, Mail, MessageCircle, Package, ArrowLeft } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { content } from '@/lib/content'
+import { getTierById } from '@/lib/tiers'
+import { trackPurchase } from '@/lib/tracking'
 
 function GrazieContent() {
   const searchParams = useSearchParams()
@@ -13,11 +15,16 @@ function GrazieContent() {
 
   useEffect(() => {
     try {
+      const tierId = sessionStorage.getItem('stripe_tier') || 'lv1'
+      const tier = getTierById(tierId)
+      if (tier) {
+        trackPurchase(tierId, tier.price, sessionId || undefined)
+      }
       sessionStorage.setItem('stripe_checkout_completed', 'true')
       sessionStorage.removeItem('stripe_checkout_started')
       sessionStorage.removeItem('stripe_tier')
     } catch {}
-  }, [])
+  }, [sessionId])
   
   const { grazie } = content
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '393XXXXXXXXX'

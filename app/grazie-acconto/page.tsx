@@ -4,10 +4,12 @@ import { useEffect, Suspense } from 'react'
 import Link from 'next/link'
 import { CheckCircle, Clock, Target, MessageCircle, ArrowLeft } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { trackPurchase } from '@/lib/tracking'
 
 function GrazieAccontoContent() {
   useEffect(() => {
     try {
+      trackPurchase('deposit', 9900)
       sessionStorage.setItem('stripe_checkout_completed', 'true')
       sessionStorage.removeItem('stripe_checkout_started')
       sessionStorage.removeItem('stripe_tier')

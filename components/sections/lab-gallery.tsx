@@ -50,7 +50,7 @@ export function LabGallery() {
             microscopi professionali, stazioni di saldatura, macchine laser e molto altro.
           </p>
           <p className="text-sm text-muted-foreground/80 italic">
-            I laboratori che vedi sono la nostra sede corsi a Nocera Inferiore: 100 mq attrezzati dedicati alla formazione. Puoi frequentare qui in presenza, oppure da casa tua in videocall live col Capotecnico, ovunque tu sia in Italia.
+            I laboratori che vedi sono il cuore di Subito Riparato. Tu impari da casa con lo stesso livello di qualità, in videocall live col Capotecnico.
           </p>
         </div>
 

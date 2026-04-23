@@ -95,7 +95,7 @@ export const content = {
           'Da casa tua, ovunque in Italia',
           '30 ore 1-to-1 in videocall live col Capotecnico',
           'Calendario flessibile: scegli tu giorni e orari col Capotecnico. Disponibilità tutti i giorni della settimana.',
-          'Webcam con braccio articolato e ring light, in comodato d\'uso (zero da configurare, plug-and-play)',
+          'Webcam con braccio articolato e ring light (zero da configurare, plug-and-play)',
           'Licenza professionale LV1 verificabile via QR',
           'Supporto post-diploma per 1 mese',
         ],
@@ -294,7 +294,7 @@ export const content = {
       },
       {
         question: 'La webcam come funziona? Devo comprarne una io?',
-        answer: 'No, la webcam te la spediamo noi col kit. È una webcam professionale con braccio articolato flessibile e ring light integrato, plug-and-play su Mac, Windows e Chromebook. Si fissa al tuo banco di lavoro in 30 secondi e si posiziona dall\'alto, così il Capotecnico durante le lezioni live vede esattamente quello che fai con le mani sul tappetino. Per LV1 ti viene fornita in comodato d\'uso per la durata del corso. Per LV2 e LV3 è tua, te la tieni anche dopo il diploma. Zero pensieri tecnici: apri la scatola e funziona.',
+        answer: 'No, la webcam te la spediamo noi col kit. È una webcam professionale con braccio articolato flessibile e ring light integrato, plug-and-play su Mac, Windows e Chromebook. Si fissa al tuo banco di lavoro in 30 secondi e si posiziona dall\'alto, così il Capotecnico durante le lezioni live vede esattamente quello che fai con le mani sul tappetino. Per LV1 è inclusa per la durata del corso. Per LV2 e LV3 è tua, te la tieni anche dopo il diploma. Zero pensieri tecnici: apri la scatola e funziona.',
       },
       {
         question: 'Posso pagare a rate?',

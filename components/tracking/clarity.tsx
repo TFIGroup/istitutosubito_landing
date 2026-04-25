@@ -1,25 +1,15 @@
 'use client'
 
 import Script from 'next/script'
-import { useEffect, useState } from 'react'
-import { getConsent, subscribeConsent } from '@/lib/consent'
 
 const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID
 
 export function Clarity() {
-  const [hasConsent, setHasConsent] = useState(false)
-
-  useEffect(() => {
-    const update = () => setHasConsent(getConsent() === 'all')
-    update()
-    return subscribeConsent(update)
-  }, [])
-
-  if (!CLARITY_ID || !hasConsent) return null
+  if (!CLARITY_ID) return null
 
   return (
     <Script id="ms-clarity" strategy="afterInteractive">
-      {`(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","${CLARITY_ID}");`}
+      {`(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};c[a]("consent",false);t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","${CLARITY_ID}");`}
     </Script>
   )
 }
